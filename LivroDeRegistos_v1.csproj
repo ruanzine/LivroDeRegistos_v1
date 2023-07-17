@@ -49,11 +49,29 @@
     <Reference Include="ChromaGraphics, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\ChromaGraphics.0.1.0\lib\ChromaGraphics.dll</HintPath>
     </Reference>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="Corale.Colore, Version=1.0.53.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Colore.1.0.53\lib\net45\Corale.Colore.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=3.3.3.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>packages\Costura.Fody.3.3.3\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=6.2.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.6.2.6\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
@@ -97,6 +115,9 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.24.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Tokens.6.24.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
@@ -115,6 +136,7 @@
     <Reference Include="PgpsUtilsAEFC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MrKelpy.PgpsUtilsAEFC.1.2.4\lib\net472\PgpsUtilsAEFC.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>packages\RestSharpSigned.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
@@ -315,6 +337,7 @@
     <Reference Include="System.Threading.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.AccessControl.6.0.0\lib\net461\System.Threading.AccessControl.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -337,12 +360,51 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ByDateListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\ByDateListing.Designer.cs">
+      <DependentUpon>ByDateListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ChooseDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\ChooseDate.Designer.cs">
+      <DependentUpon>ChooseDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DateListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\DateListing.Designer.cs">
+      <DependentUpon>DateListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Excel_Exporting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Classes\Register.cs" />
+    <Compile Include="DateFromUntil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateFromUntil.Designer.cs">
+      <DependentUpon>DateFromUntil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateList.Designer.cs">
+      <DependentUpon>DateList.cs</DependentUpon>
+    </Compile>
     <Compile Include="DGVBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DGVBase.Designer.cs">
       <DependentUpon>DGVBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelListing.Designer.cs">
+      <DependentUpon>ExcelListing.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -356,11 +418,21 @@
     <Compile Include="PanelAddLivros.Designer.cs">
       <DependentUpon>PanelAddLivros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registo_Livro.cs">
+    <Compile Include="Panel_Edit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Panel_Edit.Designer.cs">
+      <DependentUpon>Panel_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_SelectEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panel_SelectEdit.Designer.cs">
+      <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registo_Livro.cs" />
     <Compile Include="RJControls\ComboPesquisa_Inicio.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -370,14 +442,47 @@
     <Compile Include="RJControls\txtTitulo.Designer.cs">
       <DependentUpon>txtTitulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectListing.Designer.cs">
+      <DependentUpon>SelectListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Classes\ByDateListing.resx">
+      <DependentUpon>ByDateListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\ChooseDate.resx">
+      <DependentUpon>ChooseDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\DateListing.resx">
+      <DependentUpon>DateListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateFromUntil.resx">
+      <DependentUpon>DateFromUntil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DGVBase.resx">
       <DependentUpon>DGVBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelListing.resx">
+      <DependentUpon>ExcelListing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanelAddLivros.resx">
       <DependentUpon>PanelAddLivros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_Edit.resx">
+      <DependentUpon>Panel_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_SelectEdit.resx">
+      <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -391,6 +496,12 @@
     </Compile>
     <EmbeddedResource Include="RJControls\txtTitulo.resx">
       <DependentUpon>txtTitulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectListing.resx">
+      <DependentUpon>SelectListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="docs\conf.py" />
     <None Include="docs\index.rst" />
@@ -519,6 +630,15 @@
     <Content Include="docs\_build\html\_static\pygments.css" />
     <Content Include="docs\_build\html\_static\searchtools.js" />
     <Content Include="docs\_build\html\_static\sphinx_highlight.js" />
+    <None Include="Resources\backgroundLV.png" />
+    <None Include="Resources\eb2.3logo.png" />
+    <None Include="Resources\Design sem nome %289%29.png" />
+    <None Include="Resources\biblio %283%29.png" />
+    <None Include="Resources\Screenshot 2023-07-13 030243.png" />
+    <None Include="Resources\icons8-bar-chart-30.png" />
+    <None Include="Resources\icons8-search-book-30.png" />
+    <None Include="Resources\icons8-edit-30.png" />
+    <None Include="Resources\icons8-add-book-30 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('packages\Fody.4.0.2\build\Fody.targets')" />

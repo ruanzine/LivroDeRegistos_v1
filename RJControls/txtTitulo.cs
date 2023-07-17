@@ -152,5 +152,7 @@ namespace LivroDeRegistos_v1
 
         }
 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e) => this.OnKeyPress(e);
+        
     }
 }
