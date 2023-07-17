@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LivroDeRegistos_v1
+namespace LivroDeRegistos_v1.RJControls
 {
     public partial class txtTitulo : UserControl
     {
@@ -21,17 +16,17 @@ namespace LivroDeRegistos_v1
         //Constructor 
         public txtTitulo()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
 
         [Category("TextBox Coding")]
         public Color BorderColor
         {
-            get { return borderColor; }
+            get => this.borderColor;
             set
             {
-                borderColor= value;
+                this.borderColor = value;
                 this.Invalidate();
             }
         }
@@ -39,10 +34,10 @@ namespace LivroDeRegistos_v1
         [Category("TextBox Coding")]
         public int BorderSize
         {
-            get { return borderSize; }
+            get => this.borderSize;
             set
             {
-                borderSize= value;
+                this.borderSize = value;
                 this.Invalidate();
             }
         }
@@ -50,89 +45,86 @@ namespace LivroDeRegistos_v1
         [Category("TextBox Coding")]
         public bool UnderlinedStyle
         {
-            get { return underlinedStyle; }
+            get => this.underlinedStyle;
             set
             {
-                underlinedStyle= value;
+                this.underlinedStyle = value;
                 this.Invalidate();
             }
         }
 
-        [Category ("TextBox Coding")]
+        [Category("TextBox Coding")]
         public string Texts
         {
-            get { return textBox1.Text; }
-            set { textBox1.Text = value; }
+            get => this.textBox1.Text;
+            set => this.textBox1.Text = value;
         }
-    
+
 
         [Category("TextBox Coding")]
         public bool PasswordChar
         {
-            get { return textBox1.UseSystemPasswordChar; }
-            set { textBox1.UseSystemPasswordChar = value; }
-
+            get => this.textBox1.UseSystemPasswordChar;
+            set => this.textBox1.UseSystemPasswordChar = value;
         }
 
         [Category("TextBox Coding")]
         public bool Multiline
         {
-            get { return textBox1.Multiline; }
-            set { textBox1.Multiline = value; }
+            get => this.textBox1.Multiline;
+            set => this.textBox1.Multiline = value;
         }
 
         [Category("TextBox Coding")]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
+            get => base.ForeColor;
             set
             {
                 base.ForeColor = value;
-                textBox1.ForeColor = value;
+                this.textBox1.ForeColor = value;
             }
         }
 
         [Category("TextBox Coding")]
         public override Font Font
         {
-            get { return base.Font; }
+            get => base.Font;
             set
             {
                 base.Font = value;
-                textBox1.Font = value;
-                if (this.DesignMode) UpdateControlHeight();
+                this.textBox1.Font = value;
+                if (this.DesignMode) this.UpdateControlHeight();
             }
-
         }
 
         //Overriden method
-        protected override void OnPaint (PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics graph = e.Graphics;
 
             //Draw border
-            using (Pen penBorder = new Pen(borderColor, borderSize))
+            using (Pen penBorder = new Pen(this.borderColor, this.borderSize))
             {
                 penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
-                if (underlinedStyle)
+                if (this.underlinedStyle)
                     graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
                 else
                     graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
-
             }
         }
 
         protected override void OnResize(EventArgs e)
         {
-            base.OnResize (e);
-            if(this.DesignMode) UpdateControlHeight();
+            base.OnResize(e);
+            if (this.DesignMode) this.UpdateControlHeight();
         }
 
-        protected override void OnLoad (EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad (e);
-            UpdateControlHeight();
+            base.OnLoad(e);
+            this.UpdateControlHeight();
         }
 
         //Events
@@ -140,19 +132,20 @@ namespace LivroDeRegistos_v1
         //Private Methods 
         private void UpdateControlHeight()
         {
-            if(textBox1.Multiline == false)
+            if (this.textBox1.Multiline == false)
             {
                 int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
-                textBox1.Multiline = true;
-                textBox1.MinimumSize = new Size(0, txtHeight);
-                textBox1.Multiline = false;
+                this.textBox1.Multiline = true;
+                this.textBox1.MinimumSize = new Size(0, txtHeight);
+                this.textBox1.Multiline = false;
 
-                this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
+                this.Height = this.textBox1.Height + this.Padding.Top + this.Padding.Bottom;
             }
-
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e) => this.OnKeyPress(e);
-        
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.OnKeyPress(e);
+        }
     }
 }

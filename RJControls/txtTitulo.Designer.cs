@@ -1,4 +1,4 @@
-﻿namespace LivroDeRegistos_v1
+﻿namespace LivroDeRegistos_v1.RJControls
 {
     partial class txtTitulo
     {
@@ -13,9 +13,9 @@
         /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }

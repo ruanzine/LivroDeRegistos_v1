@@ -1,0 +1,178 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
+using LivroDeRegistos_v1.RJControls;
+
+namespace LivroDeRegistos_v1.gui
+{
+    public partial class Panel_Edit : Form
+    {
+        public Panel_Edit()
+        {
+            this.InitializeComponent();
+        }
+
+        public Panel GetPanel_Edit()
+        {
+            return this.pnlEdit;
+        }
+
+        private void bttEdit_Click(object sender, EventArgs e)
+        {
+            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar"))
+                return;
+
+            int numeroRegistro = int.Parse(this.txtNRegisto_Edit.Texts);
+            this.FillTextBoxes(numeroRegistro);
+            this.EnableText();
+        }
+
+        private void bttSave_Click(object sender, EventArgs e)
+        {
+            if (!this.ValidateTextBox(this.txtDataEntrega_Edit, "a data de entrada do exemplar") ||
+                !this.ValidateTextBox(this.txtTitulo_Edit, "o título do exemplar") ||
+                !this.ValidateTextBox(this.txtAutor_Edit, "o autor do exemplar") ||
+                !this.ValidateTextBox(this.txtCota_Edit, "a cota do exemplar") ||
+                !this.ValidateTextBox(this.txtNVolume_Edit, "o número de volume do exemplar") ||
+                !this.ValidateTextBox(this.txtEditora_Edit, "a editora do exemplar") ||
+                !this.ValidateTextBox(this.txtObservacoes_Edit, "as observações"))
+                return;
+
+            // Recuperar as informações atualizadas das textboxes
+            int numeroRegistro = int.Parse(this.txtNRegisto_Edit.Texts);
+            DateTime dataEntrega = DateTime.ParseExact(this.txtDataEntrega_Edit.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string titulo = this.txtTitulo_Edit.Texts;
+            string autor = this.txtAutor_Edit.Texts;
+            string cota = this.txtCota_Edit.Texts;
+            string aquisicao = this.rjComboBox_Aqi_Edit.Texts;
+            string editora = this.txtEditora_Edit.Texts;
+            string numeroVolume = this.txtNVolume_Edit.Texts;
+            string observacoes = this.txtObservacoes_Edit.Texts;
+            string estado = this.rjComboBox_Est.Texts;
+
+            try
+            {
+                // Criar uma instância da classe Registo_Livro
+                Registo_Livro registoLivro = new Registo_Livro();
+                // Verificar se o autor existe na base de dados
+
+                int autorID = registoLivro.GetAuthorID(autor);
+                if (autorID == -1)
+                    // Autor não existe, criar novo autor
+                    autorID = registoLivro.CreateAuthor(autor);
+
+                // Verificar se a cota existe na base de dados
+                int cotaID = registoLivro.GetCotaID(cota);
+                if (cotaID == -1)
+                    // Cota não existe, criar nova cota
+                    cotaID = registoLivro.CreateCota(cota);
+                // Chamar o método de atualização passando as informações atualizadas e o número de registro
+                registoLivro.UpdateBook(numeroRegistro, dataEntrega, titulo, autor, cota, aquisicao, editora, numeroVolume, observacoes, estado);
+
+                // Exibir uma mensagem de sucesso para o usuário
+                MessageBox.Show("Registo atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Atualizar a exibição dos dados, se necessário
+                // ...
+                this.ClearText();
+                this.UnableText();
+            }
+            catch (Exception ex)
+            {
+                // Tratar a exceção e exibir uma mensagem de erro para o usuário
+                MessageBox.Show("Ocorreu um erro ao atualizar o registro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FillTextBoxes(int numeroRegistro)
+        {
+            Registo_Livro registoLivro = new Registo_Livro();
+            List<Livro> livros = registoLivro.GetBooks_Edit();
+
+            // Encontrar o livro com o número de registro especificado
+            Livro livroSelecionado = livros.FirstOrDefault(livro => livro.NumeroRegistro == numeroRegistro);
+
+            if (livroSelecionado != null)
+            {
+                // Preencher as textboxes com as informações do livro
+                this.txtDataEntrega_Edit.Texts = livroSelecionado.DataEntrada.ToString("dd/MM/yyyy");
+                this.txtTitulo_Edit.Texts = livroSelecionado.Titulo;
+                this.txtAutor_Edit.Texts = livroSelecionado.Autor;
+                this.txtCota_Edit.Texts = livroSelecionado.Cota;
+                this.rjComboBox_Aqi_Edit.Texts = livroSelecionado.Aquisicao;
+                this.txtEditora_Edit.Texts = livroSelecionado.Editora;
+                this.txtNVolume_Edit.Texts = livroSelecionado.NumeroVolume;
+                this.txtObservacoes_Edit.Texts = livroSelecionado.Observacoes;
+                this.rjComboBox_Est.Texts = livroSelecionado.Estado;
+            }
+            else
+            {
+                // Livro não encontrado
+                MessageBox.Show("Livro não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearText()
+        {
+            this.txtNRegisto_Edit.Texts = "";
+            this.txtDataEntrega_Edit.Texts = "";
+            this.txtAutor_Edit.Texts = "";
+            this.txtTitulo_Edit.Texts = "";
+            this.txtCota_Edit.Texts = "";
+            this.txtEditora_Edit.Texts = "";
+            this.rjComboBox_Est.Texts = "";
+            this.rjComboBox_Aqi_Edit.Texts = "";
+            this.txtNVolume_Edit.Texts = "";
+            this.txtObservacoes_Edit.Texts = "";
+            this.bttSave.Enabled = false;
+        }
+
+        private void EnableText()
+        {
+            this.txtNRegisto_Edit.Enabled = true;
+            this.txtDataEntrega_Edit.Enabled = true;
+            this.txtAutor_Edit.Enabled = true;
+            this.txtTitulo_Edit.Enabled = true;
+            this.txtCota_Edit.Enabled = true;
+            this.txtEditora_Edit.Enabled = true;
+            this.rjComboBox_Aqi_Edit.Enabled = true;
+            this.rjComboBox_Est.Enabled = true;
+            this.txtNVolume_Edit.Enabled = true;
+            this.txtObservacoes_Edit.Enabled = true;
+            this.bttSave.Enabled = true;
+        }
+
+        private void UnableText()
+        {
+            this.gpbData_Edit.Enabled = false;
+            this.gpbAutor_Edit.Enabled = false;
+            this.gpbCota_Edit.Enabled = false;
+            this.gpbEstado_Edit.Enabled = false;
+            this.gpbAqi_Edit.Enabled = false;
+        }
+
+        private bool ValidateTextBox(txtTitulo textBox, string fieldName)
+        {
+            if (string.IsNullOrEmpty(textBox.Texts))
+            {
+                MessageBox.Show($"Por favor, insira {fieldName}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox == this.txtDataEntrega_Edit)
+                if (!DateTime.TryParseExact(textBox.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show($"Por favor, insira {fieldName} no formato dd/MM/yyyy.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            return true;
+        }
+
+        private void Panel_Edit_Load(object sender, EventArgs e)
+        {
+        }
+    }
+}

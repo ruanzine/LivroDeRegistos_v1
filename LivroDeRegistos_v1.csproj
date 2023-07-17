@@ -360,80 +360,91 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ByDateListing.cs">
+    <Compile Include="gui\ByDateListing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\ByDateListing.Designer.cs">
+    <Compile Include="gui\ByDateListing.Designer.cs">
       <DependentUpon>ByDateListing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ChooseDate.cs">
+    <Compile Include="gui\ChooseDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\ChooseDate.Designer.cs">
+    <Compile Include="gui\ChooseDate.Designer.cs">
       <DependentUpon>ChooseDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\DateListing.cs">
+    <Compile Include="gui\DateFromUntil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\DateListing.Designer.cs">
-      <DependentUpon>DateListing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\Excel_Exporting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\Register.cs" />
-    <Compile Include="DateFromUntil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DateFromUntil.Designer.cs">
+    <Compile Include="gui\DateFromUntil.Designer.cs">
       <DependentUpon>DateFromUntil.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateList.cs">
+    <Compile Include="gui\DateList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DateList.Designer.cs">
+    <Compile Include="gui\DateList.Designer.cs">
       <DependentUpon>DateList.cs</DependentUpon>
     </Compile>
-    <Compile Include="DGVBase.cs">
+    <Compile Include="gui\DateListing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DGVBase.Designer.cs">
+    <Compile Include="gui\DateListing.Designer.cs">
+      <DependentUpon>DateListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\DGVBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\DGVBase.Designer.cs">
       <DependentUpon>DGVBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExcelListing.cs">
+    <Compile Include="gui\ExcelListing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExcelListing.Designer.cs">
+    <Compile Include="gui\ExcelListing.Designer.cs">
       <DependentUpon>ExcelListing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="gui\ExcelExporter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PanelAddLivros.cs">
+    <Compile Include="gui\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PanelAddLivros.Designer.cs">
+    <Compile Include="gui\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\PanelAddLivros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\PanelAddLivros.Designer.cs">
       <DependentUpon>PanelAddLivros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel_Edit.cs">
+    <Compile Include="gui\Panel_Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Panel_Edit.Designer.cs">
+    <Compile Include="gui\Panel_Edit.Designer.cs">
       <DependentUpon>Panel_Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel_SelectEdit.cs">
+    <Compile Include="gui\Panel_SelectEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Panel_SelectEdit.Designer.cs">
+    <Compile Include="gui\Panel_SelectEdit.Designer.cs">
       <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\Registo_Livro.cs" />
+    <Compile Include="gui\SelectionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\SelectionList.Designer.cs">
+      <DependentUpon>SelectionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registo_Livro.cs" />
-    <Compile Include="RJControls\ComboPesquisa_Inicio.cs">
+    <Compile Include="RJControls\RJComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="RJControls\txtTitulo.cs">
@@ -442,47 +453,43 @@
     <Compile Include="RJControls\txtTitulo.Designer.cs">
       <DependentUpon>txtTitulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectListing.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SelectListing.Designer.cs">
-      <DependentUpon>SelectListing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Statistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Statistics.Designer.cs">
-      <DependentUpon>Statistics.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Classes\ByDateListing.resx">
+    <Compile Include="utils\Livro.cs" />
+    <Compile Include="utils\Register.cs" />
+    <EmbeddedResource Include="gui\ByDateListing.resx">
       <DependentUpon>ByDateListing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Classes\ChooseDate.resx">
+    <EmbeddedResource Include="gui\ChooseDate.resx">
       <DependentUpon>ChooseDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Classes\DateListing.resx">
-      <DependentUpon>DateListing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DateFromUntil.resx">
+    <EmbeddedResource Include="gui\DateFromUntil.resx">
       <DependentUpon>DateFromUntil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DGVBase.resx">
+    <EmbeddedResource Include="gui\DateListing.resx">
+      <DependentUpon>DateListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\DGVBase.resx">
       <DependentUpon>DGVBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExcelListing.resx">
+    <EmbeddedResource Include="gui\ExcelListing.resx">
       <DependentUpon>ExcelListing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="gui\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PanelAddLivros.resx">
+    <EmbeddedResource Include="gui\PanelAddLivros.resx">
       <DependentUpon>PanelAddLivros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Panel_Edit.resx">
+    <EmbeddedResource Include="gui\Panel_Edit.resx">
       <DependentUpon>Panel_Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Panel_SelectEdit.resx">
+    <EmbeddedResource Include="gui\Panel_SelectEdit.resx">
       <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\SelectionList.resx">
+      <DependentUpon>SelectionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -496,12 +503,6 @@
     </Compile>
     <EmbeddedResource Include="RJControls\txtTitulo.resx">
       <DependentUpon>txtTitulo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SelectListing.resx">
-      <DependentUpon>SelectListing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistics.resx">
-      <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="docs\conf.py" />
     <None Include="docs\index.rst" />
