@@ -220,7 +220,7 @@
             // pnlMainFrame
             // 
             this.pnlMainFrame.BackColor = System.Drawing.Color.Silver;
-            this.pnlMainFrame.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.backgroundLV;
+            this.pnlMainFrame.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.backgroundLV__1_;
             this.pnlMainFrame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlMainFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainFrame.Location = new System.Drawing.Point(203, 53);

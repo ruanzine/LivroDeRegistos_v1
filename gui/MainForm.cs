@@ -40,6 +40,7 @@ namespace LivroDeRegistos_v1.gui
         {
             //this.pnlMainFrame.SetAllFrom(getPanListing.GetPanel_Listing());
             SelectListing.GetFrame().Size = this.pnlMainFrame.Size;
+            SelectListing.GetFrame().Location = this.pnlMainFrame.Location;
             this.pnlMainFrame.SetAllFrom(SelectListing.GetFrame());
         }
 
@@ -60,9 +61,5 @@ namespace LivroDeRegistos_v1.gui
             this.pnlMainFrame.SetAllFrom(this.pnlMainFrame);
         }
 
-        //public Panel getSentBack()
-        //{
-        //    return this.pnlMainFrame;
-        //}
     }
 }

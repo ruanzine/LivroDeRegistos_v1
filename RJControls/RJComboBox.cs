@@ -344,6 +344,7 @@ namespace LivroDeRegistos_v1.RJControls
             this.lblText.Text = this.cmbList.Text;
         }
 
+
         //->Attach label events to user control event
         private void Surface_MouseLeave(object sender, EventArgs e)
         {
@@ -362,5 +363,25 @@ namespace LivroDeRegistos_v1.RJControls
             base.OnResize(e);
             this.AdjustComboBoxDimensions();
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // RJComboBox
+            // 
+            this.Name = "RJComboBox";
+            this.TabIndexChanged += new System.EventHandler(this.RJComboBox_TabIndexChanged);
+            this.ResumeLayout(false);
+
+        }
+
+        private void RJComboBox_TabIndexChanged(object sender, EventArgs e)
+        {
+            this.OnTabIndexChanged(e);
+
+        }
+
+        
     }
 }

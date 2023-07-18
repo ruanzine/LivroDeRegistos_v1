@@ -106,12 +106,25 @@ namespace LivroDeRegistos_v1.gui
                     row.DefaultCellStyle.BackColor = Color.DarkRed;
                     row.DefaultCellStyle.ForeColor = Color.White;
                 }
-                else
+                else if (estado == "Depósito")
                 {
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+
+                }
+                else if (estado == "Exposição")
+                {
+                    row.DefaultCellStyle.BackColor = Color.DarkBlue;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                }
+                else{
                     // Define as cores padrão para as outras linhas
                     row.DefaultCellStyle.BackColor = this.dgvListagem.DefaultCellStyle.BackColor;
                     row.DefaultCellStyle.ForeColor = this.dgvListagem.DefaultCellStyle.ForeColor;
                 }
+
+
+
             }
         }
 

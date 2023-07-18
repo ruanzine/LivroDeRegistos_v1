@@ -1,7 +1,7 @@
-﻿using System;
+﻿using LivroDeRegistos_v1.RJControls;
+using System;
 using System.Globalization;
 using System.Windows.Forms;
-using LivroDeRegistos_v1.RJControls;
 
 namespace LivroDeRegistos_v1.gui
 {
@@ -55,7 +55,11 @@ namespace LivroDeRegistos_v1.gui
 
             DateTime dataEntrega = DateTime.ParseExact(this.txtDataEntrega.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            if (this.rjComboBox_Aqi.Texts == "" || this.rjComboBox_Est.Texts == "") MessageBox.Show("Campo(s) de escolha vazio(s).", "Falha ao registar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (this.rjComboBox_Aqi.Texts == "" || this.rjComboBox_Est.Texts == "")
+            {
+                MessageBox.Show("Campo(s) de escolha vazio(s).", "Falha ao registar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             int nRegisto = int.Parse(this.txtNRegisto.Texts);
             string titulo = this.txtTitulo.Texts;
@@ -65,7 +69,7 @@ namespace LivroDeRegistos_v1.gui
             string aquisicao = this.rjComboBox_Aqi.Texts;
             string editora = this.txtEditora.Texts;
             string observacoes = this.txtObservacoes.Texts;
-            string estado = this.rjComboBox_Est.Text;
+            string estado = this.rjComboBox_Est.Texts;
 
             // Chamar o método SaveData apenas se a validação for bem-sucedida
             Registo_Livro save = new Registo_Livro();

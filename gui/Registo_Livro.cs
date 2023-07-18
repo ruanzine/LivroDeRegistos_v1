@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LivroDeRegistos_v1.gui
 {
-    public class Registo_Livro : MainForm
+    public class Registo_Livro  : MainForm
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
@@ -18,6 +18,7 @@ namespace LivroDeRegistos_v1.gui
             {
                 int autorID;
                 int cotaID;
+                int tituloID;
 
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
@@ -59,11 +60,30 @@ namespace LivroDeRegistos_v1.gui
                         }
                     }
 
-                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Livros (ID, DataDeEntrega, Titulo, AutorID, CotaID, NumVolume, Aquisicao, Editora, Observacoes, Estado) VALUES (@id, @dataEntrega, @titulo, @autorID, @cotaID, @NumVolume, @aquisicao, @editora, @observacoes, @estado)", conn))
+                    // Verificar se o autor já existe na tabela "Titulos"
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID FROM Titulos WHERE TituloNome = @titulo", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@titulo", titulo);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null) // Autor já existe, recuperar o ID
+                        {
+                            tituloID = (int)result;
+                        }
+                        else // Autor não existe, criar uma nova entrada
+                        {
+                            cmd.CommandText = "INSERT INTO Titulos (TituloNome) VALUES (@titulo); SELECT SCOPE_IDENTITY();";
+
+                            tituloID = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                    }
+
+
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Livros (ID, DataDeEntrega, TituloID, AutorID, CotaID, NumVolume, Aquisicao, Editora, Observacoes, Estado) VALUES (@id, @dataEntrega, @tituloID, @autorID, @cotaID, @NumVolume, @aquisicao, @editora, @observacoes, @estado)", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", nRegisto);
                         cmd.Parameters.AddWithValue("@dataEntrega", dataEntrega);
-                        cmd.Parameters.AddWithValue("@titulo", titulo);
+                        cmd.Parameters.AddWithValue("@tituloID", tituloID);
                         cmd.Parameters.AddWithValue("@autorID", autorID);
                         cmd.Parameters.AddWithValue("@cotaID", cotaID);
                         cmd.Parameters.AddWithValue("@NumVolume", nVolume);
@@ -91,10 +111,12 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], L.Titulo AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
-                            INNER JOIN Cotas C ON L.CotaID = C.ID";
+                            INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID";
+
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -173,7 +195,7 @@ namespace LivroDeRegistos_v1.gui
                     // Criar a consulta SQL para atualização do registro
                     string query = @"UPDATE Livros SET
                                 DataDeEntrega = @dataEntrega,
-                                Titulo = @titulo,
+                                TituloID = (SELECT ID FROM Titulos WHERE TituloNome = @titulo),
                                 AutorID = (SELECT ID FROM Autores WHERE Nome = @autor),
                                 CotaID = (SELECT ID FROM Cotas WHERE Cota = @cota),
                                 Aquisicao = @aquisicao,
@@ -181,7 +203,7 @@ namespace LivroDeRegistos_v1.gui
                                 NumVolume = @numeroVolume,
                                 Observacoes = @observacoes,
                                 Estado = @estado
-                            WHERE ID = @numeroRegistro";
+                                WHERE ID = @numeroRegistro";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -207,6 +229,149 @@ namespace LivroDeRegistos_v1.gui
             }
         }
 
+        public DataTable GetAllNRegs()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título]
+                                    FROM Livros L
+                                    INNER JOIN Titulos T ON L.TituloID = T.ID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+
+        public DataTable GetAllAuthors()
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT Nome AS [Autor]
+                            FROM Autores";
+                            
+                         
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+
+
+        public DataTable GetAllTitles()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT TituloNome AS [Título] FROM Titulos";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+
+        public DataTable GetAllCotas()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT Cota FROM Cotas";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+        public DataTable GetAllLost()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], L.Estado 
+                                    FROM Livros L
+                                    INNER JOIN Titulos T ON L.TituloID = T.ID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
 
         public DataTable GetBooksByNumeroRegistro(int numeroRegistro)
         {
@@ -217,12 +382,13 @@ namespace LivroDeRegistos_v1.gui
                     conn.Open();
 
                     string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], 
-                            L.Titulo AS [Título], A.Nome AS Autor, C.Cota, 
+                            T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, 
                             L.Aquisicao AS [Aquisição], L.Editora AS [Editora], 
                             L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
                             WHERE L.ID = @ID";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -252,10 +418,11 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], L.Titulo AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON T.TituloID = T.ID
                             WHERE A.Nome LIKE @autor";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -277,8 +444,6 @@ namespace LivroDeRegistos_v1.gui
             }
         }
 
-// Implemente os métodos GetBooksByTitulo, GetBooksByCota e GetBooksByEstado de maneira semelhante aos exemplos acima
-
         public DataTable GetBooksByTitulo(string titulo)
         {
             try
@@ -287,11 +452,12 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], L.Titulo AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
-                            WHERE L.Titulo LIKE @titulo";
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
+                            WHERE T.TituloNome LIKE @titulo";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -320,10 +486,11 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], L.Titulo AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
                             WHERE C.Cota LIKE @cota";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -353,10 +520,11 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], L.Titulo AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
                             WHERE L.Estado LIKE @estado";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))

@@ -429,7 +429,9 @@
     <Compile Include="gui\Panel_SelectEdit.Designer.cs">
       <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\Registo_Livro.cs" />
+    <Compile Include="gui\Registo_Livro.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\SelectionList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +503,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RJControls\RJComboBox.resx">
+      <DependentUpon>RJComboBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RJControls\txtTitulo.resx">
       <DependentUpon>txtTitulo.cs</DependentUpon>
     </EmbeddedResource>
@@ -631,6 +636,8 @@
     <Content Include="docs\_build\html\_static\pygments.css" />
     <Content Include="docs\_build\html\_static\searchtools.js" />
     <Content Include="docs\_build\html\_static\sphinx_highlight.js" />
+    <None Include="Resources\icons8-printer-28.png" />
+    <None Include="Resources\backgroundLV %281%29.png" />
     <None Include="Resources\backgroundLV.png" />
     <None Include="Resources\eb2.3logo.png" />
     <None Include="Resources\Design sem nome %289%29.png" />

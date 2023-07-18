@@ -11,6 +11,10 @@ namespace LivroDeRegistos_v1.gui
         }
 
         public Panel GetFrame() => this.pnlPickDate;
-            
+
+        private void bttShowDate_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

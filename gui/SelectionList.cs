@@ -25,6 +25,7 @@ namespace LivroDeRegistos_v1.gui
         {
             InitializeComponent();
             this.MainForm = mainForm;
+            this.Location = new System.Drawing.Point(308, 128);
         }
 
         /// <summary>
