@@ -3,12 +3,16 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+using ClosedXML.Excel;
 
 namespace LivroDeRegistos_v1.gui
 {
     public partial class ExcelListing : Form
     {
         private Registo_Livro registo_Livro;
+        public string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
 
         public ExcelListing()
@@ -25,34 +29,42 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttPrint_Click(object sender, EventArgs e)
         {
-            //// Criar a conexão com o banco de dados
-            //using (SqlConnection connection = new SqlConnection("DatabaseConnectionString"))
-            //{
-            //    // Abrir a conexão
-            //    connection.Open();
 
-            //    // Criar o comando SQL e o adaptador de dados
-            //    string sqlQuery = "SELECT * FROM Livros";
-            //    SqlCommand command = new SqlCommand(sqlQuery, connection);
-            //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+            // Criar a conexão com o banco de dados
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Arquivo Excel|*.xlsx";
+                    saveFileDialog.Title = "Salvar arquivo Excel";
+                    saveFileDialog.FileName = "nome_do_arquivo";
 
-            //    // Preencher a DataTable com os dados da consulta
-            //    DataTable dataTable = new DataTable();
-            //    adapter.Fill(dataTable);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        using (var workbook = new XLWorkbook())
+                        {
+                            var worksheet = workbook.Worksheets.Add("Planilha1");
 
-            //    // Fechar a conexão
-            //    connection.Close();
+                            // Preencher a planilha com os dados da DataGridView
+                            for (int i = 0; i < dgvListagem.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < dgvListagem.Columns.Count; j++)
+                                {
+                                    worksheet.Cell(i + 1, j + 1).Value = dgvListagem.Rows[i].Cells[j].Value.ToString();
+                                }
+                            }
 
-            //    // Exportar a DataTable para o Excel usando o ClosedXML
-            //    var workbook = new XLWorkbook();
-            //    var worksheet = workbook.Worksheets.Add("Planilha1");
-
-            //    // Preencher a planilha com os dados da DataTable (código anterior)
-
-            //    // Salvar o arquivo do Excel
-            //    string caminhoArquivo = "This PC/Downloads.xlsx";
-            //    workbook.SaveAs(caminhoArquivo);
-            //}
+                            // Salvar o arquivo do Excel
+                            workbook.SaveAs(saveFileDialog.FileName);
+                            MessageBox.Show("Arquivo exportado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao exportar o arquivo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bttSearch_Click(object sender, EventArgs e)
@@ -138,7 +150,7 @@ namespace LivroDeRegistos_v1.gui
         }
 
 
-
+            
         public void ResizeNReg()
         {
             //Column width
@@ -212,7 +224,7 @@ namespace LivroDeRegistos_v1.gui
         public void ResizeData()
         {
             //Header name resize
-            this.dgvListagem.Columns["Nº de Registo"].Width = 50; // Define a largura da coluna
+            this.dgvListagem.Columns["Nº"].Width = 50; // Define a largura da coluna
             this.dgvListagem.Columns["Data de Entrada"].Width = 90;
             this.dgvListagem.Columns["Título"].Width = 225;
             this.dgvListagem.Columns["Autor"].Width = 150;
@@ -228,7 +240,7 @@ namespace LivroDeRegistos_v1.gui
             this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.dgvListagem.Columns["Nº de Registo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
+            this.dgvListagem.Columns["Nº"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
             this.dgvListagem.Columns["Data de Entrada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvListagem.Columns["Nº de Volume"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvListagem.Columns["Cota"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
