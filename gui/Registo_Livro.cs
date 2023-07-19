@@ -102,7 +102,6 @@ namespace LivroDeRegistos_v1.gui
                 MessageBox.Show("Ocorreu um erro ao salvar os dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public DataTable GetBooks()
         {
             try
@@ -134,7 +133,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public List<Livro> GetBooks_Edit()
         {
             try
@@ -145,10 +143,11 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS NumeroRegistro, L.DataDeEntrega, L.Titulo, A.Nome AS Autor, C.Cota, L.Aquisicao, L.Editora, L.NumVolume AS NumeroVolume, L.Observacoes, L.Estado
+                    string query = @"SELECT L.ID AS NumeroRegistro, L.DataDeEntrega, T.TituloNome AS Titulo, A.Nome AS Autor, C.Cota, L.Aquisicao, L.Editora, L.NumVolume AS NumeroVolume, L.Observacoes, L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
-                            INNER JOIN Cotas C ON L.CotaID = C.ID";
+                            INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -183,7 +182,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public void UpdateBook(int numeroRegistro, DateTime dataEntrega, string titulo, string autor, string cota, string aquisicao, string editora, string numeroVolume, string observacoes, string estado)
         {
             try
@@ -228,7 +226,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao atualizar o registro: " + ex.Message);
             }
         }
-
         public DataTable GetAllNRegs()
         {
             try
@@ -257,7 +254,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetAllAuthors()
         {
 
@@ -289,8 +285,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
-
         public DataTable GetAllTitles()
         {
             try
@@ -317,7 +311,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetAllCotas()
         {
             try
@@ -372,7 +365,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetBooksByNumeroRegistro(int numeroRegistro)
         {
             try
@@ -409,7 +401,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetBooksByAutor(string autor)
         {
             try
@@ -443,7 +434,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetBooksByTitulo(string titulo)
         {
             try
@@ -477,7 +467,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetBooksByCota(string cota)
         {
             try
@@ -511,7 +500,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public DataTable GetBooksByEstado(string estado)
         {
             try
@@ -545,7 +533,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public int GetAuthorID(string authorName)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -566,7 +553,6 @@ namespace LivroDeRegistos_v1.gui
                 }
             }
         }
-
         public int CreateAuthor(string authorName)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -587,7 +573,6 @@ namespace LivroDeRegistos_v1.gui
                 }
             }
         }
-
         public int GetCotaID(string cotaName)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -608,7 +593,6 @@ namespace LivroDeRegistos_v1.gui
                 }
             }
         }
-
         public int CreateCota(string cotaName)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -629,7 +613,6 @@ namespace LivroDeRegistos_v1.gui
                 }
             }
         }
-
         public string GetId(string idRegisto)
         {
             try
@@ -654,7 +637,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
-
         public bool IsRegistrationNumberExists(int registrationNumber)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -673,8 +655,6 @@ namespace LivroDeRegistos_v1.gui
                 }
             }
         }
-
-
         public int GetNextRegistrationNumber()
         {
             int nextRegistrationNumber = 1;
@@ -705,7 +685,6 @@ namespace LivroDeRegistos_v1.gui
 
             return nextRegistrationNumber;
         }
-
         public int GetLastRN()
         {
             try
@@ -730,7 +709,6 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter o próximo número de registro: " + ex.Message);
             }
         }
-
         public List<int> GetAvailableRegistrationNumbers(int startNumber, int endNumber)
         {
             try
@@ -770,5 +748,61 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os números de registro disponíveis: " + ex.Message);
             }
         }
+        public List<string> GetAuthors_List()
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT Nome FROM Autores", conn);
+                SqlDataReader reader = command.ExecuteReader();
+                List<string> autores = new List<string>();
+                while (reader.Read())
+                {
+                    string autor = reader.GetString(0);
+                    autores.Add(autor);
+                }
+                conn.Close();
+                return autores;
+            }
+        }
+        public List<string> GetCotas_List()
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT Cota  FROM Cotas ", conn);
+                SqlDataReader reader = command.ExecuteReader();
+                List<string> cotas = new List<string>();
+                while (reader.Read())
+                {
+                    string cota = reader.GetString(0);
+                    cotas.Add(cota);
+                }
+                conn.Close();
+                return cotas;
+            }
+        }
+        public DataTable GetBooksByAuthor_Listing(string autor)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], C.Cota, L.Estado " +
+                    "FROM Livros L INNER JOIN Titulos T ON T.ID = L.TituloID " +
+                    "INNER JOIN Autores A ON A.ID = L.AutorID " +
+                    "INNER JOIN Cotas C ON C.ID = L.CotaID  WHERE A.Nome = @Autor", conn);
+                command.Parameters.AddWithValue("@Autor", autor);
+                SqlDataReader reader = command.ExecuteReader();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                conn.Close();
+
+                return dataTable;
+            }
+        }
+
+
     }
 }

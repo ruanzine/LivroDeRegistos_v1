@@ -28,83 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlNormalListing = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtPesquisa = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.rjComboBox_SelectAll = new LivroDeRegistos_v1.RJControls.RJComboBox();
+            this.pnlListas = new System.Windows.Forms.Panel();
+            this.lblListagemListing = new System.Windows.Forms.Label();
+            this.dgvListagemListing = new System.Windows.Forms.DataGridView();
             this.bttPrint = new System.Windows.Forms.Button();
-            this.lblListagem = new System.Windows.Forms.Label();
+            this.bttSearchListing = new System.Windows.Forms.Button();
+            this.txtSearchListing = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.rjComboBox_SelectAll = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.rjComboBox_SelectFilter = new LivroDeRegistos_v1.RJControls.RJComboBox();
-            this.bttSearch = new System.Windows.Forms.Button();
-            this.dgvListagem = new System.Windows.Forms.DataGridView();
             this.pnlNormalListing.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListagem)).BeginInit();
+            this.pnlListas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListagemListing)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNormalListing
             // 
             this.pnlNormalListing.BackColor = System.Drawing.Color.Silver;
-            this.pnlNormalListing.Controls.Add(this.panel4);
-            this.pnlNormalListing.Controls.Add(this.dgvListagem);
+            this.pnlNormalListing.Controls.Add(this.pnlListas);
+            this.pnlNormalListing.Controls.Add(this.dgvListagemListing);
             this.pnlNormalListing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNormalListing.Location = new System.Drawing.Point(0, 0);
             this.pnlNormalListing.Name = "pnlNormalListing";
             this.pnlNormalListing.Size = new System.Drawing.Size(1317, 667);
             this.pnlNormalListing.TabIndex = 27;
             // 
-            // panel4
+            // pnlListas
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.txtPesquisa);
-            this.panel4.Controls.Add(this.rjComboBox_SelectAll);
-            this.panel4.Controls.Add(this.bttPrint);
-            this.panel4.Controls.Add(this.lblListagem);
-            this.panel4.Controls.Add(this.rjComboBox_SelectFilter);
-            this.panel4.Controls.Add(this.bttSearch);
-            this.panel4.Location = new System.Drawing.Point(16, 64);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1128, 64);
-            this.panel4.TabIndex = 1;
+            this.pnlListas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.pnlListas.Controls.Add(this.txtSearchListing);
+            this.pnlListas.Controls.Add(this.rjComboBox_SelectAll);
+            this.pnlListas.Controls.Add(this.bttPrint);
+            this.pnlListas.Controls.Add(this.lblListagemListing);
+            this.pnlListas.Controls.Add(this.rjComboBox_SelectFilter);
+            this.pnlListas.Controls.Add(this.bttSearchListing);
+            this.pnlListas.Location = new System.Drawing.Point(16, 64);
+            this.pnlListas.Name = "pnlListas";
+            this.pnlListas.Size = new System.Drawing.Size(1128, 64);
+            this.pnlListas.TabIndex = 1;
             // 
-            // txtPesquisa
+            // lblListagemListing
             // 
-            this.txtPesquisa.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPesquisa.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPesquisa.Location = new System.Drawing.Point(848, 16);
-            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisa.Multiline = false;
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(9);
-            this.txtPesquisa.PasswordChar = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(176, 35);
-            this.txtPesquisa.TabIndex = 14;
-            this.txtPesquisa.Texts = "";
-            this.txtPesquisa.UnderlinedStyle = true;
+            this.lblListagemListing.AutoSize = true;
+            this.lblListagemListing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListagemListing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblListagemListing.Location = new System.Drawing.Point(24, 20);
+            this.lblListagemListing.Name = "lblListagemListing";
+            this.lblListagemListing.Size = new System.Drawing.Size(170, 24);
+            this.lblListagemListing.TabIndex = 11;
+            this.lblListagemListing.Text = "Listas Avançadas";
             // 
-            // rjComboBox_SelectAll
+            // dgvListagemListing
             // 
-            this.rjComboBox_SelectAll.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rjComboBox_SelectAll.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjComboBox_SelectAll.BorderSize = 1;
-            this.rjComboBox_SelectAll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox_SelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rjComboBox_SelectAll.ForeColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_SelectAll.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjComboBox_SelectAll.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.rjComboBox_SelectAll.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_SelectAll.Location = new System.Drawing.Point(432, 16);
-            this.rjComboBox_SelectAll.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox_SelectAll.Name = "rjComboBox_SelectAll";
-            this.rjComboBox_SelectAll.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox_SelectAll.Size = new System.Drawing.Size(200, 30);
-            this.rjComboBox_SelectAll.TabIndex = 13;
-            this.rjComboBox_SelectAll.Texts = "<Selecione uma opção>";
+            this.dgvListagemListing.AllowUserToAddRows = false;
+            this.dgvListagemListing.AllowUserToDeleteRows = false;
+            this.dgvListagemListing.BackgroundColor = System.Drawing.Color.Silver;
+            this.dgvListagemListing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListagemListing.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagemListing.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListagemListing.Location = new System.Drawing.Point(16, 128);
+            this.dgvListagemListing.Name = "dgvListagemListing";
+            this.dgvListagemListing.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagemListing.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvListagemListing.RowHeadersVisible = false;
+            this.dgvListagemListing.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvListagemListing.Size = new System.Drawing.Size(1128, 560);
+            this.dgvListagemListing.TabIndex = 0;
             // 
             // bttPrint
             // 
@@ -119,16 +124,57 @@
             this.bttPrint.UseVisualStyleBackColor = false;
             this.bttPrint.Click += new System.EventHandler(this.bttPrint_Click);
             // 
-            // lblListagem
+            // bttSearchListing
             // 
-            this.lblListagem.AutoSize = true;
-            this.lblListagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListagem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblListagem.Location = new System.Drawing.Point(24, 20);
-            this.lblListagem.Name = "lblListagem";
-            this.lblListagem.Size = new System.Drawing.Size(62, 24);
-            this.lblListagem.TabIndex = 11;
-            this.lblListagem.Text = "Listas";
+            this.bttSearchListing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttSearchListing.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.search_4_svgrepo_com;
+            this.bttSearchListing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bttSearchListing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttSearchListing.Location = new System.Drawing.Point(664, 14);
+            this.bttSearchListing.Margin = new System.Windows.Forms.Padding(0);
+            this.bttSearchListing.Name = "bttSearchListing";
+            this.bttSearchListing.Size = new System.Drawing.Size(35, 35);
+            this.bttSearchListing.TabIndex = 9;
+            this.bttSearchListing.UseVisualStyleBackColor = false;
+            this.bttSearchListing.Click += new System.EventHandler(this.bttSearch_Click);
+            // 
+            // txtSearchListing
+            // 
+            this.txtSearchListing.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSearchListing.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtSearchListing.BorderSize = 2;
+            this.txtSearchListing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchListing.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSearchListing.Location = new System.Drawing.Point(848, 16);
+            this.txtSearchListing.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchListing.Multiline = false;
+            this.txtSearchListing.Name = "txtSearchListing";
+            this.txtSearchListing.Padding = new System.Windows.Forms.Padding(9);
+            this.txtSearchListing.PasswordChar = false;
+            this.txtSearchListing.Size = new System.Drawing.Size(176, 35);
+            this.txtSearchListing.TabIndex = 14;
+            this.txtSearchListing.Texts = "";
+            this.txtSearchListing.UnderlinedStyle = true;
+            // 
+            // rjComboBox_SelectAll
+            // 
+            this.rjComboBox_SelectAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjComboBox_SelectAll.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjComboBox_SelectAll.BorderSize = 1;
+            this.rjComboBox_SelectAll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjComboBox_SelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rjComboBox_SelectAll.ForeColor = System.Drawing.Color.DimGray;
+            this.rjComboBox_SelectAll.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjComboBox_SelectAll.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.rjComboBox_SelectAll.ListTextColor = System.Drawing.Color.DimGray;
+            this.rjComboBox_SelectAll.Location = new System.Drawing.Point(448, 16);
+            this.rjComboBox_SelectAll.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjComboBox_SelectAll.Name = "rjComboBox_SelectAll";
+            this.rjComboBox_SelectAll.Padding = new System.Windows.Forms.Padding(1);
+            this.rjComboBox_SelectAll.Size = new System.Drawing.Size(200, 30);
+            this.rjComboBox_SelectAll.TabIndex = 13;
+            this.rjComboBox_SelectAll.Texts = "<Selecione uma opção>";
+            this.rjComboBox_SelectAll.OnSelectedIndexChanged += new System.EventHandler(this.rjComboBox_SelectAll_OnSelectedIndexChanged);
             // 
             // rjComboBox_SelectFilter
             // 
@@ -147,59 +193,15 @@
             "Estado"});
             this.rjComboBox_SelectFilter.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjComboBox_SelectFilter.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_SelectFilter.Location = new System.Drawing.Point(208, 16);
+            this.rjComboBox_SelectFilter.Location = new System.Drawing.Point(224, 16);
             this.rjComboBox_SelectFilter.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjComboBox_SelectFilter.Name = "rjComboBox_SelectFilter";
             this.rjComboBox_SelectFilter.Padding = new System.Windows.Forms.Padding(1);
             this.rjComboBox_SelectFilter.Size = new System.Drawing.Size(200, 30);
             this.rjComboBox_SelectFilter.TabIndex = 10;
             this.rjComboBox_SelectFilter.Texts = "Filtro";
+            this.rjComboBox_SelectFilter.OnSelectedIndexChanged += new System.EventHandler(this.rjComboBox_SelectFilter_OnSelectedIndexChanged);
             this.rjComboBox_SelectFilter.TabIndexChanged += new System.EventHandler(this.rjComboBox_SelectFilter_TabIndexChanged);
-            // 
-            // bttSearch
-            // 
-            this.bttSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
-            this.bttSearch.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.search_4_svgrepo_com;
-            this.bttSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bttSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttSearch.Location = new System.Drawing.Point(648, 14);
-            this.bttSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.bttSearch.Name = "bttSearch";
-            this.bttSearch.Size = new System.Drawing.Size(35, 35);
-            this.bttSearch.TabIndex = 9;
-            this.bttSearch.UseVisualStyleBackColor = false;
-            this.bttSearch.Click += new System.EventHandler(this.bttSearch_Click);
-            // 
-            // dgvListagem
-            // 
-            this.dgvListagem.AllowUserToAddRows = false;
-            this.dgvListagem.AllowUserToDeleteRows = false;
-            this.dgvListagem.BackgroundColor = System.Drawing.Color.Silver;
-            this.dgvListagem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListagem.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListagem.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvListagem.Location = new System.Drawing.Point(16, 128);
-            this.dgvListagem.Name = "dgvListagem";
-            this.dgvListagem.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListagem.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvListagem.RowHeadersVisible = false;
-            this.dgvListagem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvListagem.Size = new System.Drawing.Size(1128, 560);
-            this.dgvListagem.TabIndex = 0;
             // 
             // ExcelListing
             // 
@@ -211,9 +213,9 @@
             this.Name = "ExcelListing";
             this.Text = "ExcelListing";
             this.pnlNormalListing.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListagem)).EndInit();
+            this.pnlListas.ResumeLayout(false);
+            this.pnlListas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListagemListing)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,13 +223,13 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlNormalListing;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlListas;
         private RJControls.RJComboBox rjComboBox_SelectAll;
         private System.Windows.Forms.Button bttPrint;
-        private System.Windows.Forms.Label lblListagem;
+        private System.Windows.Forms.Label lblListagemListing;
         private RJControls.RJComboBox rjComboBox_SelectFilter;
-        private System.Windows.Forms.Button bttSearch;
-        public System.Windows.Forms.DataGridView dgvListagem;
-        private RJControls.txtTitulo txtPesquisa;
+        private System.Windows.Forms.Button bttSearchListing;
+        public System.Windows.Forms.DataGridView dgvListagemListing;
+        private RJControls.txtTitulo txtSearchListing;
     }
 }

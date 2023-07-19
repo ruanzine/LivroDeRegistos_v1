@@ -33,32 +33,33 @@ namespace LivroDeRegistos_v1.gui
             this.pnlEdit = new System.Windows.Forms.Panel();
             this.gpbN_Edit = new System.Windows.Forms.GroupBox();
             this.bttEdit = new System.Windows.Forms.Button();
-            this.txtNRegisto_Edit = new txtTitulo();
+            this.txtNRegisto_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label1 = new System.Windows.Forms.Label();
             this.gpbData_Edit = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDataEntrega_Edit = new txtTitulo();
+            this.txtDataEntrega_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.gpbEstado_Edit = new System.Windows.Forms.GroupBox();
             this.rjComboBox_Est = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.gpbAqi_Edit = new System.Windows.Forms.GroupBox();
             this.rjComboBox_Aqi_Edit = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtEditora_Edit = new txtTitulo();
+            this.txtEditora_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label9 = new System.Windows.Forms.Label();
             this.gpbCota_Edit = new System.Windows.Forms.GroupBox();
-            this.txtObservacoes_Edit = new txtTitulo();
+            this.txtObservacoes_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCota_Edit = new txtTitulo();
+            this.txtCota_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNVolume_Edit = new txtTitulo();
+            this.txtNVolume_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.gpbAutor_Edit = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTitulo_Edit = new txtTitulo();
+            this.txtTitulo_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtAutor_Edit = new txtTitulo();
+            this.txtAutor_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.bttSave = new System.Windows.Forms.Button();
+            this.bttClear_Edit = new System.Windows.Forms.Button();
             this.pnlEdit.SuspendLayout();
             this.gpbN_Edit.SuspendLayout();
             this.gpbData_Edit.SuspendLayout();
@@ -71,6 +72,7 @@ namespace LivroDeRegistos_v1.gui
             // pnlEdit
             // 
             this.pnlEdit.BackColor = System.Drawing.Color.Silver;
+            this.pnlEdit.Controls.Add(this.bttClear_Edit);
             this.pnlEdit.Controls.Add(this.gpbN_Edit);
             this.pnlEdit.Controls.Add(this.gpbData_Edit);
             this.pnlEdit.Controls.Add(this.gpbEstado_Edit);
@@ -128,6 +130,7 @@ namespace LivroDeRegistos_v1.gui
             this.txtNRegisto_Edit.TabIndex = 0;
             this.txtNRegisto_Edit.Texts = "";
             this.txtNRegisto_Edit.UnderlinedStyle = true;
+            this.txtNRegisto_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNRegisto_Edit_KeyPress);
             // 
             // label1
             // 
@@ -144,6 +147,7 @@ namespace LivroDeRegistos_v1.gui
             // 
             this.gpbData_Edit.Controls.Add(this.label2);
             this.gpbData_Edit.Controls.Add(this.txtDataEntrega_Edit);
+            this.gpbData_Edit.Enabled = false;
             this.gpbData_Edit.Location = new System.Drawing.Point(296, 72);
             this.gpbData_Edit.Name = "gpbData_Edit";
             this.gpbData_Edit.Size = new System.Drawing.Size(568, 64);
@@ -166,7 +170,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtDataEntrega_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtDataEntrega_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtDataEntrega_Edit.BorderSize = 2;
-            this.txtDataEntrega_Edit.Enabled = false;
             this.txtDataEntrega_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataEntrega_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtDataEntrega_Edit.Location = new System.Drawing.Point(376, 16);
@@ -179,11 +182,13 @@ namespace LivroDeRegistos_v1.gui
             this.txtDataEntrega_Edit.TabIndex = 2;
             this.txtDataEntrega_Edit.Texts = "";
             this.txtDataEntrega_Edit.UnderlinedStyle = true;
+            this.txtDataEntrega_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataEntrega_Edit_KeyPress);
             // 
             // gpbEstado_Edit
             // 
             this.gpbEstado_Edit.Controls.Add(this.rjComboBox_Est);
             this.gpbEstado_Edit.Controls.Add(this.label11);
+            this.gpbEstado_Edit.Enabled = false;
             this.gpbEstado_Edit.Location = new System.Drawing.Point(296, 536);
             this.gpbEstado_Edit.Name = "gpbEstado_Edit";
             this.gpbEstado_Edit.Size = new System.Drawing.Size(416, 64);
@@ -199,7 +204,6 @@ namespace LivroDeRegistos_v1.gui
             this.rjComboBox_Est.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.rjComboBox_Est.BorderSize = 1;
             this.rjComboBox_Est.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox_Est.Enabled = false;
             this.rjComboBox_Est.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.rjComboBox_Est.ForeColor = System.Drawing.Color.DimGray;
             this.rjComboBox_Est.IconColor = System.Drawing.Color.MediumSlateBlue;
@@ -219,7 +223,7 @@ namespace LivroDeRegistos_v1.gui
             this.rjComboBox_Est.Padding = new System.Windows.Forms.Padding(1);
             this.rjComboBox_Est.Size = new System.Drawing.Size(200, 30);
             this.rjComboBox_Est.TabIndex = 9;
-            this.rjComboBox_Est.Texts = "";
+            this.rjComboBox_Est.Texts = "<Estado>";
             // 
             // label11
             // 
@@ -238,11 +242,13 @@ namespace LivroDeRegistos_v1.gui
             this.gpbAqi_Edit.Controls.Add(this.label8);
             this.gpbAqi_Edit.Controls.Add(this.txtEditora_Edit);
             this.gpbAqi_Edit.Controls.Add(this.label9);
+            this.gpbAqi_Edit.Enabled = false;
             this.gpbAqi_Edit.Location = new System.Drawing.Point(296, 272);
             this.gpbAqi_Edit.Name = "gpbAqi_Edit";
             this.gpbAqi_Edit.Size = new System.Drawing.Size(568, 128);
             this.gpbAqi_Edit.TabIndex = 18;
             this.gpbAqi_Edit.TabStop = false;
+            this.gpbAqi_Edit.Enter += new System.EventHandler(this.gpbAqi_Edit_Enter);
             // 
             // rjComboBox_Aqi_Edit
             // 
@@ -253,7 +259,6 @@ namespace LivroDeRegistos_v1.gui
             this.rjComboBox_Aqi_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.rjComboBox_Aqi_Edit.BorderSize = 1;
             this.rjComboBox_Aqi_Edit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox_Aqi_Edit.Enabled = false;
             this.rjComboBox_Aqi_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.rjComboBox_Aqi_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.rjComboBox_Aqi_Edit.IconColor = System.Drawing.Color.MediumSlateBlue;
@@ -268,7 +273,7 @@ namespace LivroDeRegistos_v1.gui
             this.rjComboBox_Aqi_Edit.Padding = new System.Windows.Forms.Padding(1);
             this.rjComboBox_Aqi_Edit.Size = new System.Drawing.Size(200, 30);
             this.rjComboBox_Aqi_Edit.TabIndex = 8;
-            this.rjComboBox_Aqi_Edit.Texts = "Tipo de aquisição";
+            this.rjComboBox_Aqi_Edit.Texts = "<Aquisição>";
             // 
             // label8
             // 
@@ -286,7 +291,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtEditora_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtEditora_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtEditora_Edit.BorderSize = 2;
-            this.txtEditora_Edit.Enabled = false;
             this.txtEditora_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditora_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtEditora_Edit.Location = new System.Drawing.Point(128, 76);
@@ -319,6 +323,7 @@ namespace LivroDeRegistos_v1.gui
             this.gpbCota_Edit.Controls.Add(this.txtCota_Edit);
             this.gpbCota_Edit.Controls.Add(this.label4);
             this.gpbCota_Edit.Controls.Add(this.txtNVolume_Edit);
+            this.gpbCota_Edit.Enabled = false;
             this.gpbCota_Edit.Location = new System.Drawing.Point(296, 400);
             this.gpbCota_Edit.Name = "gpbCota_Edit";
             this.gpbCota_Edit.Size = new System.Drawing.Size(568, 136);
@@ -330,7 +335,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtObservacoes_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtObservacoes_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtObservacoes_Edit.BorderSize = 2;
-            this.txtObservacoes_Edit.Enabled = false;
             this.txtObservacoes_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservacoes_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtObservacoes_Edit.Location = new System.Drawing.Point(128, 80);
@@ -371,7 +375,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtCota_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtCota_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtCota_Edit.BorderSize = 2;
-            this.txtCota_Edit.Enabled = false;
             this.txtCota_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCota_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtCota_Edit.Location = new System.Drawing.Point(128, 16);
@@ -401,7 +404,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtNVolume_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtNVolume_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtNVolume_Edit.BorderSize = 2;
-            this.txtNVolume_Edit.Enabled = false;
             this.txtNVolume_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNVolume_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtNVolume_Edit.Location = new System.Drawing.Point(424, 16);
@@ -421,6 +423,7 @@ namespace LivroDeRegistos_v1.gui
             this.gpbAutor_Edit.Controls.Add(this.txtTitulo_Edit);
             this.gpbAutor_Edit.Controls.Add(this.label3);
             this.gpbAutor_Edit.Controls.Add(this.txtAutor_Edit);
+            this.gpbAutor_Edit.Enabled = false;
             this.gpbAutor_Edit.Location = new System.Drawing.Point(296, 144);
             this.gpbAutor_Edit.Name = "gpbAutor_Edit";
             this.gpbAutor_Edit.Size = new System.Drawing.Size(568, 128);
@@ -443,7 +446,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtTitulo_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtTitulo_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtTitulo_Edit.BorderSize = 2;
-            this.txtTitulo_Edit.Enabled = false;
             this.txtTitulo_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitulo_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtTitulo_Edit.Location = new System.Drawing.Point(128, 76);
@@ -473,7 +475,6 @@ namespace LivroDeRegistos_v1.gui
             this.txtAutor_Edit.BackColor = System.Drawing.SystemColors.Window;
             this.txtAutor_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.txtAutor_Edit.BorderSize = 2;
-            this.txtAutor_Edit.Enabled = false;
             this.txtAutor_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutor_Edit.ForeColor = System.Drawing.Color.DimGray;
             this.txtAutor_Edit.Location = new System.Drawing.Point(128, 16);
@@ -490,7 +491,6 @@ namespace LivroDeRegistos_v1.gui
             // bttSave
             // 
             this.bttSave.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttSave.Enabled = false;
             this.bttSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bttSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttSave.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -502,6 +502,21 @@ namespace LivroDeRegistos_v1.gui
             this.bttSave.Text = "Guardar";
             this.bttSave.UseVisualStyleBackColor = false;
             this.bttSave.Click += new System.EventHandler(this.bttSave_Click);
+            // 
+            // bttClear_Edit
+            // 
+            this.bttClear_Edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttClear_Edit.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_broom_28;
+            this.bttClear_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttClear_Edit.Enabled = false;
+            this.bttClear_Edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttClear_Edit.Location = new System.Drawing.Point(872, 88);
+            this.bttClear_Edit.Margin = new System.Windows.Forms.Padding(0);
+            this.bttClear_Edit.Name = "bttClear_Edit";
+            this.bttClear_Edit.Size = new System.Drawing.Size(35, 35);
+            this.bttClear_Edit.TabIndex = 21;
+            this.bttClear_Edit.UseVisualStyleBackColor = false;
+            this.bttClear_Edit.Click += new System.EventHandler(this.bttClear_Edit_Click);
             // 
             // Panel_Edit
             // 
@@ -560,5 +575,6 @@ namespace LivroDeRegistos_v1.gui
         private txtTitulo txtNRegisto_Edit;
         private System.Windows.Forms.Button bttEdit;
         private System.Windows.Forms.GroupBox gpbN_Edit;
+        private System.Windows.Forms.Button bttClear_Edit;
     }
 }

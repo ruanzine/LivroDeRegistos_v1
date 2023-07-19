@@ -295,12 +295,9 @@ namespace LivroDeRegistos_v1.RJControls
         //-> Default event
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (OnSelectedIndexChanged != null)
-                OnSelectedIndexChanged.Invoke(sender, e);
-            //Refresh text
+            OnSelectedIndexChanged?.Invoke(sender, e);
             this.lblText.Text = this.cmbList.Text;
         }
-
         //-> Draw icon
         private void Icon_Paint(object sender, PaintEventArgs e)
         {
@@ -379,9 +376,9 @@ namespace LivroDeRegistos_v1.RJControls
         private void RJComboBox_TabIndexChanged(object sender, EventArgs e)
         {
             this.OnTabIndexChanged(e);
-
         }
 
-        
+    
+
     }
 }

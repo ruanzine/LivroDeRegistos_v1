@@ -31,38 +31,38 @@ namespace LivroDeRegistos_v1.gui
         private void InitializeComponent()
         {
             this.pnlPickDate = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpbDateUntil = new System.Windows.Forms.GroupBox();
             this.bttShowDate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtData_Ate = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.txtData_De = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.pnlPickDate.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpbDateUntil.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPickDate
             // 
             this.pnlPickDate.BackColor = System.Drawing.Color.Silver;
-            this.pnlPickDate.Controls.Add(this.groupBox1);
+            this.pnlPickDate.Controls.Add(this.gpbDateUntil);
             this.pnlPickDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPickDate.Location = new System.Drawing.Point(0, 0);
             this.pnlPickDate.Name = "pnlPickDate";
             this.pnlPickDate.Size = new System.Drawing.Size(930, 560);
             this.pnlPickDate.TabIndex = 1;
             // 
-            // groupBox1
+            // gpbDateUntil
             // 
-            this.groupBox1.Controls.Add(this.bttShowDate);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtData_Ate);
-            this.groupBox1.Controls.Add(this.txtData_De);
-            this.groupBox1.Location = new System.Drawing.Point(352, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 370);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            this.gpbDateUntil.Controls.Add(this.bttShowDate);
+            this.gpbDateUntil.Controls.Add(this.label1);
+            this.gpbDateUntil.Controls.Add(this.label3);
+            this.gpbDateUntil.Controls.Add(this.txtData_Ate);
+            this.gpbDateUntil.Controls.Add(this.txtData_De);
+            this.gpbDateUntil.Location = new System.Drawing.Point(352, 128);
+            this.gpbDateUntil.Name = "gpbDateUntil";
+            this.gpbDateUntil.Size = new System.Drawing.Size(500, 370);
+            this.gpbDateUntil.TabIndex = 0;
+            this.gpbDateUntil.TabStop = false;
             // 
             // bttShowDate
             // 
@@ -85,7 +85,7 @@ namespace LivroDeRegistos_v1.gui
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(176, 200);
+            this.label1.Location = new System.Drawing.Point(173, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 7;
@@ -96,7 +96,7 @@ namespace LivroDeRegistos_v1.gui
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(184, 88);
+            this.label3.Location = new System.Drawing.Point(172, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 20);
             this.label3.TabIndex = 6;
@@ -109,7 +109,7 @@ namespace LivroDeRegistos_v1.gui
             this.txtData_Ate.BorderSize = 2;
             this.txtData_Ate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtData_Ate.ForeColor = System.Drawing.Color.DimGray;
-            this.txtData_Ate.Location = new System.Drawing.Point(174, 240);
+            this.txtData_Ate.Location = new System.Drawing.Point(174, 208);
             this.txtData_Ate.Margin = new System.Windows.Forms.Padding(4);
             this.txtData_Ate.Multiline = false;
             this.txtData_Ate.Name = "txtData_Ate";
@@ -147,8 +147,8 @@ namespace LivroDeRegistos_v1.gui
             this.Name = "DateFromUntil";
             this.Text = "DateFromUntil";
             this.pnlPickDate.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpbDateUntil.ResumeLayout(false);
+            this.gpbDateUntil.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -156,7 +156,7 @@ namespace LivroDeRegistos_v1.gui
         #endregion
 
         private System.Windows.Forms.Panel pnlPickDate;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpbDateUntil;
         private System.Windows.Forms.Button bttShowDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;

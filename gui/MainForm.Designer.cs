@@ -42,10 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlMainFrame = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -177,6 +179,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -220,7 +223,6 @@
             // pnlMainFrame
             // 
             this.pnlMainFrame.BackColor = System.Drawing.Color.Silver;
-            this.pnlMainFrame.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.backgroundLV__1_;
             this.pnlMainFrame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlMainFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainFrame.Location = new System.Drawing.Point(203, 53);
@@ -228,6 +230,16 @@
             this.pnlMainFrame.Size = new System.Drawing.Size(1167, 616);
             this.pnlMainFrame.TabIndex = 25;
             this.pnlMainFrame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainFrame_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LivroDeRegistos_v1.Properties.Resources.LogoBibliotecaAEFC;
+            this.pictureBox1.Location = new System.Drawing.Point(968, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -250,6 +262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,6 +282,7 @@
         private System.Windows.Forms.Button bttNew;
         private System.Windows.Forms.Panel pnlMainFrame;
         private System.Windows.Forms.Button bttListing;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

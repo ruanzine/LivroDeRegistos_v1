@@ -31,48 +31,50 @@ namespace LivroDeRegistos_v1.gui
         private void InitializeComponent()
         {
             this.pnlAdd = new System.Windows.Forms.Panel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gpbEstado = new System.Windows.Forms.GroupBox();
             this.rjComboBox_Est = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gpbAqi = new System.Windows.Forms.GroupBox();
             this.rjComboBox_Aqi = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEditora = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gpbCota = new System.Windows.Forms.GroupBox();
             this.txtObservacoes = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCota = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNVolume = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpbAuthor = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTitulo = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAutor = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpbNReg = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataEntrega = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNRegisto = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.bttAdd = new System.Windows.Forms.Button();
+            this.bttClearText = new System.Windows.Forms.Button();
             this.pnlAdd.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpbEstado.SuspendLayout();
+            this.gpbAqi.SuspendLayout();
+            this.gpbCota.SuspendLayout();
+            this.gpbAuthor.SuspendLayout();
+            this.gpbNReg.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlAdd
             // 
             this.pnlAdd.BackColor = System.Drawing.Color.Silver;
-            this.pnlAdd.Controls.Add(this.groupBox5);
-            this.pnlAdd.Controls.Add(this.groupBox4);
-            this.pnlAdd.Controls.Add(this.groupBox3);
-            this.pnlAdd.Controls.Add(this.groupBox2);
-            this.pnlAdd.Controls.Add(this.groupBox1);
+            this.pnlAdd.Controls.Add(this.bttClearText);
+            this.pnlAdd.Controls.Add(this.gpbEstado);
+            this.pnlAdd.Controls.Add(this.gpbAqi);
+            this.pnlAdd.Controls.Add(this.gpbCota);
+            this.pnlAdd.Controls.Add(this.gpbAuthor);
+            this.pnlAdd.Controls.Add(this.gpbNReg);
             this.pnlAdd.Controls.Add(this.bttAdd);
             this.pnlAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAdd.Location = new System.Drawing.Point(0, 0);
@@ -80,15 +82,15 @@ namespace LivroDeRegistos_v1.gui
             this.pnlAdd.Size = new System.Drawing.Size(906, 685);
             this.pnlAdd.TabIndex = 12;
             // 
-            // groupBox5
+            // gpbEstado
             // 
-            this.groupBox5.Controls.Add(this.rjComboBox_Est);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Location = new System.Drawing.Point(288, 464);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(568, 64);
-            this.groupBox5.TabIndex = 17;
-            this.groupBox5.TabStop = false;
+            this.gpbEstado.Controls.Add(this.rjComboBox_Est);
+            this.gpbEstado.Controls.Add(this.label11);
+            this.gpbEstado.Location = new System.Drawing.Point(288, 464);
+            this.gpbEstado.Name = "gpbEstado";
+            this.gpbEstado.Size = new System.Drawing.Size(568, 64);
+            this.gpbEstado.TabIndex = 17;
+            this.gpbEstado.TabStop = false;
             // 
             // rjComboBox_Est
             // 
@@ -132,17 +134,17 @@ namespace LivroDeRegistos_v1.gui
             this.label11.TabIndex = 1;
             this.label11.Text = "Estado";
             // 
-            // groupBox4
+            // gpbAqi
             // 
-            this.groupBox4.Controls.Add(this.rjComboBox_Aqi);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.txtEditora);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Location = new System.Drawing.Point(288, 200);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(568, 128);
-            this.groupBox4.TabIndex = 18;
-            this.groupBox4.TabStop = false;
+            this.gpbAqi.Controls.Add(this.rjComboBox_Aqi);
+            this.gpbAqi.Controls.Add(this.label8);
+            this.gpbAqi.Controls.Add(this.txtEditora);
+            this.gpbAqi.Controls.Add(this.label9);
+            this.gpbAqi.Location = new System.Drawing.Point(288, 200);
+            this.gpbAqi.Name = "gpbAqi";
+            this.gpbAqi.Size = new System.Drawing.Size(568, 128);
+            this.gpbAqi.TabIndex = 18;
+            this.gpbAqi.TabStop = false;
             // 
             // rjComboBox_Aqi
             // 
@@ -167,14 +169,14 @@ namespace LivroDeRegistos_v1.gui
             this.rjComboBox_Aqi.Padding = new System.Windows.Forms.Padding(1);
             this.rjComboBox_Aqi.Size = new System.Drawing.Size(200, 30);
             this.rjComboBox_Aqi.TabIndex = 8;
-            this.rjComboBox_Aqi.Texts = "Tipo de aquisição";
+            this.rjComboBox_Aqi.Texts = "<Aquisição>";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(62, 88);
+            this.label8.Location = new System.Drawing.Point(50, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 16);
             this.label8.TabIndex = 7;
@@ -209,19 +211,19 @@ namespace LivroDeRegistos_v1.gui
             this.label9.TabIndex = 5;
             this.label9.Text = "Aquisição";
             // 
-            // groupBox3
+            // gpbCota
             // 
-            this.groupBox3.Controls.Add(this.txtObservacoes);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.txtCota);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtNVolume);
-            this.groupBox3.Location = new System.Drawing.Point(288, 328);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(568, 136);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
+            this.gpbCota.Controls.Add(this.txtObservacoes);
+            this.gpbCota.Controls.Add(this.label6);
+            this.gpbCota.Controls.Add(this.label7);
+            this.gpbCota.Controls.Add(this.txtCota);
+            this.gpbCota.Controls.Add(this.label4);
+            this.gpbCota.Controls.Add(this.txtNVolume);
+            this.gpbCota.Location = new System.Drawing.Point(288, 328);
+            this.gpbCota.Name = "gpbCota";
+            this.gpbCota.Size = new System.Drawing.Size(568, 136);
+            this.gpbCota.TabIndex = 18;
+            this.gpbCota.TabStop = false;
             // 
             // txtObservacoes
             // 
@@ -310,17 +312,17 @@ namespace LivroDeRegistos_v1.gui
             this.txtNVolume.Texts = "";
             this.txtNVolume.UnderlinedStyle = true;
             // 
-            // groupBox2
+            // gpbAuthor
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtTitulo);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtAutor);
-            this.groupBox2.Location = new System.Drawing.Point(288, 72);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(568, 128);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
+            this.gpbAuthor.Controls.Add(this.label5);
+            this.gpbAuthor.Controls.Add(this.txtTitulo);
+            this.gpbAuthor.Controls.Add(this.label3);
+            this.gpbAuthor.Controls.Add(this.txtAutor);
+            this.gpbAuthor.Location = new System.Drawing.Point(288, 72);
+            this.gpbAuthor.Name = "gpbAuthor";
+            this.gpbAuthor.Size = new System.Drawing.Size(568, 128);
+            this.gpbAuthor.TabIndex = 17;
+            this.gpbAuthor.TabStop = false;
             // 
             // label5
             // 
@@ -380,17 +382,17 @@ namespace LivroDeRegistos_v1.gui
             this.txtAutor.Texts = "";
             this.txtAutor.UnderlinedStyle = true;
             // 
-            // groupBox1
+            // gpbNReg
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtDataEntrega);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtNRegisto);
-            this.groupBox1.Location = new System.Drawing.Point(288, 8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 64);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
+            this.gpbNReg.Controls.Add(this.label2);
+            this.gpbNReg.Controls.Add(this.txtDataEntrega);
+            this.gpbNReg.Controls.Add(this.label1);
+            this.gpbNReg.Controls.Add(this.txtNRegisto);
+            this.gpbNReg.Location = new System.Drawing.Point(288, 8);
+            this.gpbNReg.Name = "gpbNReg";
+            this.gpbNReg.Size = new System.Drawing.Size(568, 64);
+            this.gpbNReg.TabIndex = 16;
+            this.gpbNReg.TabStop = false;
             // 
             // label2
             // 
@@ -458,7 +460,7 @@ namespace LivroDeRegistos_v1.gui
             this.bttAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bttAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttAdd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttAdd.Location = new System.Drawing.Point(736, 560);
+            this.bttAdd.Location = new System.Drawing.Point(608, 552);
             this.bttAdd.Margin = new System.Windows.Forms.Padding(0);
             this.bttAdd.Name = "bttAdd";
             this.bttAdd.Size = new System.Drawing.Size(120, 32);
@@ -466,6 +468,20 @@ namespace LivroDeRegistos_v1.gui
             this.bttAdd.Text = "Adicionar";
             this.bttAdd.UseVisualStyleBackColor = false;
             this.bttAdd.Click += new System.EventHandler(this.bttAdd_Click);
+            // 
+            // bttClearText
+            // 
+            this.bttClearText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttClearText.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_broom_28;
+            this.bttClearText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttClearText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttClearText.Location = new System.Drawing.Point(864, 24);
+            this.bttClearText.Margin = new System.Windows.Forms.Padding(0);
+            this.bttClearText.Name = "bttClearText";
+            this.bttClearText.Size = new System.Drawing.Size(35, 35);
+            this.bttClearText.TabIndex = 20;
+            this.bttClearText.UseVisualStyleBackColor = false;
+            this.bttClearText.Click += new System.EventHandler(this.bttClearText_Click);
             // 
             // PanelAddLivros
             // 
@@ -476,16 +492,16 @@ namespace LivroDeRegistos_v1.gui
             this.Name = "PanelAddLivros";
             this.Text = "PanelAddLivros";
             this.pnlAdd.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpbEstado.ResumeLayout(false);
+            this.gpbEstado.PerformLayout();
+            this.gpbAqi.ResumeLayout(false);
+            this.gpbAqi.PerformLayout();
+            this.gpbCota.ResumeLayout(false);
+            this.gpbCota.PerformLayout();
+            this.gpbAuthor.ResumeLayout(false);
+            this.gpbAuthor.PerformLayout();
+            this.gpbNReg.ResumeLayout(false);
+            this.gpbNReg.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -493,31 +509,32 @@ namespace LivroDeRegistos_v1.gui
         #endregion
 
         private System.Windows.Forms.Panel pnlAdd;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox gpbEstado;
         private RJControls.RJComboBox rjComboBox_Est;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox gpbAqi;
         private RJControls.RJComboBox rjComboBox_Aqi;
         private System.Windows.Forms.Label label8;
         private txtTitulo txtEditora;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gpbCota;
         private txtTitulo txtObservacoes;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private txtTitulo txtCota;
         private System.Windows.Forms.Label label4;
         private txtTitulo txtNVolume;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpbAuthor;
         private System.Windows.Forms.Label label5;
         private txtTitulo txtTitulo;
         private txtTitulo txtAutor;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpbNReg;
         private System.Windows.Forms.Label label2;
         private txtTitulo txtDataEntrega;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bttAdd;
         private System.Windows.Forms.Label label3;
         private txtTitulo txtNRegisto;
+        private System.Windows.Forms.Button bttClearText;
     }
 }

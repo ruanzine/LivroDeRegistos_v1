@@ -8,7 +8,6 @@ namespace LivroDeRegistos_v1.gui
     public partial class PanelAddLivros : Form
     {
         private string id;
-
         public PanelAddLivros()
         {
             this.InitializeComponent();
@@ -51,7 +50,6 @@ namespace LivroDeRegistos_v1.gui
                 !this.ValidateTextBox(this.txtEditora, "a editora do exemplar") ||
                 !this.ValidateTextBox(this.txtObservacoes, "as observações"))
                 return;
-
 
             DateTime dataEntrega = DateTime.ParseExact(this.txtDataEntrega.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
@@ -113,5 +111,24 @@ namespace LivroDeRegistos_v1.gui
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '/' && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void bttClearText_Click(object sender, EventArgs e)
+        {
+            ClearText();
+        }
+
+        private void ClearText()
+        {
+            this.txtDataEntrega.Texts = "";
+            this.txtAutor.Texts = "";
+            this.txtTitulo.Texts = "";
+            this.txtCota.Texts = "";
+            this.txtEditora.Texts = "";
+            this.rjComboBox_Est.Texts = "";
+            this.rjComboBox_Aqi.Texts = "";
+            this.txtNVolume.Texts = "";
+            this.txtObservacoes.Texts = "";
+        }
+
     }
 }

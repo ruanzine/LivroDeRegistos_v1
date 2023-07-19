@@ -636,6 +636,7 @@
     <Content Include="docs\_build\html\_static\pygments.css" />
     <Content Include="docs\_build\html\_static\searchtools.js" />
     <Content Include="docs\_build\html\_static\sphinx_highlight.js" />
+    <None Include="Resources\icons8-broom-28.png" />
     <None Include="Resources\icons8-printer-28.png" />
     <None Include="Resources\backgroundLV %281%29.png" />
     <None Include="Resources\backgroundLV.png" />

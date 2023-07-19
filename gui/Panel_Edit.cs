@@ -25,13 +25,16 @@ namespace LivroDeRegistos_v1.gui
                 return;
 
             int numeroRegistro = int.Parse(this.txtNRegisto_Edit.Texts);
+            this.UnableText();
             this.FillTextBoxes(numeroRegistro);
             this.EnableText();
+            this.txtNRegisto_Edit.Enabled = false;
         }
 
         private void bttSave_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateTextBox(this.txtDataEntrega_Edit, "a data de entrada do exemplar") ||
+            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar") ||
+                !this.ValidateTextBox(this.txtDataEntrega_Edit, "a data de entrada do exemplar") ||
                 !this.ValidateTextBox(this.txtTitulo_Edit, "o título do exemplar") ||
                 !this.ValidateTextBox(this.txtAutor_Edit, "o autor do exemplar") ||
                 !this.ValidateTextBox(this.txtCota_Edit, "a cota do exemplar") ||
@@ -78,6 +81,9 @@ namespace LivroDeRegistos_v1.gui
                 // ...
                 this.ClearText();
                 this.UnableText();
+                this.bttSave.Enabled = false;
+                this.txtNRegisto_Edit.Enabled = true;
+                
             }
             catch (Exception ex)
             {
@@ -106,6 +112,7 @@ namespace LivroDeRegistos_v1.gui
                 this.txtNVolume_Edit.Texts = livroSelecionado.NumeroVolume;
                 this.txtObservacoes_Edit.Texts = livroSelecionado.Observacoes;
                 this.rjComboBox_Est.Texts = livroSelecionado.Estado;
+                this.txtNRegisto_Edit.Enabled = false;
             }
             else
             {
@@ -116,34 +123,26 @@ namespace LivroDeRegistos_v1.gui
 
         private void ClearText()
         {
-            this.txtNRegisto_Edit.Texts = "";
             this.txtDataEntrega_Edit.Texts = "";
             this.txtAutor_Edit.Texts = "";
             this.txtTitulo_Edit.Texts = "";
             this.txtCota_Edit.Texts = "";
             this.txtEditora_Edit.Texts = "";
-            this.rjComboBox_Est.Texts = "";
-            this.rjComboBox_Aqi_Edit.Texts = "";
+            this.rjComboBox_Est.Texts = "<Estado>";
+            this.rjComboBox_Aqi_Edit.Texts = "<Aquisição>";
             this.txtNVolume_Edit.Texts = "";
             this.txtObservacoes_Edit.Texts = "";
-            this.bttSave.Enabled = false;
         }
-
         private void EnableText()
         {
-            this.txtNRegisto_Edit.Enabled = true;
-            this.txtDataEntrega_Edit.Enabled = true;
-            this.txtAutor_Edit.Enabled = true;
-            this.txtTitulo_Edit.Enabled = true;
-            this.txtCota_Edit.Enabled = true;
-            this.txtEditora_Edit.Enabled = true;
-            this.rjComboBox_Aqi_Edit.Enabled = true;
-            this.rjComboBox_Est.Enabled = true;
-            this.txtNVolume_Edit.Enabled = true;
-            this.txtObservacoes_Edit.Enabled = true;
+            this.gpbData_Edit.Enabled = true;
+            this.gpbAutor_Edit.Enabled = true;
+            this.gpbCota_Edit.Enabled = true;
+            this.gpbEstado_Edit.Enabled = true;
+            this.gpbAqi_Edit.Enabled = true;
             this.bttSave.Enabled = true;
+            this.bttClear_Edit.Enabled = true;
         }
-
         private void UnableText()
         {
             this.gpbData_Edit.Enabled = false;
@@ -151,8 +150,8 @@ namespace LivroDeRegistos_v1.gui
             this.gpbCota_Edit.Enabled = false;
             this.gpbEstado_Edit.Enabled = false;
             this.gpbAqi_Edit.Enabled = false;
+            this.bttClear_Edit.Enabled = false;
         }
-
         private bool ValidateTextBox(txtTitulo textBox, string fieldName)
         {
             if (string.IsNullOrEmpty(textBox.Texts))
@@ -164,15 +163,34 @@ namespace LivroDeRegistos_v1.gui
             if (textBox == this.txtDataEntrega_Edit)
                 if (!DateTime.TryParseExact(textBox.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
                 {
-                    MessageBox.Show($"Por favor, insira {fieldName} no formato dd/MM/yyyy.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Por favor, insira {fieldName} no formato dd/MM/aaaa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
             return true;
         }
-
         private void Panel_Edit_Load(object sender, EventArgs e)
         {
+        }
+        private void gpbAqi_Edit_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void bttClear_Edit_Click(object sender, EventArgs e)
+        {
+            ClearText();
+        }
+        private void txtNRegisto_Edit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Aceitar apenas números e teclas de controle (Backspace, Delete, etc.)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+        private void txtDataEntrega_Edit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Aceitar apenas números e "/" (barra) e teclas de controle (Backspace, Delete, etc.)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '/' && !char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using Corale.Colore.Annotations;
+﻿using ClosedXML.Excel;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
-using ClosedXML.Excel;
 
 namespace LivroDeRegistos_v1.gui
 {
@@ -46,11 +45,11 @@ namespace LivroDeRegistos_v1.gui
                             var worksheet = workbook.Worksheets.Add("Planilha1");
 
                             // Preencher a planilha com os dados da DataGridView
-                            for (int i = 0; i < dgvListagem.Rows.Count; i++)
+                            for (int i = 0; i < dgvListagemListing.Rows.Count; i++)
                             {
-                                for (int j = 0; j < dgvListagem.Columns.Count; j++)
+                                for (int j = 0; j < dgvListagemListing.Columns.Count; j++)
                                 {
-                                    worksheet.Cell(i + 1, j + 1).Value = dgvListagem.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cell(i + 1, j + 1).Value = dgvListagemListing.Rows[i].Cells[j].Value.ToString();
                                 }
                             }
 
@@ -71,7 +70,7 @@ namespace LivroDeRegistos_v1.gui
         {
             this.registo_Livro = new Registo_Livro();
             FillDGV();
-            
+
 
         }
 
@@ -80,7 +79,7 @@ namespace LivroDeRegistos_v1.gui
             try
             {
                 string selectedOption = this.rjComboBox_SelectFilter.Texts;
-                string searchText = this.txtPesquisa.Texts;
+                string searchText = this.txtSearchListing.Texts;
 
                 DataTable dt = new DataTable();
 
@@ -88,7 +87,7 @@ namespace LivroDeRegistos_v1.gui
                 {
                     case "Nº de Registo":
                         dt = this.registo_Livro.GetAllNRegs();
-                        
+
                         break;
 
                     case "Autor":
@@ -108,7 +107,7 @@ namespace LivroDeRegistos_v1.gui
                         break;
                 }
 
-                this.dgvListagem.DataSource = dt;
+                this.dgvListagemListing.DataSource = dt;
 
                 if (this.rjComboBox_SelectFilter.Texts == "Nº de Registo") // Verifica se o índice selecionado é igual a 1
                 {
@@ -118,7 +117,7 @@ namespace LivroDeRegistos_v1.gui
                 {
                     ResizeTitle();
                 }
-                else if(this.rjComboBox_SelectFilter.Texts == "Autor")
+                else if (this.rjComboBox_SelectFilter.Texts == "Autor")
                 {
                     ResizeAuthor();
                 }
@@ -146,112 +145,192 @@ namespace LivroDeRegistos_v1.gui
         private void rjComboBox_SelectFilter_TabIndexChanged(object sender, EventArgs e)
         {
 
-            
+
         }
 
 
-            
+
         public void ResizeNReg()
         {
             //Column width
-            this.dgvListagem.Columns["Nº de Registo"].Width = 50;
-            this.dgvListagem.Columns["Título"].Width = 250;
+            this.dgvListagemListing.Columns["Nº de Registo"].Width = 50;
+            this.dgvListagemListing.Columns["Título"].Width = 250;
 
             //Font size
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Text Allignment
-            this.dgvListagem.Columns["Nº de Registo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
+            this.dgvListagemListing.Columns["Nº de Registo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
 
         }
         public void ResizeAuthor()
         {
 
             //Header name resize
-            this.dgvListagem.Columns["Autor"].Width = 250;
+            this.dgvListagemListing.Columns["Autor"].Width = 250;
 
             //Font size and colour
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.dgvListagem.Columns["Autor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.SetRowHeight(this.dgvListagem, 40);
+            this.dgvListagemListing.Columns["Autor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.SetRowHeight(this.dgvListagemListing, 40);
         }
         public void ResizeTitle()
         {
             //Header name resize
-            this.dgvListagem.Columns["Título"].Width = 250;
-            
+            this.dgvListagemListing.Columns["Título"].Width = 250;
+
 
             //Font size and colour
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.SetRowHeight(this.dgvListagem, 40);
+            this.SetRowHeight(this.dgvListagemListing, 40);
         }
         public void ResizeCota()
         {
-            this.dgvListagem.Columns["Cota"].Width = 130; 
+            this.dgvListagemListing.Columns["Cota"].Width = 130;
 
             //Font size and colour
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.dgvListagem.Columns["Cota"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
-            this.SetRowHeight(this.dgvListagem, 40);
+            this.dgvListagemListing.Columns["Cota"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
+            this.SetRowHeight(this.dgvListagemListing, 40);
 
         }
         public void ResizeState()
         {
             //Header name resize
-            this.dgvListagem.Columns["Nº de Registo"].Width = 50; // Define a largura da coluna
-            this.dgvListagem.Columns["Título"].Width = 250;
-            this.dgvListagem.Columns["Estado"].Width = 150;
+            this.dgvListagemListing.Columns["Nº de Registo"].Width = 50; // Define a largura da coluna
+            this.dgvListagemListing.Columns["Título"].Width = 250;
+            this.dgvListagemListing.Columns["Estado"].Width = 150;
 
             //Font size and colour
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.dgvListagem.Columns["Nº de Registo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
+            this.dgvListagemListing.Columns["Nº de Registo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
 
-            this.SetRowHeight(this.dgvListagem, 40);
+            this.SetRowHeight(this.dgvListagemListing, 40);
         }
         public void ResizeData()
         {
             //Header name resize
-            this.dgvListagem.Columns["Nº"].Width = 50; // Define a largura da coluna
-            this.dgvListagem.Columns["Data de Entrada"].Width = 90;
-            this.dgvListagem.Columns["Título"].Width = 225;
-            this.dgvListagem.Columns["Autor"].Width = 150;
-            this.dgvListagem.Columns["Cota"].Width = 130;
-            this.dgvListagem.Columns["Nº de Volume"].Width = 45;
-            this.dgvListagem.Columns["Aquisição"].Width = 75;
-            this.dgvListagem.Columns["Observações"].Width = 200;
-            this.dgvListagem.Columns["Editora"].Width = 175;
-            this.dgvListagem.Columns["Estado"].Width = 123;
+            this.dgvListagemListing.Columns["Nº"].Width = 50; // Define a largura da coluna
+            this.dgvListagemListing.Columns["Data de Entrada"].Width = 90;
+            this.dgvListagemListing.Columns["Título"].Width = 225;
+            this.dgvListagemListing.Columns["Autor"].Width = 150;
+            this.dgvListagemListing.Columns["Cota"].Width = 130;
+            this.dgvListagemListing.Columns["Nº de Volume"].Width = 45;
+            this.dgvListagemListing.Columns["Aquisição"].Width = 75;
+            this.dgvListagemListing.Columns["Observações"].Width = 200;
+            this.dgvListagemListing.Columns["Editora"].Width = 175;
+            this.dgvListagemListing.Columns["Estado"].Width = 123;
 
             //Font size and colour
-            this.dgvListagem.DefaultCellStyle.Font = new Font("Century Gothic", 11);
-            this.dgvListagem.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
+            this.dgvListagemListing.DefaultCellStyle.Font = new Font("Century Gothic", 11);
+            this.dgvListagemListing.DefaultCellStyle.ForeColor = Color.FromArgb(30, 30, 32);
 
             //Row alignment and Height
-            this.dgvListagem.Columns["Nº"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
-            this.dgvListagem.Columns["Data de Entrada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvListagem.Columns["Nº de Volume"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvListagem.Columns["Cota"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvListagem.Columns["Aquisição"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvListagem.Columns["Estado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.SetRowHeight(this.dgvListagem, 40);
+            this.dgvListagemListing.Columns["Nº"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centraliza o conteúdo da coluna
+            this.dgvListagemListing.Columns["Data de Entrada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvListagemListing.Columns["Nº de Volume"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvListagemListing.Columns["Cota"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvListagemListing.Columns["Aquisição"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvListagemListing.Columns["Estado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.SetRowHeight(this.dgvListagemListing, 40);
         }
 
         private void SetRowHeight(DataGridView dataGridView, int rowHeight)
         {
             foreach (DataGridViewRow row in dataGridView.Rows) row.Height = rowHeight;
         }
+
+
+        private void rjComboBox_SelectFilter_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rjComboBox_SelectFilter.Texts == "Autor")
+            {
+                this.registo_Livro = new Registo_Livro();
+
+                // Buscar os autores na base de dados
+                List<string> autores = registo_Livro.GetAuthors_List();
+
+                // Limpar os itens da combobox
+                rjComboBox_SelectAll.Items.Clear();
+
+                // Adicionar os autores à combobox
+                rjComboBox_SelectAll.Items.AddRange(autores.ToArray());
+            }
+            if (rjComboBox_SelectFilter.Texts == "Cota")
+            {
+                this.registo_Livro = new Registo_Livro();
+
+                // Buscar os autores na base de dados
+                List<string> cotas = registo_Livro.GetCotas_List();
+
+                // Limpar os itens da combobox
+                rjComboBox_SelectAll.Items.Clear();
+
+                // Adicionar os autores à combobox
+                rjComboBox_SelectAll.Items.AddRange(cotas.ToArray());
+            }
+
+        }
+
+        private void rjComboBox_SelectAll_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+
+            if (rjComboBox_SelectFilter.Texts == "Autor")
+            {
+                this.registo_Livro = new Registo_Livro();
+
+                string autorSelecionado = rjComboBox_SelectAll.Texts;
+
+                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
+                DataTable livrosDoAutor = registo_Livro.GetBooksByAuthor_Listing(autorSelecionado);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registro");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+                dgvListagemListing.Columns.Add("Estado", "Estado");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosDoAutor.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+                    string estado = row["Estado"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota, estado);
+                }
+
+            }
+            if(rjComboBox_SelectFilter.Texts == "Cota")
+            {
+
+            }
+
+
+        }
+
+
     }
 }

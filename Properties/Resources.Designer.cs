@@ -133,6 +133,16 @@ namespace LivroDeRegistos_v1.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_broom_28 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-broom-28", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_edit_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-edit-30", resourceCulture);

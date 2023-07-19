@@ -33,13 +33,13 @@ namespace LivroDeRegistos_v1.gui
         {
             this.bttDateListing = new System.Windows.Forms.Button();
             this.ListingFrame = new System.Windows.Forms.Panel();
-            this.bttNormalListing = new System.Windows.Forms.Button();
+            this.gpbSelectListing = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.bttNormalListing = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListingFrame.SuspendLayout();
+            this.gpbSelectListing.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bttDateListing
@@ -61,13 +61,35 @@ namespace LivroDeRegistos_v1.gui
             // ListingFrame
             // 
             this.ListingFrame.BackColor = System.Drawing.Color.Silver;
-            this.ListingFrame.Controls.Add(this.groupBox1);
+            this.ListingFrame.Controls.Add(this.gpbSelectListing);
             this.ListingFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListingFrame.Location = new System.Drawing.Point(0, 0);
-            this.ListingFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ListingFrame.Margin = new System.Windows.Forms.Padding(2);
             this.ListingFrame.Name = "ListingFrame";
-            this.ListingFrame.Size = new System.Drawing.Size(980, 623);
+            this.ListingFrame.Size = new System.Drawing.Size(1103, 623);
             this.ListingFrame.TabIndex = 24;
+            // 
+            // gpbSelectListing
+            // 
+            this.gpbSelectListing.Controls.Add(this.label4);
+            this.gpbSelectListing.Controls.Add(this.bttDateListing);
+            this.gpbSelectListing.Controls.Add(this.bttNormalListing);
+            this.gpbSelectListing.Location = new System.Drawing.Point(352, 128);
+            this.gpbSelectListing.Name = "gpbSelectListing";
+            this.gpbSelectListing.Size = new System.Drawing.Size(500, 370);
+            this.gpbSelectListing.TabIndex = 23;
+            this.gpbSelectListing.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.Location = new System.Drawing.Point(95, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(311, 24);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Selecione o método de listagem";
             // 
             // bttNormalListing
             // 
@@ -85,50 +107,28 @@ namespace LivroDeRegistos_v1.gui
             this.bttNormalListing.UseVisualStyleBackColor = false;
             this.bttNormalListing.Click += new System.EventHandler(this.bttNormalListing_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(95, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 24);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Selecione o método de listagem";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.ListingFrame);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(980, 623);
+            this.panel1.Size = new System.Drawing.Size(1103, 623);
             this.panel1.TabIndex = 25;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.bttDateListing);
-            this.groupBox1.Controls.Add(this.bttNormalListing);
-            this.groupBox1.Location = new System.Drawing.Point(352, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 370);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
             // 
             // SelectionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 623);
+            this.ClientSize = new System.Drawing.Size(1103, 623);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SelectionList";
             this.Text = "SelectionList";
             this.ListingFrame.ResumeLayout(false);
+            this.gpbSelectListing.ResumeLayout(false);
+            this.gpbSelectListing.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -141,6 +141,6 @@ namespace LivroDeRegistos_v1.gui
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpbSelectListing;
     }
 }
