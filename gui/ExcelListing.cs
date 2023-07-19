@@ -11,7 +11,6 @@ namespace LivroDeRegistos_v1.gui
     public partial class ExcelListing : Form
     {
         private Registo_Livro registo_Livro;
-        public string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
 
         public ExcelListing()
@@ -28,8 +27,6 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttPrint_Click(object sender, EventArgs e)
         {
-
-            // Criar a conexão com o banco de dados
             try
             {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -44,12 +41,18 @@ namespace LivroDeRegistos_v1.gui
                         {
                             var worksheet = workbook.Worksheets.Add("Planilha1");
 
+                            // Adicionar o nome das colunas
+                            for (int j = 0; j < dgvListagemListing.Columns.Count; j++)
+                            {
+                                worksheet.Cell(1, j + 1).Value = dgvListagemListing.Columns[j].HeaderText;
+                            }
+
                             // Preencher a planilha com os dados da DataGridView
                             for (int i = 0; i < dgvListagemListing.Rows.Count; i++)
                             {
                                 for (int j = 0; j < dgvListagemListing.Columns.Count; j++)
                                 {
-                                    worksheet.Cell(i + 1, j + 1).Value = dgvListagemListing.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cell(i + 2, j + 1).Value = dgvListagemListing.Rows[i].Cells[j].Value.ToString();
                                 }
                             }
 
@@ -65,7 +68,6 @@ namespace LivroDeRegistos_v1.gui
                 MessageBox.Show("Ocorreu um erro ao exportar o arquivo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void bttSearch_Click(object sender, EventArgs e)
         {
             this.registo_Livro = new Registo_Livro();
@@ -73,7 +75,6 @@ namespace LivroDeRegistos_v1.gui
 
 
         }
-
         public void FillDGV()
         {
             try
@@ -141,15 +142,11 @@ namespace LivroDeRegistos_v1.gui
                 MessageBox.Show("Ocorreu um erro ao obter os livros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void rjComboBox_SelectFilter_TabIndexChanged(object sender, EventArgs e)
         {
 
 
         }
-
-
-
         public void ResizeNReg()
         {
             //Column width
@@ -302,11 +299,14 @@ namespace LivroDeRegistos_v1.gui
                 // Limpar as colunas existentes no DataGridView
                 dgvListagemListing.Columns.Clear();
 
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+
                 // Limpar as linhas existentes no DataGridView
                 dgvListagemListing.Rows.Clear();
 
                 // Adicionar as colunas ao DataGridView
-                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registro");
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
                 dgvListagemListing.Columns.Add("Titulo", "Título");
                 dgvListagemListing.Columns.Add("Cota", "Cota");
                 dgvListagemListing.Columns.Add("Estado", "Estado");
@@ -325,12 +325,44 @@ namespace LivroDeRegistos_v1.gui
             }
             if(rjComboBox_SelectFilter.Texts == "Cota")
             {
+                this.registo_Livro = new Registo_Livro();
 
+                string cotaSelecionada = rjComboBox_SelectAll.Texts;
+
+                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
+                DataTable livrosCota = registo_Livro.GetBooksByCota_Listing(cotaSelecionada);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosCota.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota);
+                }
             }
 
 
         }
 
+        private void pnlListas_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

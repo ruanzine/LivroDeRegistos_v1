@@ -30,137 +30,203 @@ namespace LivroDeRegistos_v1.gui
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlPickDate = new System.Windows.Forms.Panel();
-            this.gpbDateUntil = new System.Windows.Forms.GroupBox();
-            this.bttShowDate = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnlDateListing = new System.Windows.Forms.Panel();
+            this.pnlListas_Date = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtData_Ate = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.txtData_De = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.pnlPickDate.SuspendLayout();
-            this.gpbDateUntil.SuspendLayout();
+            this.txtAte = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.txtDe = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.bttPrintDate = new System.Windows.Forms.Button();
+            this.lblListagemListing = new System.Windows.Forms.Label();
+            this.bttFiltrar = new System.Windows.Forms.Button();
+            this.dgvListagemDate = new System.Windows.Forms.DataGridView();
+            this.pnlDateListing.SuspendLayout();
+            this.pnlListas_Date.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListagemDate)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlPickDate
+            // pnlDateListing
             // 
-            this.pnlPickDate.BackColor = System.Drawing.Color.Silver;
-            this.pnlPickDate.Controls.Add(this.gpbDateUntil);
-            this.pnlPickDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPickDate.Location = new System.Drawing.Point(0, 0);
-            this.pnlPickDate.Name = "pnlPickDate";
-            this.pnlPickDate.Size = new System.Drawing.Size(930, 560);
-            this.pnlPickDate.TabIndex = 1;
+            this.pnlDateListing.BackColor = System.Drawing.Color.Silver;
+            this.pnlDateListing.Controls.Add(this.pnlListas_Date);
+            this.pnlDateListing.Controls.Add(this.dgvListagemDate);
+            this.pnlDateListing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDateListing.Location = new System.Drawing.Point(0, 0);
+            this.pnlDateListing.Name = "pnlDateListing";
+            this.pnlDateListing.Size = new System.Drawing.Size(1115, 560);
+            this.pnlDateListing.TabIndex = 28;
             // 
-            // gpbDateUntil
+            // pnlListas_Date
             // 
-            this.gpbDateUntil.Controls.Add(this.bttShowDate);
-            this.gpbDateUntil.Controls.Add(this.label1);
-            this.gpbDateUntil.Controls.Add(this.label3);
-            this.gpbDateUntil.Controls.Add(this.txtData_Ate);
-            this.gpbDateUntil.Controls.Add(this.txtData_De);
-            this.gpbDateUntil.Location = new System.Drawing.Point(352, 128);
-            this.gpbDateUntil.Name = "gpbDateUntil";
-            this.gpbDateUntil.Size = new System.Drawing.Size(500, 370);
-            this.gpbDateUntil.TabIndex = 0;
-            this.gpbDateUntil.TabStop = false;
+            this.pnlListas_Date.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.pnlListas_Date.Controls.Add(this.label2);
+            this.pnlListas_Date.Controls.Add(this.label1);
+            this.pnlListas_Date.Controls.Add(this.txtAte);
+            this.pnlListas_Date.Controls.Add(this.txtDe);
+            this.pnlListas_Date.Controls.Add(this.bttPrintDate);
+            this.pnlListas_Date.Controls.Add(this.lblListagemListing);
+            this.pnlListas_Date.Controls.Add(this.bttFiltrar);
+            this.pnlListas_Date.Location = new System.Drawing.Point(16, 64);
+            this.pnlListas_Date.Name = "pnlListas_Date";
+            this.pnlListas_Date.Size = new System.Drawing.Size(1128, 64);
+            this.pnlListas_Date.TabIndex = 1;
             // 
-            // bttShowDate
+            // label2
             // 
-            this.bttShowDate.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttShowDate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttShowDate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttShowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttShowDate.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttShowDate.Location = new System.Drawing.Point(224, 296);
-            this.bttShowDate.Margin = new System.Windows.Forms.Padding(0);
-            this.bttShowDate.Name = "bttShowDate";
-            this.bttShowDate.Size = new System.Drawing.Size(72, 32);
-            this.bttShowDate.TabIndex = 18;
-            this.bttShowDate.Text = "Exibir";
-            this.bttShowDate.UseVisualStyleBackColor = false;
-            this.bttShowDate.Click += new System.EventHandler(this.bttShowDate_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(840, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 20);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Até";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(173, 184);
+            this.label1.Location = new System.Drawing.Point(653, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Até";
+            this.label1.Size = new System.Drawing.Size(32, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "De";
             // 
-            // label3
+            // txtAte
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(172, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "De";
+            this.txtAte.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAte.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtAte.BorderSize = 2;
+            this.txtAte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAte.ForeColor = System.Drawing.Color.DimGray;
+            this.txtAte.Location = new System.Drawing.Point(880, 16);
+            this.txtAte.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAte.Multiline = false;
+            this.txtAte.Name = "txtAte";
+            this.txtAte.Padding = new System.Windows.Forms.Padding(9);
+            this.txtAte.PasswordChar = false;
+            this.txtAte.Size = new System.Drawing.Size(136, 35);
+            this.txtAte.TabIndex = 15;
+            this.txtAte.Texts = "";
+            this.txtAte.UnderlinedStyle = true;
             // 
-            // txtData_Ate
+            // txtDe
             // 
-            this.txtData_Ate.BackColor = System.Drawing.SystemColors.Window;
-            this.txtData_Ate.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtData_Ate.BorderSize = 2;
-            this.txtData_Ate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtData_Ate.ForeColor = System.Drawing.Color.DimGray;
-            this.txtData_Ate.Location = new System.Drawing.Point(174, 208);
-            this.txtData_Ate.Margin = new System.Windows.Forms.Padding(4);
-            this.txtData_Ate.Multiline = false;
-            this.txtData_Ate.Name = "txtData_Ate";
-            this.txtData_Ate.Padding = new System.Windows.Forms.Padding(9);
-            this.txtData_Ate.PasswordChar = false;
-            this.txtData_Ate.Size = new System.Drawing.Size(152, 35);
-            this.txtData_Ate.TabIndex = 1;
-            this.txtData_Ate.Texts = "";
-            this.txtData_Ate.UnderlinedStyle = false;
+            this.txtDe.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDe.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtDe.BorderSize = 2;
+            this.txtDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDe.ForeColor = System.Drawing.Color.DimGray;
+            this.txtDe.Location = new System.Drawing.Point(688, 16);
+            this.txtDe.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDe.Multiline = false;
+            this.txtDe.Name = "txtDe";
+            this.txtDe.Padding = new System.Windows.Forms.Padding(9);
+            this.txtDe.PasswordChar = false;
+            this.txtDe.Size = new System.Drawing.Size(136, 35);
+            this.txtDe.TabIndex = 14;
+            this.txtDe.Texts = "";
+            this.txtDe.UnderlinedStyle = true;
             // 
-            // txtData_De
+            // bttPrintDate
             // 
-            this.txtData_De.BackColor = System.Drawing.SystemColors.Window;
-            this.txtData_De.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtData_De.BorderSize = 2;
-            this.txtData_De.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtData_De.ForeColor = System.Drawing.Color.DimGray;
-            this.txtData_De.Location = new System.Drawing.Point(174, 112);
-            this.txtData_De.Margin = new System.Windows.Forms.Padding(4);
-            this.txtData_De.Multiline = false;
-            this.txtData_De.Name = "txtData_De";
-            this.txtData_De.Padding = new System.Windows.Forms.Padding(9);
-            this.txtData_De.PasswordChar = false;
-            this.txtData_De.Size = new System.Drawing.Size(152, 35);
-            this.txtData_De.TabIndex = 0;
-            this.txtData_De.Texts = "";
-            this.txtData_De.UnderlinedStyle = false;
+            this.bttPrintDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttPrintDate.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_printer_28;
+            this.bttPrintDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttPrintDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttPrintDate.Location = new System.Drawing.Point(1080, 14);
+            this.bttPrintDate.Name = "bttPrintDate";
+            this.bttPrintDate.Size = new System.Drawing.Size(35, 35);
+            this.bttPrintDate.TabIndex = 12;
+            this.bttPrintDate.UseVisualStyleBackColor = false;
+            this.bttPrintDate.Click += new System.EventHandler(this.bttPrintDate_Click);
+            // 
+            // lblListagemListing
+            // 
+            this.lblListagemListing.AutoSize = true;
+            this.lblListagemListing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListagemListing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblListagemListing.Location = new System.Drawing.Point(24, 20);
+            this.lblListagemListing.Name = "lblListagemListing";
+            this.lblListagemListing.Size = new System.Drawing.Size(144, 24);
+            this.lblListagemListing.TabIndex = 11;
+            this.lblListagemListing.Text = "Listas por data";
+            // 
+            // bttFiltrar
+            // 
+            this.bttFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttFiltrar.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.search_4_svgrepo_com;
+            this.bttFiltrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bttFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttFiltrar.Location = new System.Drawing.Point(1032, 14);
+            this.bttFiltrar.Margin = new System.Windows.Forms.Padding(0);
+            this.bttFiltrar.Name = "bttFiltrar";
+            this.bttFiltrar.Size = new System.Drawing.Size(35, 35);
+            this.bttFiltrar.TabIndex = 9;
+            this.bttFiltrar.UseVisualStyleBackColor = false;
+            this.bttFiltrar.Click += new System.EventHandler(this.bttFiltrar_Click);
+            // 
+            // dgvListagemDate
+            // 
+            this.dgvListagemDate.AllowUserToAddRows = false;
+            this.dgvListagemDate.AllowUserToDeleteRows = false;
+            this.dgvListagemDate.BackgroundColor = System.Drawing.Color.Silver;
+            this.dgvListagemDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListagemDate.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagemDate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvListagemDate.Location = new System.Drawing.Point(16, 128);
+            this.dgvListagemDate.Name = "dgvListagemDate";
+            this.dgvListagemDate.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagemDate.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvListagemDate.RowHeadersVisible = false;
+            this.dgvListagemDate.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvListagemDate.Size = new System.Drawing.Size(1128, 560);
+            this.dgvListagemDate.TabIndex = 0;
             // 
             // DateFromUntil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 560);
-            this.Controls.Add(this.pnlPickDate);
+            this.ClientSize = new System.Drawing.Size(1115, 560);
+            this.Controls.Add(this.pnlDateListing);
             this.Name = "DateFromUntil";
             this.Text = "DateFromUntil";
-            this.pnlPickDate.ResumeLayout(false);
-            this.gpbDateUntil.ResumeLayout(false);
-            this.gpbDateUntil.PerformLayout();
+            this.pnlDateListing.ResumeLayout(false);
+            this.pnlListas_Date.ResumeLayout(false);
+            this.pnlListas_Date.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListagemDate)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlPickDate;
-        private System.Windows.Forms.GroupBox gpbDateUntil;
-        private System.Windows.Forms.Button bttShowDate;
+        private System.Windows.Forms.Panel pnlDateListing;
+        private System.Windows.Forms.Panel pnlListas_Date;
+        private txtTitulo txtAte;
+        private txtTitulo txtDe;
+        private System.Windows.Forms.Button bttPrintDate;
+        private System.Windows.Forms.Label lblListagemListing;
+        private System.Windows.Forms.Button bttFiltrar;
+        public System.Windows.Forms.DataGridView dgvListagemDate;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private txtTitulo txtData_Ate;
-        private txtTitulo txtData_De;
     }
 }

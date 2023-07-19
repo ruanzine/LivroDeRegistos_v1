@@ -79,7 +79,7 @@ namespace LivroDeRegistos_v1.gui
             this.pnlAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAdd.Location = new System.Drawing.Point(0, 0);
             this.pnlAdd.Name = "pnlAdd";
-            this.pnlAdd.Size = new System.Drawing.Size(906, 685);
+            this.pnlAdd.Size = new System.Drawing.Size(1027, 685);
             this.pnlAdd.TabIndex = 12;
             // 
             // gpbEstado
@@ -487,7 +487,7 @@ namespace LivroDeRegistos_v1.gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 685);
+            this.ClientSize = new System.Drawing.Size(1027, 685);
             this.Controls.Add(this.pnlAdd);
             this.Name = "PanelAddLivros";
             this.Text = "PanelAddLivros";

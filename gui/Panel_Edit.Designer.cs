@@ -32,7 +32,6 @@ namespace LivroDeRegistos_v1.gui
         {
             this.pnlEdit = new System.Windows.Forms.Panel();
             this.gpbN_Edit = new System.Windows.Forms.GroupBox();
-            this.bttEdit = new System.Windows.Forms.Button();
             this.txtNRegisto_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label1 = new System.Windows.Forms.Label();
             this.gpbData_Edit = new System.Windows.Forms.GroupBox();
@@ -60,6 +59,8 @@ namespace LivroDeRegistos_v1.gui
             this.txtAutor_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.bttSave = new System.Windows.Forms.Button();
             this.bttClear_Edit = new System.Windows.Forms.Button();
+            this.bttDel = new System.Windows.Forms.Button();
+            this.bttClearText = new System.Windows.Forms.Button();
             this.pnlEdit.SuspendLayout();
             this.gpbN_Edit.SuspendLayout();
             this.gpbData_Edit.SuspendLayout();
@@ -88,30 +89,15 @@ namespace LivroDeRegistos_v1.gui
             // 
             // gpbN_Edit
             // 
-            this.gpbN_Edit.Controls.Add(this.bttEdit);
+            this.gpbN_Edit.Controls.Add(this.bttDel);
+            this.gpbN_Edit.Controls.Add(this.bttClearText);
             this.gpbN_Edit.Controls.Add(this.txtNRegisto_Edit);
             this.gpbN_Edit.Controls.Add(this.label1);
             this.gpbN_Edit.Location = new System.Drawing.Point(424, 8);
             this.gpbN_Edit.Name = "gpbN_Edit";
-            this.gpbN_Edit.Size = new System.Drawing.Size(336, 64);
+            this.gpbN_Edit.Size = new System.Drawing.Size(304, 64);
             this.gpbN_Edit.TabIndex = 20;
             this.gpbN_Edit.TabStop = false;
-            // 
-            // bttEdit
-            // 
-            this.bttEdit.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttEdit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttEdit.Location = new System.Drawing.Point(208, 16);
-            this.bttEdit.Margin = new System.Windows.Forms.Padding(0);
-            this.bttEdit.Name = "bttEdit";
-            this.bttEdit.Size = new System.Drawing.Size(104, 32);
-            this.bttEdit.TabIndex = 17;
-            this.bttEdit.Text = "Editar";
-            this.bttEdit.UseVisualStyleBackColor = false;
-            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
             // 
             // txtNRegisto_Edit
             // 
@@ -518,6 +504,33 @@ namespace LivroDeRegistos_v1.gui
             this.bttClear_Edit.UseVisualStyleBackColor = false;
             this.bttClear_Edit.Click += new System.EventHandler(this.bttClear_Edit_Click);
             // 
+            // bttDel
+            // 
+            this.bttDel.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.bttDel.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.litterIcon;
+            this.bttDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttDel.Location = new System.Drawing.Point(256, 16);
+            this.bttDel.Margin = new System.Windows.Forms.Padding(0);
+            this.bttDel.Name = "bttDel";
+            this.bttDel.Size = new System.Drawing.Size(35, 35);
+            this.bttDel.TabIndex = 22;
+            this.bttDel.UseVisualStyleBackColor = false;
+            this.bttDel.Click += new System.EventHandler(this.bttEdit_Click);
+            // 
+            // bttClearText
+            // 
+            this.bttClearText.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.bttClearText.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.editICon;
+            this.bttClearText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttClearText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttClearText.Location = new System.Drawing.Point(208, 16);
+            this.bttClearText.Margin = new System.Windows.Forms.Padding(0);
+            this.bttClearText.Name = "bttClearText";
+            this.bttClearText.Size = new System.Drawing.Size(35, 35);
+            this.bttClearText.TabIndex = 21;
+            this.bttClearText.UseVisualStyleBackColor = false;
+            // 
             // Panel_Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,8 +586,9 @@ namespace LivroDeRegistos_v1.gui
         private txtTitulo txtDataEntrega_Edit;
         private System.Windows.Forms.Label label1;
         private txtTitulo txtNRegisto_Edit;
-        private System.Windows.Forms.Button bttEdit;
         private System.Windows.Forms.GroupBox gpbN_Edit;
         private System.Windows.Forms.Button bttClear_Edit;
+        private System.Windows.Forms.Button bttClearText;
+        private System.Windows.Forms.Button bttDel;
     }
 }

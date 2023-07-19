@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LivroDeRegistos_v1.gui
 {
-    public class Registo_Livro  : MainForm
+    public class Registo_Livro : MainForm
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
@@ -265,8 +265,8 @@ namespace LivroDeRegistos_v1.gui
 
                     string query = @"SELECT Nome AS [Autor]
                             FROM Autores";
-                            
-                         
+
+
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -802,6 +802,53 @@ namespace LivroDeRegistos_v1.gui
                 return dataTable;
             }
         }
+
+        public DataTable GetBooksByCota_Listing(string cota)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], C.Cota " +
+                                        "FROM Livros L INNER JOIN Titulos T ON T.ID = L.TituloID " +
+                                        "INNER JOIN Cotas C ON C.ID = L.CotaID  WHERE C.Cota = @Cota", conn);
+                command.Parameters.AddWithValue("@Cota", cota);
+                SqlDataReader reader = command.ExecuteReader();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                conn.Close();
+
+                return dataTable;
+            }
+        }
+
+        public DataTable GetBooksByDate_Listing(DateTime dataDe, DateTime dataAte)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], C.Cota, L.Estado, " +
+                                                    "A.Nome AS [Autor], L.DataDeEntrega AS [Data de Entrada], L.Aquisicao, " +
+                                                    "L.Editora, L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações]" +
+                                                    "FROM Livros L " +
+                                                    "INNER JOIN Titulos T ON T.ID = L.TituloID " +
+                                                    "INNER JOIN Cotas C ON C.ID = L.CotaID " +
+                                                    "INNER JOIN Autores A ON A.ID = L.AutorID " +
+                                                    "WHERE L.DataDeEntrega BETWEEN @DataDe AND @DataAte", conn);
+                command.Parameters.AddWithValue("@DataDe", dataDe);
+                command.Parameters.AddWithValue("@DataAte", dataAte);
+                SqlDataReader reader = command.ExecuteReader();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                conn.Close();
+
+                return dataTable;
+            }
+        }
+
 
 
     }

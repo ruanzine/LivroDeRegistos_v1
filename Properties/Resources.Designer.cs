@@ -113,6 +113,16 @@ namespace LivroDeRegistos_v1.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap editICon {
+            get {
+                object obj = ResourceManager.GetObject("editICon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_book_30__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-book-30 (1)", resourceCulture);
@@ -166,6 +176,16 @@ namespace LivroDeRegistos_v1.Properties {
         internal static System.Drawing.Bitmap icons8_search_book_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-search-book-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap litterIcon {
+            get {
+                object obj = ResourceManager.GetObject("litterIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
