@@ -21,14 +21,12 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttEdit_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar"))
+            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar")) 
                 return;
 
             int numeroRegistro = int.Parse(this.txtNRegisto_Edit.Texts);
             this.UnableText();
             this.FillTextBoxes(numeroRegistro);
-            this.EnableText();
-            this.txtNRegisto_Edit.Enabled = false;
         }
 
         private void bttSave_Click(object sender, EventArgs e)
@@ -113,11 +111,15 @@ namespace LivroDeRegistos_v1.gui
                 this.txtObservacoes_Edit.Texts = livroSelecionado.Observacoes;
                 this.rjComboBox_Est.Texts = livroSelecionado.Estado;
                 this.txtNRegisto_Edit.Enabled = false;
+                this.EnableText();
+
+
             }
             else
             {
                 // Livro não encontrado
-                MessageBox.Show("Livro não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Livro não encontrado.", "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtNRegisto_Edit.Enabled = true;
             }
         }
 
@@ -133,6 +135,7 @@ namespace LivroDeRegistos_v1.gui
             this.txtNVolume_Edit.Texts = "";
             this.txtObservacoes_Edit.Texts = "";
         }
+
         private void EnableText()
         {
             this.gpbData_Edit.Enabled = true;
@@ -143,6 +146,7 @@ namespace LivroDeRegistos_v1.gui
             this.bttSave.Enabled = true;
             this.bttClear_Edit.Enabled = true;
         }
+
         private void UnableText()
         {
             this.gpbData_Edit.Enabled = false;
@@ -152,6 +156,7 @@ namespace LivroDeRegistos_v1.gui
             this.gpbAqi_Edit.Enabled = false;
             this.bttClear_Edit.Enabled = false;
         }
+
         private bool ValidateTextBox(txtTitulo textBox, string fieldName)
         {
             if (string.IsNullOrEmpty(textBox.Texts))
@@ -169,28 +174,69 @@ namespace LivroDeRegistos_v1.gui
 
             return true;
         }
-        private void Panel_Edit_Load(object sender, EventArgs e)
-        {
-        }
+
         private void gpbAqi_Edit_Enter(object sender, EventArgs e)
         {
 
         }
+
         private void bttClear_Edit_Click(object sender, EventArgs e)
         {
             ClearText();
         }
+
         private void txtNRegisto_Edit_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Aceitar apenas números e teclas de controle (Backspace, Delete, etc.)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
         private void txtDataEntrega_Edit_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Aceitar apenas números e "/" (barra) e teclas de controle (Backspace, Delete, etc.)
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '/' && !char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void bttDel_Click(object sender, EventArgs e)
+        {
+            if (!ValidateTextBox(txtNRegisto_Edit, "o número de registo do exemplar"))
+                return;
+
+            int numeroRegistro = int.Parse(txtNRegisto_Edit.Texts);
+
+            try
+            {
+                // Criar uma instância da classe Registo_Livro
+                Registo_Livro registoLivro = new Registo_Livro();
+
+                // Verificar se o registro existe antes de tentar excluir
+                if (registoLivro.IsRegistrationNumberExists(numeroRegistro))
+                {
+                    // Chamar o método de exclusão do registro
+                    registoLivro.DeleteBook(numeroRegistro);
+
+                    // Exibir uma mensagem de sucesso para o usuário
+                    MessageBox.Show("Registo excluído com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Limpar as textboxes e desabilitá-las
+                    ClearText();
+                    UnableText();
+                    bttSave.Enabled = false;
+                    txtNRegisto_Edit.Enabled = true;
+                }
+                else
+                {
+                    // Exibir mensagem de erro informando que o registro não foi encontrado
+                    MessageBox.Show("O livro com este número de registo não existe.", "Falha ao remover", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Tratar a exceção e exibir uma mensagem de erro para o usuário
+                MessageBox.Show("Ocorreu um erro ao excluir o registro: " + ex.Message, "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

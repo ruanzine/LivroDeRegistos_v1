@@ -117,4 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblManual.Text" xml:space="preserve">
+    <value>
+NOVO EXEMPLAR
+
+Para adicionar um novo exemplar ao Livro de Registo, é necessário preencher todas as caixas de texto de acordo com as informações do livro desejado. A seguir, carregar o botão 'Adicionar'. 
+O botão com ícone de vassoura limpa todos os campos. 
+OBS.: Caso as informações sejam incompletas/desconhecidas, é necessário preencher a caixa de texto com o caratér '-'. Outros caratéres podem acarretar erros indesejáveis dentro da aplicação.
+
+EDITAR EXEMPLAR
+
+Para editar um exemplar, é primeiro necessário introduzir um número de registo (existente na base de dados). A seguir, carregar o botão com ícone de lápis e editar as informações do exemplar desejadas. 
+O botão com ícone  de vassoura limpa todos os campos.
+O botão com ícone de lata de lixo deleta o registo do exemplar.
+
+PESQUISAR
+
+Ao selecionar qualquer filtro de pesquisa e apertar no botão de pesquisa, a lista completa de registos irão aparecer na grelha. 
+A caixa de pesquisa server para exibir conteúdo específicos de acordo com o filtro. 
+O botão de imprimir serve para criar um ficheiro Excel da lista exibida. 
+
+LISTAS
+
+Existem dois métodos de exibição de listas: 'Avançado' e 'Por data'.
+Avançado: A exibição de lista avançada permite a escolha de filtros específicos (ex.: todos os exemplares de um autor). Uma lista será exibida de acordo com o filtro escolhido. Alguns filtros possuem filtros avançados (autor, cota, estado e título).
+O botão de voltar, ao lado do filtro avançado, tem a função de limpar a lista com filtro avançado caso seja necessário voltar para o filtro comum.
+O botão de imprimir serve para criar um ficheiro Excel da lista exibida.
+Por data: 
+Exibe uma lista de todos os exemplares adicionados ao Livro de Registo entre duas datas.
+O botão de imprimir serve para criar um ficheiro Excel da lista exibida.</value>
+  </data>
 </root>

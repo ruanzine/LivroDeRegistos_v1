@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -23,6 +24,49 @@ namespace LivroDeRegistos_v1.gui
         {
             this.registo_livro = new Registo_Livro();
             this.FillDGV();
+        }
+        private void bttPrint_Search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Arquivo Excel|*.xlsx";
+                    saveFileDialog.Title = "Salvar arquivo Excel";
+                    saveFileDialog.FileName = "nome_do_arquivo";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        using (var workbook = new XLWorkbook())
+                        {
+                            var worksheet = workbook.Worksheets.Add("Planilha1");
+
+                            // Adicionar o nome das colunas
+                            for (int j = 0; j < dgvListagem.Columns.Count; j++)
+                            {
+                                worksheet.Cell(1, j + 1).Value = dgvListagem.Columns[j].HeaderText;
+                            }
+
+                            // Preencher a planilha com os dados da DataGridView
+                            for (int i = 0; i < dgvListagem.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < dgvListagem.Columns.Count; j++)
+                                {
+                                    worksheet.Cell(i + 2, j + 1).Value = dgvListagem.Rows[i].Cells[j].Value.ToString();
+                                }
+                            }
+
+                            // Salvar o arquivo do Excel
+                            workbook.SaveAs(saveFileDialog.FileName);
+                            MessageBox.Show("Arquivo exportado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao exportar o arquivo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void FillDGV()

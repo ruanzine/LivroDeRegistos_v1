@@ -9,8 +9,8 @@ namespace LivroDeRegistos_v1.gui
         private PanelAddLivros getAdd = new PanelAddLivros();
         private DGVBase getDGV = new DGVBase();
         private Panel_Edit getPanelEdit = new Panel_Edit();
-        private ExcelExporter getPanListing = new ExcelExporter();
-
+        private Panel_Help GetPanel_Help= new Panel_Help();
+        private Statistics getStatistics = new Statistics();
         private SelectionList SelectListing { get; set; }
         
         public MainForm()
@@ -21,6 +21,7 @@ namespace LivroDeRegistos_v1.gui
 
         public Panel GetFrame() => this.pnlMainFrame;
 
+        
         private void bttNew_Click(object sender, EventArgs e)
         {
             this.pnlMainFrame.SetAllFrom(this.getAdd.GetPanel_Add());
@@ -30,7 +31,6 @@ namespace LivroDeRegistos_v1.gui
         {
             this.pnlMainFrame.SetAllFrom(this.getDGV.GetPanel_Search());
         }
-
         private void bttEdidBook_Click(object sender, EventArgs e)
         {
             this.pnlMainFrame.SetAllFrom(this.getPanelEdit.GetPanel_Edit());
@@ -38,28 +38,30 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttListing_Click(object sender, EventArgs e)
         {
-            //this.pnlMainFrame.SetAllFrom(getPanListing.GetPanel_Listing());
             SelectListing.GetFrame().Size = this.pnlMainFrame.Size;
             SelectListing.GetFrame().Location = this.pnlMainFrame.Location;
             this.pnlMainFrame.SetAllFrom(SelectListing.GetFrame());
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void pnlMainFrame_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void picLogo_Click(object sender, EventArgs e)
         {
             this.pnlMainFrame.SetAllFrom(this.pnlMainFrame);
         }
 
+
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bttHelp_Click(object sender, EventArgs e)
+        {
+            this.pnlMainFrame.SetAllFrom(this.GetPanel_Help.GetPanel_Manual());
+        }
+
+        private void bttStatistics_Click(object sender, EventArgs e)
+        {
+            this.pnlMainFrame.SetAllFrom(this.getStatistics.Get_StatistcsPan());
+        }
     }
 }

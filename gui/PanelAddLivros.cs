@@ -21,7 +21,15 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttAdd_Click(object sender, EventArgs e)
         {
-            this.SaveData();
+            Registo_Livro registo_Livro = new Registo_Livro();
+
+            if (registo_Livro.IsRegistrationNumberExists(int.Parse(txtNRegisto.Texts)))
+            {
+                MessageBox.Show("O número de registo já existe na base de dados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else this.SaveData();
+
         }
 
         private void GetNRegisto()
@@ -112,11 +120,6 @@ namespace LivroDeRegistos_v1.gui
                 e.Handled = true;
         }
 
-        private void bttClearText_Click(object sender, EventArgs e)
-        {
-            ClearText();
-        }
-
         private void ClearText()
         {
             this.txtDataEntrega.Texts = "";
@@ -130,5 +133,14 @@ namespace LivroDeRegistos_v1.gui
             this.txtObservacoes.Texts = "";
         }
 
+        private void bttClearText_Click_1(object sender, EventArgs e)
+        {
+            ClearText();
+        }
+
+      
+        
+
+       
     }
 }

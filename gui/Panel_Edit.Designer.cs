@@ -31,20 +31,11 @@ namespace LivroDeRegistos_v1.gui
         private void InitializeComponent()
         {
             this.pnlEdit = new System.Windows.Forms.Panel();
-            this.gpbN_Edit = new System.Windows.Forms.GroupBox();
-            this.txtNRegisto_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gpbData_Edit = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDataEntrega_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.bttSave = new System.Windows.Forms.Button();
             this.gpbEstado_Edit = new System.Windows.Forms.GroupBox();
             this.rjComboBox_Est = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.gpbAqi_Edit = new System.Windows.Forms.GroupBox();
-            this.rjComboBox_Aqi_Edit = new LivroDeRegistos_v1.RJControls.RJComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtEditora_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.label9 = new System.Windows.Forms.Label();
+            this.bttClear_Edit = new System.Windows.Forms.Button();
             this.gpbCota_Edit = new System.Windows.Forms.GroupBox();
             this.txtObservacoes_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,130 +43,80 @@ namespace LivroDeRegistos_v1.gui
             this.txtCota_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNVolume_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.gpbData_Edit = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDataEntrega_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.gpbAqi_Edit = new System.Windows.Forms.GroupBox();
+            this.rjComboBox_Aqi_Edit = new LivroDeRegistos_v1.RJControls.RJComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtEditora_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.label9 = new System.Windows.Forms.Label();
+            this.gpbN_Edit = new System.Windows.Forms.GroupBox();
+            this.bttEdit = new System.Windows.Forms.Button();
+            this.bttDel = new System.Windows.Forms.Button();
+            this.txtNRegisto_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
+            this.label1 = new System.Windows.Forms.Label();
             this.gpbAutor_Edit = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTitulo_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAutor_Edit = new LivroDeRegistos_v1.RJControls.txtTitulo();
-            this.bttSave = new System.Windows.Forms.Button();
-            this.bttClear_Edit = new System.Windows.Forms.Button();
-            this.bttDel = new System.Windows.Forms.Button();
-            this.bttClearText = new System.Windows.Forms.Button();
+            this.pnlEditTitle = new System.Windows.Forms.Panel();
+            this.lblEdit = new System.Windows.Forms.Label();
+            this.pnlSideEdit = new System.Windows.Forms.Panel();
+            this.pnlBaseEdit = new System.Windows.Forms.Panel();
             this.pnlEdit.SuspendLayout();
-            this.gpbN_Edit.SuspendLayout();
-            this.gpbData_Edit.SuspendLayout();
             this.gpbEstado_Edit.SuspendLayout();
-            this.gpbAqi_Edit.SuspendLayout();
             this.gpbCota_Edit.SuspendLayout();
+            this.gpbData_Edit.SuspendLayout();
+            this.gpbAqi_Edit.SuspendLayout();
+            this.gpbN_Edit.SuspendLayout();
             this.gpbAutor_Edit.SuspendLayout();
+            this.pnlEditTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlEdit
             // 
             this.pnlEdit.BackColor = System.Drawing.Color.Silver;
-            this.pnlEdit.Controls.Add(this.bttClear_Edit);
-            this.pnlEdit.Controls.Add(this.gpbN_Edit);
-            this.pnlEdit.Controls.Add(this.gpbData_Edit);
-            this.pnlEdit.Controls.Add(this.gpbEstado_Edit);
-            this.pnlEdit.Controls.Add(this.gpbAqi_Edit);
-            this.pnlEdit.Controls.Add(this.gpbCota_Edit);
-            this.pnlEdit.Controls.Add(this.gpbAutor_Edit);
+            this.pnlEdit.Controls.Add(this.pnlBaseEdit);
+            this.pnlEdit.Controls.Add(this.pnlSideEdit);
+            this.pnlEdit.Controls.Add(this.pnlEditTitle);
             this.pnlEdit.Controls.Add(this.bttSave);
+            this.pnlEdit.Controls.Add(this.gpbEstado_Edit);
+            this.pnlEdit.Controls.Add(this.bttClear_Edit);
+            this.pnlEdit.Controls.Add(this.gpbCota_Edit);
+            this.pnlEdit.Controls.Add(this.gpbData_Edit);
+            this.pnlEdit.Controls.Add(this.gpbAqi_Edit);
+            this.pnlEdit.Controls.Add(this.gpbN_Edit);
+            this.pnlEdit.Controls.Add(this.gpbAutor_Edit);
             this.pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEdit.Location = new System.Drawing.Point(0, 0);
             this.pnlEdit.Name = "pnlEdit";
-            this.pnlEdit.Size = new System.Drawing.Size(974, 647);
+            this.pnlEdit.Size = new System.Drawing.Size(1048, 647);
             this.pnlEdit.TabIndex = 13;
             // 
-            // gpbN_Edit
+            // bttSave
             // 
-            this.gpbN_Edit.Controls.Add(this.bttDel);
-            this.gpbN_Edit.Controls.Add(this.bttClearText);
-            this.gpbN_Edit.Controls.Add(this.txtNRegisto_Edit);
-            this.gpbN_Edit.Controls.Add(this.label1);
-            this.gpbN_Edit.Location = new System.Drawing.Point(424, 8);
-            this.gpbN_Edit.Name = "gpbN_Edit";
-            this.gpbN_Edit.Size = new System.Drawing.Size(304, 64);
-            this.gpbN_Edit.TabIndex = 20;
-            this.gpbN_Edit.TabStop = false;
-            // 
-            // txtNRegisto_Edit
-            // 
-            this.txtNRegisto_Edit.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNRegisto_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtNRegisto_Edit.BorderSize = 2;
-            this.txtNRegisto_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNRegisto_Edit.ForeColor = System.Drawing.Color.DimGray;
-            this.txtNRegisto_Edit.Location = new System.Drawing.Point(128, 16);
-            this.txtNRegisto_Edit.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNRegisto_Edit.Multiline = false;
-            this.txtNRegisto_Edit.Name = "txtNRegisto_Edit";
-            this.txtNRegisto_Edit.Padding = new System.Windows.Forms.Padding(9);
-            this.txtNRegisto_Edit.PasswordChar = false;
-            this.txtNRegisto_Edit.Size = new System.Drawing.Size(61, 35);
-            this.txtNRegisto_Edit.TabIndex = 0;
-            this.txtNRegisto_Edit.Texts = "";
-            this.txtNRegisto_Edit.UnderlinedStyle = true;
-            this.txtNRegisto_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNRegisto_Edit_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(16, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nº de Registo";
-            // 
-            // gpbData_Edit
-            // 
-            this.gpbData_Edit.Controls.Add(this.label2);
-            this.gpbData_Edit.Controls.Add(this.txtDataEntrega_Edit);
-            this.gpbData_Edit.Enabled = false;
-            this.gpbData_Edit.Location = new System.Drawing.Point(296, 72);
-            this.gpbData_Edit.Name = "gpbData_Edit";
-            this.gpbData_Edit.Size = new System.Drawing.Size(568, 64);
-            this.gpbData_Edit.TabIndex = 19;
-            this.gpbData_Edit.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(240, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Data de Entrada";
-            // 
-            // txtDataEntrega_Edit
-            // 
-            this.txtDataEntrega_Edit.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDataEntrega_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtDataEntrega_Edit.BorderSize = 2;
-            this.txtDataEntrega_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataEntrega_Edit.ForeColor = System.Drawing.Color.DimGray;
-            this.txtDataEntrega_Edit.Location = new System.Drawing.Point(376, 16);
-            this.txtDataEntrega_Edit.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDataEntrega_Edit.Multiline = false;
-            this.txtDataEntrega_Edit.Name = "txtDataEntrega_Edit";
-            this.txtDataEntrega_Edit.Padding = new System.Windows.Forms.Padding(9);
-            this.txtDataEntrega_Edit.PasswordChar = false;
-            this.txtDataEntrega_Edit.Size = new System.Drawing.Size(176, 35);
-            this.txtDataEntrega_Edit.TabIndex = 2;
-            this.txtDataEntrega_Edit.Texts = "";
-            this.txtDataEntrega_Edit.UnderlinedStyle = true;
-            this.txtDataEntrega_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataEntrega_Edit_KeyPress);
+            this.bttSave.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.bttSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttSave.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttSave.Location = new System.Drawing.Point(752, 576);
+            this.bttSave.Margin = new System.Windows.Forms.Padding(0);
+            this.bttSave.Name = "bttSave";
+            this.bttSave.Size = new System.Drawing.Size(120, 32);
+            this.bttSave.TabIndex = 15;
+            this.bttSave.Text = "Guardar";
+            this.bttSave.UseVisualStyleBackColor = false;
+            this.bttSave.Click += new System.EventHandler(this.bttSave_Click);
             // 
             // gpbEstado_Edit
             // 
+            this.gpbEstado_Edit.BackColor = System.Drawing.Color.Silver;
             this.gpbEstado_Edit.Controls.Add(this.rjComboBox_Est);
             this.gpbEstado_Edit.Controls.Add(this.label11);
             this.gpbEstado_Edit.Enabled = false;
-            this.gpbEstado_Edit.Location = new System.Drawing.Point(296, 536);
+            this.gpbEstado_Edit.Location = new System.Drawing.Point(304, 552);
             this.gpbEstado_Edit.Name = "gpbEstado_Edit";
             this.gpbEstado_Edit.Size = new System.Drawing.Size(416, 64);
             this.gpbEstado_Edit.TabIndex = 17;
@@ -222,87 +163,24 @@ namespace LivroDeRegistos_v1.gui
             this.label11.TabIndex = 1;
             this.label11.Text = "Estado";
             // 
-            // gpbAqi_Edit
+            // bttClear_Edit
             // 
-            this.gpbAqi_Edit.Controls.Add(this.rjComboBox_Aqi_Edit);
-            this.gpbAqi_Edit.Controls.Add(this.label8);
-            this.gpbAqi_Edit.Controls.Add(this.txtEditora_Edit);
-            this.gpbAqi_Edit.Controls.Add(this.label9);
-            this.gpbAqi_Edit.Enabled = false;
-            this.gpbAqi_Edit.Location = new System.Drawing.Point(296, 272);
-            this.gpbAqi_Edit.Name = "gpbAqi_Edit";
-            this.gpbAqi_Edit.Size = new System.Drawing.Size(568, 128);
-            this.gpbAqi_Edit.TabIndex = 18;
-            this.gpbAqi_Edit.TabStop = false;
-            this.gpbAqi_Edit.Enter += new System.EventHandler(this.gpbAqi_Edit_Enter);
-            // 
-            // rjComboBox_Aqi_Edit
-            // 
-            this.rjComboBox_Aqi_Edit.AutoCompleteCustomSource.AddRange(new string[] {
-            "Compra",
-            "Doação"});
-            this.rjComboBox_Aqi_Edit.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rjComboBox_Aqi_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjComboBox_Aqi_Edit.BorderSize = 1;
-            this.rjComboBox_Aqi_Edit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox_Aqi_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rjComboBox_Aqi_Edit.ForeColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_Aqi_Edit.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjComboBox_Aqi_Edit.Items.AddRange(new object[] {
-            "Compra",
-            "Oferta"});
-            this.rjComboBox_Aqi_Edit.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.rjComboBox_Aqi_Edit.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_Aqi_Edit.Location = new System.Drawing.Point(128, 24);
-            this.rjComboBox_Aqi_Edit.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox_Aqi_Edit.Name = "rjComboBox_Aqi_Edit";
-            this.rjComboBox_Aqi_Edit.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox_Aqi_Edit.Size = new System.Drawing.Size(200, 30);
-            this.rjComboBox_Aqi_Edit.TabIndex = 8;
-            this.rjComboBox_Aqi_Edit.Texts = "<Aquisição>";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(62, 88);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 16);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Editora";
-            // 
-            // txtEditora_Edit
-            // 
-            this.txtEditora_Edit.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEditora_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtEditora_Edit.BorderSize = 2;
-            this.txtEditora_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditora_Edit.ForeColor = System.Drawing.Color.DimGray;
-            this.txtEditora_Edit.Location = new System.Drawing.Point(128, 76);
-            this.txtEditora_Edit.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEditora_Edit.Multiline = false;
-            this.txtEditora_Edit.Name = "txtEditora_Edit";
-            this.txtEditora_Edit.Padding = new System.Windows.Forms.Padding(9);
-            this.txtEditora_Edit.PasswordChar = false;
-            this.txtEditora_Edit.Size = new System.Drawing.Size(427, 35);
-            this.txtEditora_Edit.TabIndex = 6;
-            this.txtEditora_Edit.Texts = "";
-            this.txtEditora_Edit.UnderlinedStyle = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DimGray;
-            this.label9.Location = new System.Drawing.Point(32, 32);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 16);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Aquisição";
+            this.bttClear_Edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttClear_Edit.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_broom_28;
+            this.bttClear_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttClear_Edit.Enabled = false;
+            this.bttClear_Edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttClear_Edit.Location = new System.Drawing.Point(880, 112);
+            this.bttClear_Edit.Margin = new System.Windows.Forms.Padding(0);
+            this.bttClear_Edit.Name = "bttClear_Edit";
+            this.bttClear_Edit.Size = new System.Drawing.Size(35, 35);
+            this.bttClear_Edit.TabIndex = 21;
+            this.bttClear_Edit.UseVisualStyleBackColor = false;
+            this.bttClear_Edit.Click += new System.EventHandler(this.bttClear_Edit_Click);
             // 
             // gpbCota_Edit
             // 
+            this.gpbCota_Edit.BackColor = System.Drawing.Color.Silver;
             this.gpbCota_Edit.Controls.Add(this.txtObservacoes_Edit);
             this.gpbCota_Edit.Controls.Add(this.label6);
             this.gpbCota_Edit.Controls.Add(this.label7);
@@ -310,7 +188,7 @@ namespace LivroDeRegistos_v1.gui
             this.gpbCota_Edit.Controls.Add(this.label4);
             this.gpbCota_Edit.Controls.Add(this.txtNVolume_Edit);
             this.gpbCota_Edit.Enabled = false;
-            this.gpbCota_Edit.Location = new System.Drawing.Point(296, 400);
+            this.gpbCota_Edit.Location = new System.Drawing.Point(304, 416);
             this.gpbCota_Edit.Name = "gpbCota_Edit";
             this.gpbCota_Edit.Size = new System.Drawing.Size(568, 136);
             this.gpbCota_Edit.TabIndex = 18;
@@ -403,14 +281,208 @@ namespace LivroDeRegistos_v1.gui
             this.txtNVolume_Edit.Texts = "";
             this.txtNVolume_Edit.UnderlinedStyle = true;
             // 
+            // gpbData_Edit
+            // 
+            this.gpbData_Edit.BackColor = System.Drawing.Color.Silver;
+            this.gpbData_Edit.Controls.Add(this.label2);
+            this.gpbData_Edit.Controls.Add(this.txtDataEntrega_Edit);
+            this.gpbData_Edit.Enabled = false;
+            this.gpbData_Edit.Location = new System.Drawing.Point(304, 96);
+            this.gpbData_Edit.Name = "gpbData_Edit";
+            this.gpbData_Edit.Size = new System.Drawing.Size(568, 64);
+            this.gpbData_Edit.TabIndex = 19;
+            this.gpbData_Edit.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(240, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Data de Entrada";
+            // 
+            // txtDataEntrega_Edit
+            // 
+            this.txtDataEntrega_Edit.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDataEntrega_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtDataEntrega_Edit.BorderSize = 2;
+            this.txtDataEntrega_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataEntrega_Edit.ForeColor = System.Drawing.Color.DimGray;
+            this.txtDataEntrega_Edit.Location = new System.Drawing.Point(376, 16);
+            this.txtDataEntrega_Edit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDataEntrega_Edit.Multiline = false;
+            this.txtDataEntrega_Edit.Name = "txtDataEntrega_Edit";
+            this.txtDataEntrega_Edit.Padding = new System.Windows.Forms.Padding(9);
+            this.txtDataEntrega_Edit.PasswordChar = false;
+            this.txtDataEntrega_Edit.Size = new System.Drawing.Size(176, 35);
+            this.txtDataEntrega_Edit.TabIndex = 2;
+            this.txtDataEntrega_Edit.Texts = "";
+            this.txtDataEntrega_Edit.UnderlinedStyle = true;
+            this.txtDataEntrega_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataEntrega_Edit_KeyPress);
+            // 
+            // gpbAqi_Edit
+            // 
+            this.gpbAqi_Edit.BackColor = System.Drawing.Color.Silver;
+            this.gpbAqi_Edit.Controls.Add(this.rjComboBox_Aqi_Edit);
+            this.gpbAqi_Edit.Controls.Add(this.label8);
+            this.gpbAqi_Edit.Controls.Add(this.txtEditora_Edit);
+            this.gpbAqi_Edit.Controls.Add(this.label9);
+            this.gpbAqi_Edit.Enabled = false;
+            this.gpbAqi_Edit.Location = new System.Drawing.Point(304, 288);
+            this.gpbAqi_Edit.Name = "gpbAqi_Edit";
+            this.gpbAqi_Edit.Size = new System.Drawing.Size(568, 128);
+            this.gpbAqi_Edit.TabIndex = 18;
+            this.gpbAqi_Edit.TabStop = false;
+            this.gpbAqi_Edit.Enter += new System.EventHandler(this.gpbAqi_Edit_Enter);
+            // 
+            // rjComboBox_Aqi_Edit
+            // 
+            this.rjComboBox_Aqi_Edit.AutoCompleteCustomSource.AddRange(new string[] {
+            "Compra",
+            "Doação"});
+            this.rjComboBox_Aqi_Edit.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjComboBox_Aqi_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjComboBox_Aqi_Edit.BorderSize = 1;
+            this.rjComboBox_Aqi_Edit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjComboBox_Aqi_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rjComboBox_Aqi_Edit.ForeColor = System.Drawing.Color.DimGray;
+            this.rjComboBox_Aqi_Edit.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjComboBox_Aqi_Edit.Items.AddRange(new object[] {
+            "Compra",
+            "Oferta"});
+            this.rjComboBox_Aqi_Edit.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.rjComboBox_Aqi_Edit.ListTextColor = System.Drawing.Color.DimGray;
+            this.rjComboBox_Aqi_Edit.Location = new System.Drawing.Point(128, 24);
+            this.rjComboBox_Aqi_Edit.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjComboBox_Aqi_Edit.Name = "rjComboBox_Aqi_Edit";
+            this.rjComboBox_Aqi_Edit.Padding = new System.Windows.Forms.Padding(1);
+            this.rjComboBox_Aqi_Edit.Size = new System.Drawing.Size(200, 30);
+            this.rjComboBox_Aqi_Edit.TabIndex = 8;
+            this.rjComboBox_Aqi_Edit.Texts = "<Aquisição>";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.Location = new System.Drawing.Point(62, 88);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 16);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Editora";
+            // 
+            // txtEditora_Edit
+            // 
+            this.txtEditora_Edit.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEditora_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtEditora_Edit.BorderSize = 2;
+            this.txtEditora_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditora_Edit.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEditora_Edit.Location = new System.Drawing.Point(128, 76);
+            this.txtEditora_Edit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEditora_Edit.Multiline = false;
+            this.txtEditora_Edit.Name = "txtEditora_Edit";
+            this.txtEditora_Edit.Padding = new System.Windows.Forms.Padding(9);
+            this.txtEditora_Edit.PasswordChar = false;
+            this.txtEditora_Edit.Size = new System.Drawing.Size(427, 35);
+            this.txtEditora_Edit.TabIndex = 6;
+            this.txtEditora_Edit.Texts = "";
+            this.txtEditora_Edit.UnderlinedStyle = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
+            this.label9.Location = new System.Drawing.Point(32, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 16);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Aquisição";
+            // 
+            // gpbN_Edit
+            // 
+            this.gpbN_Edit.BackColor = System.Drawing.Color.Silver;
+            this.gpbN_Edit.Controls.Add(this.bttEdit);
+            this.gpbN_Edit.Controls.Add(this.bttDel);
+            this.gpbN_Edit.Controls.Add(this.txtNRegisto_Edit);
+            this.gpbN_Edit.Controls.Add(this.label1);
+            this.gpbN_Edit.Location = new System.Drawing.Point(304, 32);
+            this.gpbN_Edit.Name = "gpbN_Edit";
+            this.gpbN_Edit.Size = new System.Drawing.Size(304, 64);
+            this.gpbN_Edit.TabIndex = 20;
+            this.gpbN_Edit.TabStop = false;
+            // 
+            // bttEdit
+            // 
+            this.bttEdit.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.bttEdit.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.editICon;
+            this.bttEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttEdit.Location = new System.Drawing.Point(208, 16);
+            this.bttEdit.Margin = new System.Windows.Forms.Padding(0);
+            this.bttEdit.Name = "bttEdit";
+            this.bttEdit.Size = new System.Drawing.Size(35, 35);
+            this.bttEdit.TabIndex = 22;
+            this.bttEdit.UseVisualStyleBackColor = false;
+            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
+            // 
+            // bttDel
+            // 
+            this.bttDel.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.bttDel.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.litterIcon;
+            this.bttDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttDel.Location = new System.Drawing.Point(256, 16);
+            this.bttDel.Margin = new System.Windows.Forms.Padding(0);
+            this.bttDel.Name = "bttDel";
+            this.bttDel.Size = new System.Drawing.Size(35, 35);
+            this.bttDel.TabIndex = 21;
+            this.bttDel.UseVisualStyleBackColor = false;
+            this.bttDel.Click += new System.EventHandler(this.bttDel_Click);
+            // 
+            // txtNRegisto_Edit
+            // 
+            this.txtNRegisto_Edit.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNRegisto_Edit.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtNRegisto_Edit.BorderSize = 2;
+            this.txtNRegisto_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNRegisto_Edit.ForeColor = System.Drawing.Color.DimGray;
+            this.txtNRegisto_Edit.Location = new System.Drawing.Point(128, 16);
+            this.txtNRegisto_Edit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNRegisto_Edit.Multiline = false;
+            this.txtNRegisto_Edit.Name = "txtNRegisto_Edit";
+            this.txtNRegisto_Edit.Padding = new System.Windows.Forms.Padding(9);
+            this.txtNRegisto_Edit.PasswordChar = false;
+            this.txtNRegisto_Edit.Size = new System.Drawing.Size(61, 35);
+            this.txtNRegisto_Edit.TabIndex = 0;
+            this.txtNRegisto_Edit.Texts = "";
+            this.txtNRegisto_Edit.UnderlinedStyle = true;
+            this.txtNRegisto_Edit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNRegisto_Edit_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(16, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nº de Registo";
+            // 
             // gpbAutor_Edit
             // 
+            this.gpbAutor_Edit.BackColor = System.Drawing.Color.Silver;
             this.gpbAutor_Edit.Controls.Add(this.label5);
             this.gpbAutor_Edit.Controls.Add(this.txtTitulo_Edit);
             this.gpbAutor_Edit.Controls.Add(this.label3);
             this.gpbAutor_Edit.Controls.Add(this.txtAutor_Edit);
             this.gpbAutor_Edit.Enabled = false;
-            this.gpbAutor_Edit.Location = new System.Drawing.Point(296, 144);
+            this.gpbAutor_Edit.Location = new System.Drawing.Point(304, 160);
             this.gpbAutor_Edit.Name = "gpbAutor_Edit";
             this.gpbAutor_Edit.Size = new System.Drawing.Size(568, 128);
             this.gpbAutor_Edit.TabIndex = 17;
@@ -474,85 +546,65 @@ namespace LivroDeRegistos_v1.gui
             this.txtAutor_Edit.Texts = "";
             this.txtAutor_Edit.UnderlinedStyle = true;
             // 
-            // bttSave
+            // pnlEditTitle
             // 
-            this.bttSave.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttSave.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttSave.Location = new System.Drawing.Point(744, 560);
-            this.bttSave.Margin = new System.Windows.Forms.Padding(0);
-            this.bttSave.Name = "bttSave";
-            this.bttSave.Size = new System.Drawing.Size(120, 32);
-            this.bttSave.TabIndex = 15;
-            this.bttSave.Text = "Guardar";
-            this.bttSave.UseVisualStyleBackColor = false;
-            this.bttSave.Click += new System.EventHandler(this.bttSave_Click);
+            this.pnlEditTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.pnlEditTitle.Controls.Add(this.lblEdit);
+            this.pnlEditTitle.Location = new System.Drawing.Point(16, 8);
+            this.pnlEditTitle.Name = "pnlEditTitle";
+            this.pnlEditTitle.Size = new System.Drawing.Size(264, 56);
+            this.pnlEditTitle.TabIndex = 22;
             // 
-            // bttClear_Edit
+            // lblEdit
             // 
-            this.bttClear_Edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
-            this.bttClear_Edit.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_broom_28;
-            this.bttClear_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bttClear_Edit.Enabled = false;
-            this.bttClear_Edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttClear_Edit.Location = new System.Drawing.Point(872, 88);
-            this.bttClear_Edit.Margin = new System.Windows.Forms.Padding(0);
-            this.bttClear_Edit.Name = "bttClear_Edit";
-            this.bttClear_Edit.Size = new System.Drawing.Size(35, 35);
-            this.bttClear_Edit.TabIndex = 21;
-            this.bttClear_Edit.UseVisualStyleBackColor = false;
-            this.bttClear_Edit.Click += new System.EventHandler(this.bttClear_Edit_Click);
+            this.lblEdit.AutoSize = true;
+            this.lblEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblEdit.Location = new System.Drawing.Point(16, 16);
+            this.lblEdit.Name = "lblEdit";
+            this.lblEdit.Size = new System.Drawing.Size(159, 24);
+            this.lblEdit.TabIndex = 11;
+            this.lblEdit.Text = "Editar Exemplar";
             // 
-            // bttDel
+            // pnlSideEdit
             // 
-            this.bttDel.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttDel.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.litterIcon;
-            this.bttDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bttDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttDel.Location = new System.Drawing.Point(256, 16);
-            this.bttDel.Margin = new System.Windows.Forms.Padding(0);
-            this.bttDel.Name = "bttDel";
-            this.bttDel.Size = new System.Drawing.Size(35, 35);
-            this.bttDel.TabIndex = 22;
-            this.bttDel.UseVisualStyleBackColor = false;
-            this.bttDel.Click += new System.EventHandler(this.bttEdit_Click);
+            this.pnlSideEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(133)))), ((int)(((byte)(215)))));
+            this.pnlSideEdit.Location = new System.Drawing.Point(8, 16);
+            this.pnlSideEdit.Name = "pnlSideEdit";
+            this.pnlSideEdit.Size = new System.Drawing.Size(8, 48);
+            this.pnlSideEdit.TabIndex = 24;
             // 
-            // bttClearText
+            // pnlBaseEdit
             // 
-            this.bttClearText.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.bttClearText.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.editICon;
-            this.bttClearText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.bttClearText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttClearText.Location = new System.Drawing.Point(208, 16);
-            this.bttClearText.Margin = new System.Windows.Forms.Padding(0);
-            this.bttClearText.Name = "bttClearText";
-            this.bttClearText.Size = new System.Drawing.Size(35, 35);
-            this.bttClearText.TabIndex = 21;
-            this.bttClearText.UseVisualStyleBackColor = false;
+            this.pnlBaseEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(133)))), ((int)(((byte)(215)))));
+            this.pnlBaseEdit.Location = new System.Drawing.Point(8, 64);
+            this.pnlBaseEdit.Name = "pnlBaseEdit";
+            this.pnlBaseEdit.Size = new System.Drawing.Size(264, 8);
+            this.pnlBaseEdit.TabIndex = 25;
             // 
             // Panel_Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 647);
+            this.ClientSize = new System.Drawing.Size(1048, 647);
             this.Controls.Add(this.pnlEdit);
             this.Name = "Panel_Edit";
             this.Text = "Panel_Edit";
-            this.Load += new System.EventHandler(this.Panel_Edit_Load);
             this.pnlEdit.ResumeLayout(false);
-            this.gpbN_Edit.ResumeLayout(false);
-            this.gpbN_Edit.PerformLayout();
-            this.gpbData_Edit.ResumeLayout(false);
-            this.gpbData_Edit.PerformLayout();
             this.gpbEstado_Edit.ResumeLayout(false);
             this.gpbEstado_Edit.PerformLayout();
-            this.gpbAqi_Edit.ResumeLayout(false);
-            this.gpbAqi_Edit.PerformLayout();
             this.gpbCota_Edit.ResumeLayout(false);
             this.gpbCota_Edit.PerformLayout();
+            this.gpbData_Edit.ResumeLayout(false);
+            this.gpbData_Edit.PerformLayout();
+            this.gpbAqi_Edit.ResumeLayout(false);
+            this.gpbAqi_Edit.PerformLayout();
+            this.gpbN_Edit.ResumeLayout(false);
+            this.gpbN_Edit.PerformLayout();
             this.gpbAutor_Edit.ResumeLayout(false);
             this.gpbAutor_Edit.PerformLayout();
+            this.pnlEditTitle.ResumeLayout(false);
+            this.pnlEditTitle.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -560,14 +612,11 @@ namespace LivroDeRegistos_v1.gui
         #endregion
 
         private System.Windows.Forms.Panel pnlEdit;
+        private System.Windows.Forms.Button bttSave;
         private System.Windows.Forms.GroupBox gpbEstado_Edit;
-        private RJControls.RJComboBox rjComboBox_Est;
+        private RJComboBox rjComboBox_Est;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.GroupBox gpbAqi_Edit;
-        private RJControls.RJComboBox rjComboBox_Aqi_Edit;
-        private System.Windows.Forms.Label label8;
-        private txtTitulo txtEditora_Edit;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button bttClear_Edit;
         private System.Windows.Forms.GroupBox gpbCota_Edit;
         private txtTitulo txtObservacoes_Edit;
         private System.Windows.Forms.Label label6;
@@ -575,20 +624,27 @@ namespace LivroDeRegistos_v1.gui
         private txtTitulo txtCota_Edit;
         private System.Windows.Forms.Label label4;
         private txtTitulo txtNVolume_Edit;
+        private System.Windows.Forms.GroupBox gpbData_Edit;
+        private System.Windows.Forms.Label label2;
+        private txtTitulo txtDataEntrega_Edit;
+        private System.Windows.Forms.GroupBox gpbAqi_Edit;
+        private RJComboBox rjComboBox_Aqi_Edit;
+        private System.Windows.Forms.Label label8;
+        private txtTitulo txtEditora_Edit;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox gpbN_Edit;
+        private System.Windows.Forms.Button bttEdit;
+        private System.Windows.Forms.Button bttDel;
+        private txtTitulo txtNRegisto_Edit;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gpbAutor_Edit;
         private System.Windows.Forms.Label label5;
         private txtTitulo txtTitulo_Edit;
         private System.Windows.Forms.Label label3;
         private txtTitulo txtAutor_Edit;
-        private System.Windows.Forms.Button bttSave;
-        private System.Windows.Forms.GroupBox gpbData_Edit;
-        private System.Windows.Forms.Label label2;
-        private txtTitulo txtDataEntrega_Edit;
-        private System.Windows.Forms.Label label1;
-        private txtTitulo txtNRegisto_Edit;
-        private System.Windows.Forms.GroupBox gpbN_Edit;
-        private System.Windows.Forms.Button bttClear_Edit;
-        private System.Windows.Forms.Button bttClearText;
-        private System.Windows.Forms.Button bttDel;
+        private System.Windows.Forms.Panel pnlEditTitle;
+        private System.Windows.Forms.Label lblEdit;
+        private System.Windows.Forms.Panel pnlSideEdit;
+        private System.Windows.Forms.Panel pnlBaseEdit;
     }
 }

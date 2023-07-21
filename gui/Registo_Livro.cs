@@ -11,9 +11,23 @@ namespace LivroDeRegistos_v1.gui
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
+        /// <summary>
+        /// Saves the data of a new book to the database.
+        /// </summary>
+        /// <param name="nRegisto">The registration number of the book.</param>
+        /// <param name="dataEntrega">The delivery date of the book.</param>
+        /// <param name="titulo">The title of the book.</param>
+        /// <param name="autor">The author of the book.</param>
+        /// <param name="cota">The reference number of the book.</param>
+        /// <param name="nVolume">The volume number of the book.</param>
+        /// <param name="aquisicao">The acquisition type of the book.</param>
+        /// <param name="editora">The publisher of the book.</param>
+        /// <param name="observacoes">The observations of the book.</param>
+        /// <param name="estado">The status of the book.</param>
+        /// <exception cref="SqlException">Thrown when an error occurs while saving the data to the database.</exception>
         public void SaveData(int nRegisto, DateTime dataEntrega, string titulo, string autor, string cota, string nVolume, string aquisicao, string editora, string observacoes, string estado)
         {
-            if (this.IsRegistrationNumberExists(nRegisto)) MessageBox.Show("Houve uma falha ao registar: este Nº de registo já existe", "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
             try
             {
                 int autorID;
@@ -102,6 +116,12 @@ namespace LivroDeRegistos_v1.gui
                 MessageBox.Show("Ocorreu um erro ao salvar os dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Retrieves all books from the database.
+        /// </summary>
+        /// <returns>A DataTable containing the book data.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while retrieving the books from the database.</exception>
         public DataTable GetBooks()
         {
             try
@@ -133,6 +153,12 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Retrieves a list of books from the database for editing purposes.
+        /// </summary>
+        /// <returns>A list of books.</returns>
+        /// <exception cref="SqlException">Thrown when an error occurs while retrieving the books from the database.</exception>
         public List<Livro> GetBooks_Edit()
         {
             try
@@ -182,6 +208,21 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Updates the information of a book in the database.
+        /// </summary>
+        /// <param name="numeroRegistro">The registration number of the book.</param>
+        /// <param name="dataEntrega">The delivery date of the book.</param>
+        /// <param name="titulo">The title of the book.</param>
+        /// <param name="autor">The author of the book.</param>
+        /// <param name="cota">The call number of the book.</param>
+        /// <param name="aquisicao">The acquisition type of the book.</param>
+        /// <param name="editora">The publisher of the book.</param>
+        /// <param name="numeroVolume">The volume number of the book.</param>
+        /// <param name="observacoes">The observations of the book.</param>
+        /// <param name="estado">The status of the book.</param>
+        /// <exception cref="SqlException">Thrown when an error occurs while updating the book in the database.</exception>
         public void UpdateBook(int numeroRegistro, DateTime dataEntrega, string titulo, string autor, string cota, string aquisicao, string editora, string numeroVolume, string observacoes, string estado)
         {
             try
@@ -226,6 +267,28 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao atualizar o registro: " + ex.Message);
             }
         }
+       
+        /// <summary>
+        /// Deletes a book from the database based on the registration number.
+        /// </summary>
+        /// <param name="numeroRegistro">The registration number of the book to delete.</param>
+        /// <exception cref="SqlException">Thrown when an error occurs while deleting the book from the database.</exception>
+        public void DeleteBook(int numeroRegistro)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM Livros WHERE ID = @NumeroRegistro", conn);
+                command.Parameters.AddWithValue("@NumeroRegistro", numeroRegistro);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+        /// <summary>
+        /// Retrieves all registration numbers and corresponding titles from the database.
+        /// </summary>
+        /// <returns>A DataTable containing the registration numbers and titles of all books.</returns>
+        /// <exception cref="SqlException">Thrown when an error occurs while retrieving the registration numbers from the database.</exception>
         public DataTable GetAllNRegs()
         {
             try
@@ -254,6 +317,13 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// Retrieves all authors from the database.
+        /// </summary>
+        /// <returns>A DataTable containing the names of all authors.</returns>
+        /// <exception cref="SqlException">Thrown when an error occurs while retrieving the authors from the database.</exception>
         public DataTable GetAllAuthors()
         {
 
@@ -285,6 +355,12 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Retrieves all titles from the database.
+        /// </summary>
+        /// <returns>A DataTable containing the names of all titles.</returns>
+        /// <exception cref="SqlException">Thrown when an error occurs while retrieving the titles from the database.</exception>
         public DataTable GetAllTitles()
         {
             try
@@ -293,7 +369,7 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT TituloNome AS [Título] FROM Titulos";
+                    string query = @"SELECT TituloNome AS [Título] FROM Titulos WHERE TituloNome <> '-'";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -319,7 +395,7 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT Cota FROM Cotas";
+                    string query = @"SELECT Cota FROM Cotas WHERE Cota <> '-'";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -409,11 +485,11 @@ namespace LivroDeRegistos_v1.gui
                 {
                     conn.Open();
 
-                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS Autor, C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS [Autor], C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
                             FROM Livros L
                             INNER JOIN Autores A ON L.AutorID = A.ID
                             INNER JOIN Cotas C ON L.CotaID = C.ID
-                            INNER JOIN Titulos T ON T.TituloID = T.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
                             WHERE A.Nome LIKE @autor";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -533,6 +609,40 @@ namespace LivroDeRegistos_v1.gui
                 throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
             }
         }
+        public DataTable GetBooksByEstado_L(string estado)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT L.ID AS [Nº], L.DataDeEntrega AS [Data de Entrada], T.TituloNome AS [Título], A.Nome AS [Autor], C.Cota, L.Aquisicao AS [Aquisição], L.Editora AS [Editora], L.NumVolume AS [Nº de Volume], L.Observacoes AS [Observações], L.Estado
+                            FROM Livros L
+                            INNER JOIN Autores A ON L.AutorID = A.ID
+                            INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
+                            WHERE L.Estado = @estado";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@estado", estado);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+
         public int GetAuthorID(string authorName)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -685,75 +795,12 @@ namespace LivroDeRegistos_v1.gui
 
             return nextRegistrationNumber;
         }
-        public int GetLastRN()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(this.connectionString))
-                {
-                    conn.Open();
-
-                    string query = @"SELECT MAX(ID) FROM Livros";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        object result = cmd.ExecuteScalar();
-
-
-                        return Convert.ToInt32(result);
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception("Ocorreu um erro ao obter o próximo número de registro: " + ex.Message);
-            }
-        }
-        public List<int> GetAvailableRegistrationNumbers(int startNumber, int endNumber)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(this.connectionString))
-                {
-                    conn.Open();
-
-                    string query = @"SELECT ID FROM Livros WHERE ID >= @startNumber AND ID <= @endNumber";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@startNumber", startNumber);
-                        cmd.Parameters.AddWithValue("@endNumber", endNumber);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            List<int> usedNumbers = new List<int>();
-                            while (reader.Read())
-                            {
-                                int registrationNumber = reader.GetInt32(reader.GetOrdinal("ID"));
-                                usedNumbers.Add(registrationNumber);
-                            }
-
-                            List<int> availableNumbers = new List<int>();
-                            for (int i = startNumber; i <= endNumber; i++)
-                                if (!usedNumbers.Contains(i))
-                                    availableNumbers.Add(i);
-
-                            return availableNumbers;
-                        }
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception("Ocorreu um erro ao obter os números de registro disponíveis: " + ex.Message);
-            }
-        }
         public List<string> GetAuthors_List()
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                SqlCommand command = new SqlCommand("SELECT Nome FROM Autores", conn);
+                SqlCommand command = new SqlCommand("SELECT Nome FROM Autores WHERE Nome <> '-'", conn);
                 SqlDataReader reader = command.ExecuteReader();
                 List<string> autores = new List<string>();
                 while (reader.Read())
@@ -770,7 +817,7 @@ namespace LivroDeRegistos_v1.gui
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                SqlCommand command = new SqlCommand("SELECT Cota  FROM Cotas ", conn);
+                SqlCommand command = new SqlCommand("SELECT Cota  FROM Cotas WHERE Cota <> '-' ", conn);
                 SqlDataReader reader = command.ExecuteReader();
                 List<string> cotas = new List<string>();
                 while (reader.Read())
@@ -782,6 +829,25 @@ namespace LivroDeRegistos_v1.gui
                 return cotas;
             }
         }
+
+        public List<string> GetTitles_List()
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT TituloNome  FROM Titulos WHERE TituloNome <> '-' ", conn);
+                SqlDataReader reader = command.ExecuteReader();
+                List<string> titulos = new List<string>();
+                while (reader.Read())
+                {
+                    string titulo = reader.GetString(0);
+                    titulos.Add(titulo);
+                }
+                conn.Close();
+                return titulos;
+            }
+        }
+
         public DataTable GetBooksByAuthor_Listing(string autor)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -790,7 +856,7 @@ namespace LivroDeRegistos_v1.gui
                 SqlCommand command = new SqlCommand("SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], C.Cota, L.Estado " +
                     "FROM Livros L INNER JOIN Titulos T ON T.ID = L.TituloID " +
                     "INNER JOIN Autores A ON A.ID = L.AutorID " +
-                    "INNER JOIN Cotas C ON C.ID = L.CotaID  WHERE A.Nome = @Autor", conn);
+                    "INNER JOIN Cotas C ON C.ID = L.CotaID  WHERE A.Nome = @Autor AND A.Nome <> '-'", conn);
                 command.Parameters.AddWithValue("@Autor", autor);
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -802,7 +868,6 @@ namespace LivroDeRegistos_v1.gui
                 return dataTable;
             }
         }
-
         public DataTable GetBooksByCota_Listing(string cota)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -822,7 +887,6 @@ namespace LivroDeRegistos_v1.gui
                 return dataTable;
             }
         }
-
         public DataTable GetBooksByDate_Listing(DateTime dataDe, DateTime dataAte)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -848,7 +912,135 @@ namespace LivroDeRegistos_v1.gui
                 return dataTable;
             }
         }
+        public DataTable GetBooksByTitle_Listing(string titulo)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
 
+                    string query = @"SELECT L.ID AS [Nº de Registo], T.TituloNome AS [Título], C.Cota
+                            FROM Livros L
+                            INNER JOIN Cotas C ON L.CotaID = C.ID
+                            INNER JOIN Titulos T ON L.TituloID = T.ID
+                            WHERE T.TituloNome LIKE @titulo";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@titulo", titulo);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Ocorreu um erro ao obter os livros: " + ex.Message);
+            }
+        }
+
+
+        public int GetTotalExemplares()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT COUNT(*) FROM Livros";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error while getting total exemplares: " + ex.Message);
+            }
+        }
+
+        public int GetTotalAutores()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT COUNT(*) FROM Autores WHERE Nome <> '-'";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error while getting total autores: " + ex.Message);
+            }
+        }
+
+        public int GetTotalEstado(string estado)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT COUNT(*) FROM Livros WHERE Estado = @estado";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@estado", estado);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error while getting exemplares by estado: " + ex.Message);
+            }
+        }
+
+        public int GetTotalAqi(string aquisicao)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT COUNT(*) FROM Livros WHERE Aquisicao = @aquisicao";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@aquisicao", aquisicao);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error while getting exemplares by aquisição: " + ex.Message);
+            }
+        }
 
 
     }

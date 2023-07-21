@@ -1,9 +1,9 @@
-﻿using System.Data;
-using System;
-using System.Windows.Forms;
+﻿using ClosedXML.Excel;
 using LivroDeRegistos_v1.RJControls;
-using System.Configuration;
-using ClosedXML.Excel;
+using System;
+using System.Data;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace LivroDeRegistos_v1.gui
 {
@@ -20,16 +20,20 @@ namespace LivroDeRegistos_v1.gui
 
         private void bttFiltrar_Click(object sender, EventArgs e)
         {
-            this.registo_Livro= new Registo_Livro();
+            if (!this.ValidateTextBox(this.txtAte, "a data de entrada do exemplar") ||
+                !this.ValidateTextBox(this.txtDe, "a data de entrada do exemplar"))
+                return;
+
+            this.registo_Livro = new Registo_Livro();
             if (!DateTime.TryParse(txtDe.Texts, out DateTime dataDe) || !DateTime.TryParse(txtAte.Texts, out DateTime dataAte))
             {
-                MessageBox.Show("Insira datas válidas nos campos De e Até.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Insira datas válidas nos campos De e Até.", "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (dataDe > dataAte)
             {
-                MessageBox.Show("A data De não pode ser maior que a data Até.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data inical não pode ser maior que a data final.", "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -123,6 +127,39 @@ namespace LivroDeRegistos_v1.gui
             {
                 MessageBox.Show("Ocorreu um erro ao exportar o arquivo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtDe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Aceitar apenas números e "/" (barra) e teclas de controle (Backspace, Delete, etc.)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '/' && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+
+        }
+
+        private void txtAte_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Aceitar apenas números e "/" (barra) e teclas de controle (Backspace, Delete, etc.)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '/' && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private bool ValidateTextBox(txtTitulo textBox, string fieldName)
+        {
+            if (string.IsNullOrEmpty(textBox.Texts))
+            {
+                MessageBox.Show($"Por favor, insira {fieldName}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox == this.txtDe)
+                if (!DateTime.TryParseExact(textBox.Texts, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show($"Por favor, insira {fieldName} no formato dd/MM/aaaa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            return true;
         }
     }
 }

@@ -103,7 +103,7 @@ namespace LivroDeRegistos_v1.gui
             this.bttNormalListing.Name = "bttNormalListing";
             this.bttNormalListing.Size = new System.Drawing.Size(104, 104);
             this.bttNormalListing.TabIndex = 21;
-            this.bttNormalListing.Text = "Normal";
+            this.bttNormalListing.Text = "Avançado";
             this.bttNormalListing.UseVisualStyleBackColor = false;
             this.bttNormalListing.Click += new System.EventHandler(this.bttNormalListing_Click);
             // 

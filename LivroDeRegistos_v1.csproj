@@ -423,6 +423,12 @@
     <Compile Include="gui\Panel_Edit.Designer.cs">
       <DependentUpon>Panel_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\Panel_Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\Panel_Help.Designer.cs">
+      <DependentUpon>Panel_Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\Panel_SelectEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +478,9 @@
     <EmbeddedResource Include="gui\DGVBase.resx">
       <DependentUpon>DGVBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\ExcelExporter.resx">
+      <DependentUpon>ExcelExporter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\ExcelListing.resx">
       <DependentUpon>ExcelListing.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,6 +492,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Panel_Edit.resx">
       <DependentUpon>Panel_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\Panel_Help.resx">
+      <DependentUpon>Panel_Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Panel_SelectEdit.resx">
       <DependentUpon>Panel_SelectEdit.cs</DependentUpon>
@@ -636,6 +648,11 @@
     <Content Include="docs\_build\html\_static\pygments.css" />
     <Content Include="docs\_build\html\_static\searchtools.js" />
     <Content Include="docs\_build\html\_static\sphinx_highlight.js" />
+    <None Include="Resources\icons8-refresh-30.png" />
+    <None Include="Resources\icons8-help-28.png" />
+    <None Include="Resources\icons8-return-30.png" />
+    <None Include="Resources\icons8-clipboard-30.png" />
+    <None Include="Resources\icons8-clipboard-26.png" />
     <None Include="Resources\litterIcon.png" />
     <None Include="Resources\editICon.png" />
     <None Include="Resources\icons8-broom-28.png" />

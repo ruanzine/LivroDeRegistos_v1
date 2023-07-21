@@ -30,15 +30,16 @@ namespace LivroDeRegistos_v1.gui
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblListagem = new System.Windows.Forms.Label();
             this.rjComboBox_Search = new LivroDeRegistos_v1.RJControls.RJComboBox();
             this.bttSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new txtTitulo();
+            this.txtSearch = new LivroDeRegistos_v1.RJControls.txtTitulo();
             this.dgvListagem = new System.Windows.Forms.DataGridView();
+            this.bttPrint_Search = new System.Windows.Forms.Button();
             this.pnlSearch.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListagem)).BeginInit();
@@ -52,12 +53,13 @@ namespace LivroDeRegistos_v1.gui
             this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSearch.Location = new System.Drawing.Point(0, 0);
             this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(883, 572);
+            this.pnlSearch.Size = new System.Drawing.Size(1356, 572);
             this.pnlSearch.TabIndex = 24;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.bttPrint_Search);
             this.panel4.Controls.Add(this.lblListagem);
             this.panel4.Controls.Add(this.rjComboBox_Search);
             this.panel4.Controls.Add(this.bttSearch);
@@ -95,7 +97,7 @@ namespace LivroDeRegistos_v1.gui
             "Estado"});
             this.rjComboBox_Search.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjComboBox_Search.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox_Search.Location = new System.Drawing.Point(568, 16);
+            this.rjComboBox_Search.Location = new System.Drawing.Point(520, 18);
             this.rjComboBox_Search.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjComboBox_Search.Name = "rjComboBox_Search";
             this.rjComboBox_Search.Padding = new System.Windows.Forms.Padding(1);
@@ -109,7 +111,7 @@ namespace LivroDeRegistos_v1.gui
             this.bttSearch.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.search_4_svgrepo_com;
             this.bttSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bttSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttSearch.Location = new System.Drawing.Point(1080, 16);
+            this.bttSearch.Location = new System.Drawing.Point(1024, 16);
             this.bttSearch.Margin = new System.Windows.Forms.Padding(0);
             this.bttSearch.Name = "bttSearch";
             this.bttSearch.Size = new System.Drawing.Size(35, 35);
@@ -124,7 +126,7 @@ namespace LivroDeRegistos_v1.gui
             this.txtSearch.BorderSize = 2;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearch.Location = new System.Drawing.Point(784, 16);
+            this.txtSearch.Location = new System.Drawing.Point(728, 16);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
@@ -142,34 +144,47 @@ namespace LivroDeRegistos_v1.gui
             this.dgvListagem.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvListagem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListagem.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListagem.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagem.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListagem.Location = new System.Drawing.Point(16, 88);
             this.dgvListagem.Name = "dgvListagem";
             this.dgvListagem.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListagem.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListagem.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListagem.RowHeadersVisible = false;
             this.dgvListagem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvListagem.Size = new System.Drawing.Size(1128, 560);
             this.dgvListagem.TabIndex = 0;
             this.dgvListagem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListagem_CellFormatting);
             // 
+            // bttPrint_Search
+            // 
+            this.bttPrint_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(58)))), ((int)(((byte)(94)))));
+            this.bttPrint_Search.BackgroundImage = global::LivroDeRegistos_v1.Properties.Resources.icons8_printer_28;
+            this.bttPrint_Search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bttPrint_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttPrint_Search.Location = new System.Drawing.Point(1072, 16);
+            this.bttPrint_Search.Name = "bttPrint_Search";
+            this.bttPrint_Search.Size = new System.Drawing.Size(35, 35);
+            this.bttPrint_Search.TabIndex = 13;
+            this.bttPrint_Search.UseVisualStyleBackColor = false;
+            this.bttPrint_Search.Click += new System.EventHandler(this.bttPrint_Search_Click);
+            // 
             // DGVBase
             // 
-            this.ClientSize = new System.Drawing.Size(883, 572);
+            this.ClientSize = new System.Drawing.Size(1356, 572);
             this.Controls.Add(this.pnlSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DGVBase";
@@ -190,5 +205,6 @@ namespace LivroDeRegistos_v1.gui
         private System.Windows.Forms.Button bttSearch;
         private txtTitulo txtSearch;
         public System.Windows.Forms.DataGridView dgvListagem;
+        private System.Windows.Forms.Button bttPrint_Search;
     }
 }
