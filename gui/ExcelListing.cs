@@ -25,6 +25,11 @@ namespace LivroDeRegistos_v1.gui
             return this.pnlNormalListing;
         }
 
+        /// <summary>
+        /// Event handler for the "Print" button click. Exports the data from the DataGridView to an Excel file.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void bttPrint_Click(object sender, EventArgs e)
         {
             try
@@ -69,6 +74,11 @@ namespace LivroDeRegistos_v1.gui
             }
         }
 
+        /// <summary>
+        /// Event handler for the "Search" button click. Searches the database and fills the DataGridView with the results.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void bttSearch_Click(object sender, EventArgs e)
         {
             this.registo_Livro = new Registo_Livro();
@@ -77,6 +87,262 @@ namespace LivroDeRegistos_v1.gui
 
         }
 
+        private void bttBackMode_Click(object sender, EventArgs e)
+        {
+            // Limpar as colunas existentes no DataGridView
+            this.dgvListagemListing.Columns.Clear();
+
+            // Definir o DataSource como null para permitir a limpeza das linhas
+            this.dgvListagemListing.DataSource = null;
+
+            this.rjComboBox_SelectFilter.Enabled = true;
+            this.rjComboBox_SelectAll.Texts = "<Filtro Avançado>";
+            this.bttSearchListing.Visible = true;
+            this.bttSearchListing.Enabled = true;
+
+
+        }
+
+        /// <summary>
+        /// Event handler for the "SelectedIndexChanged" event of the rjComboBox_SelectFilter.
+        /// Handles the behavior when the selected filter is changed.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private void rjComboBox_SelectFilter_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (rjComboBox_SelectFilter.Texts == "Nº de Registo")
+            {
+                this.rjComboBox_SelectAll.Visible = false;
+            }
+            if (rjComboBox_SelectFilter.Texts == "Autor")
+            {
+                this.registo_Livro = new Registo_Livro();
+
+                // Buscar os autores na base de dados
+                List<string> autores = registo_Livro.GetAuthors_List();
+
+                // Limpar os itens da combobox
+                rjComboBox_SelectAll.Items.Clear();
+
+                // Adicionar os autores à combobox
+                rjComboBox_SelectAll.Items.AddRange(autores.ToArray());
+                this.rjComboBox_SelectAll.Visible = true;
+                this.bttBackMode.Visible = true;
+                this.bttPrint.Visible = true;
+
+
+            }
+            if (rjComboBox_SelectFilter.Texts == "Cota")
+            {
+                this.registo_Livro = new Registo_Livro();
+
+                // Buscar os autores na base de dados
+                List<string> cotas = registo_Livro.GetCotas_List();
+
+                // Limpar os itens da combobox
+                rjComboBox_SelectAll.Items.Clear();
+
+                // Adicionar os autores à combobox
+                rjComboBox_SelectAll.Items.AddRange(cotas.ToArray());
+                this.rjComboBox_SelectAll.Visible = true;
+                this.bttBackMode.Visible = true;
+                this.bttPrint.Visible = true;
+
+            }
+            if (rjComboBox_SelectFilter.Texts == "Estado")
+            {
+                // Preencher a combobox rjComboBox_SelectAll com a lista de estados possíveis
+                rjComboBox_SelectAll.Items.Clear();
+                rjComboBox_SelectAll.Items.AddRange(new string[] { "Disponível", "Indisponível", "Abatido", "Perdido", "Consulta local", "Exposição", "Depósito" });
+                this.rjComboBox_SelectAll.Visible = true;
+                this.bttBackMode.Visible = true;
+                this.bttPrint.Visible = true;
+            }
+
+            if (rjComboBox_SelectFilter.Texts == "Título")
+            {
+                this.registo_Livro = new Registo_Livro();
+                // Buscar os autores na base de dados
+                List<string> titulos = registo_Livro.GetTitles_List();
+
+                // Limpar os itens da combobox
+                rjComboBox_SelectAll.Items.Clear();
+
+                // Adicionar os autores à combobox
+                rjComboBox_SelectAll.Items.AddRange(titulos.ToArray());
+                this.rjComboBox_SelectAll.Visible = true;
+                this.bttBackMode.Visible = true;
+                this.bttPrint.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the "SelectedIndexChanged" event of the rjComboBox_SelectAll.
+        /// Handles the behavior when the selected item in rjComboBox_SelectAll is changed.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private void rjComboBox_SelectAll_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            if (rjComboBox_SelectFilter.Texts == "<Filtro Avançado>")
+            {
+                this.bttSearchListing.Visible = true;
+
+            }
+            else if (rjComboBox_SelectFilter.Texts == "Título")
+            {
+                this.bttSearchListing.Visible = true;
+                this.bttSearchListing.Enabled = false;
+                this.rjComboBox_SelectFilter.Enabled = false;
+
+                this.registo_Livro = new Registo_Livro();
+                string tituloSelecionado = rjComboBox_SelectAll.Texts;
+                // Realizar a consulta no banco de dados para obter os livros do estado selecionado
+                DataTable livrosDoTitulo = registo_Livro.GetBooksByTitle_Listing(tituloSelecionado);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosDoTitulo.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota);
+                }
+            }
+            else if (rjComboBox_SelectFilter.Texts == "Estado")
+            {
+                this.bttSearchListing.Enabled = false;
+                this.rjComboBox_SelectFilter.Enabled = false;
+                string estadoSelecionado = rjComboBox_SelectAll.Texts;
+                this.registo_Livro = new Registo_Livro();
+                // Realizar a consulta no banco de dados para obter os livros do estado selecionado
+                DataTable livrosDoEstado = registo_Livro.GetBooksByEstado_L(estadoSelecionado);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+                dgvListagemListing.Columns.Add("Estado", "Estado");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosDoEstado.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+                    string estado = row["Estado"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota, estado);
+                }
+            }
+            else if (rjComboBox_SelectFilter.Texts == "Cota")
+            {
+                this.rjComboBox_SelectFilter.Enabled = false;
+                this.bttSearchListing.Enabled = false;
+                string cotaSelecionada = rjComboBox_SelectAll.Texts;
+
+                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
+                DataTable livrosCota = registo_Livro.GetBooksByCota_Listing(cotaSelecionada);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosCota.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota);
+                }
+            }
+            else if (rjComboBox_SelectFilter.Texts == "Autor")
+            {
+                this.bttSearchListing.Enabled = false;
+                this.rjComboBox_SelectFilter.Enabled = false;
+                string autorSelecionado = rjComboBox_SelectAll.Texts;
+
+                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
+                DataTable livrosDoAutor = registo_Livro.GetBooksByAuthor_Listing(autorSelecionado);
+
+                // Limpar as colunas existentes no DataGridView
+                dgvListagemListing.Columns.Clear();
+
+                // Definir o DataSource como null para permitir a limpeza das linhas
+                dgvListagemListing.DataSource = null;
+
+                // Limpar as linhas existentes no DataGridView
+                dgvListagemListing.Rows.Clear();
+
+                // Adicionar as colunas ao DataGridView
+                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
+                dgvListagemListing.Columns.Add("Titulo", "Título");
+                dgvListagemListing.Columns.Add("Cota", "Cota");
+                dgvListagemListing.Columns.Add("Estado", "Estado");
+
+                // Adicionar as informações dos livros ao DataGridView
+                foreach (DataRow row in livrosDoAutor.Rows)
+                {
+                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
+                    string titulo = row["Título"].ToString();
+                    string cota = row["Cota"].ToString();
+                    string estado = row["Estado"].ToString();
+
+                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota, estado);
+                }
+
+            }
+            else
+            {
+                this.bttSearchListing.Visible = true;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// Fills the DataGridView (dgvListagemListing) based on the selected filter option (rjComboBox_SelectFilter.Texts).
+        /// </summary>
         public void FillDGV()
         {
             try
@@ -247,249 +513,16 @@ namespace LivroDeRegistos_v1.gui
             this.SetRowHeight(this.dgvListagemListing, 40);
         }
 
+        /// <summary>
+        /// Sets the height of all rows in the given DataGridView to the specified value.
+        /// </summary>
+        /// <param name="dataGridView">The DataGridView to adjust row heights for.</param>
+        /// <param name="rowHeight">The height value to set for all rows.</param>
         private void SetRowHeight(DataGridView dataGridView, int rowHeight)
         {
             foreach (DataGridViewRow row in dataGridView.Rows) row.Height = rowHeight;
         }
 
-        private void rjComboBox_SelectFilter_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (rjComboBox_SelectFilter.Texts == "Nº de Registo")
-            {
-                this.rjComboBox_SelectAll.Visible = false;
-            }
-            if (rjComboBox_SelectFilter.Texts == "Autor")
-            {
-                this.registo_Livro = new Registo_Livro();
-
-                // Buscar os autores na base de dados
-                List<string> autores = registo_Livro.GetAuthors_List();
-
-                // Limpar os itens da combobox
-                rjComboBox_SelectAll.Items.Clear();
-
-                // Adicionar os autores à combobox
-                rjComboBox_SelectAll.Items.AddRange(autores.ToArray());
-                this.rjComboBox_SelectAll.Visible = true;
-                this.bttBackMode.Visible = true;
-                this.bttPrint.Visible = true;
-
-
-            }
-            if (rjComboBox_SelectFilter.Texts == "Cota")
-            {
-                this.registo_Livro = new Registo_Livro();
-
-                // Buscar os autores na base de dados
-                List<string> cotas = registo_Livro.GetCotas_List();
-
-                // Limpar os itens da combobox
-                rjComboBox_SelectAll.Items.Clear();
-
-                // Adicionar os autores à combobox
-                rjComboBox_SelectAll.Items.AddRange(cotas.ToArray());
-                this.rjComboBox_SelectAll.Visible = true;
-                this.bttBackMode.Visible = true;
-                this.bttPrint.Visible = true;
-
-            }
-            if (rjComboBox_SelectFilter.Texts == "Estado")
-            {
-                // Preencher a combobox rjComboBox_SelectAll com a lista de estados possíveis
-                rjComboBox_SelectAll.Items.Clear();
-                rjComboBox_SelectAll.Items.AddRange(new string[] { "Disponível", "Indisponível", "Abatido", "Perdido", "Consulta local", "Exposição", "Depósito" });
-                this.rjComboBox_SelectAll.Visible = true;
-                this.bttBackMode.Visible = true;
-                this.bttPrint.Visible = true;
-            }
-
-            if (rjComboBox_SelectFilter.Texts == "Título")
-            {
-                this.registo_Livro = new Registo_Livro();
-                // Buscar os autores na base de dados
-                List<string> titulos = registo_Livro.GetTitles_List();
-
-                // Limpar os itens da combobox
-                rjComboBox_SelectAll.Items.Clear();
-
-                // Adicionar os autores à combobox
-                rjComboBox_SelectAll.Items.AddRange(titulos.ToArray());
-                this.rjComboBox_SelectAll.Visible = true;
-                this.bttBackMode.Visible = true;
-                this.bttPrint.Visible = true;
-            }
-        }
-
-        private void rjComboBox_SelectAll_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-            if (rjComboBox_SelectFilter.Texts == "<Filtro Avançado>")
-            {
-                this.bttSearchListing.Visible = true;
-
-            }
-            else if (rjComboBox_SelectFilter.Texts == "Título")
-            {
-                this.bttSearchListing.Visible = true;
-                this.bttSearchListing.Enabled = false;
-                this.rjComboBox_SelectFilter.Enabled = false;
-
-                this.registo_Livro = new Registo_Livro();
-                string tituloSelecionado = rjComboBox_SelectAll.Texts;
-                // Realizar a consulta no banco de dados para obter os livros do estado selecionado
-                DataTable livrosDoTitulo = registo_Livro.GetBooksByTitle_Listing(tituloSelecionado);
-
-                // Limpar as colunas existentes no DataGridView
-                dgvListagemListing.Columns.Clear();
-
-                // Definir o DataSource como null para permitir a limpeza das linhas
-                dgvListagemListing.DataSource = null;
-                // Limpar as linhas existentes no DataGridView
-                dgvListagemListing.Rows.Clear();
-
-                // Adicionar as colunas ao DataGridView
-                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
-                dgvListagemListing.Columns.Add("Titulo", "Título");
-                dgvListagemListing.Columns.Add("Cota", "Cota");
-
-                // Adicionar as informações dos livros ao DataGridView
-                foreach (DataRow row in livrosDoTitulo.Rows)
-                {
-                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
-                    string titulo = row["Título"].ToString();
-                    string cota = row["Cota"].ToString();
-
-                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota);
-                }
-            }
-            else if (rjComboBox_SelectFilter.Texts == "Estado")
-            {
-                this.bttSearchListing.Enabled = false;
-                this.rjComboBox_SelectFilter.Enabled = false;
-                string estadoSelecionado = rjComboBox_SelectAll.Texts;
-                this.registo_Livro = new Registo_Livro();
-                // Realizar a consulta no banco de dados para obter os livros do estado selecionado
-                DataTable livrosDoEstado = registo_Livro.GetBooksByEstado_L(estadoSelecionado);
-
-                // Limpar as colunas existentes no DataGridView
-                dgvListagemListing.Columns.Clear();
-
-                // Definir o DataSource como null para permitir a limpeza das linhas
-                dgvListagemListing.DataSource = null;
-
-                // Limpar as linhas existentes no DataGridView
-                dgvListagemListing.Rows.Clear();
-
-                // Adicionar as colunas ao DataGridView
-                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº");
-                dgvListagemListing.Columns.Add("Titulo", "Título");
-                dgvListagemListing.Columns.Add("Cota", "Cota");
-                dgvListagemListing.Columns.Add("Estado", "Estado");
-
-                // Adicionar as informações dos livros ao DataGridView
-                foreach (DataRow row in livrosDoEstado.Rows)
-                {
-                    int numeroRegistro = Convert.ToInt32(row["Nº"]);
-                    string titulo = row["Título"].ToString();
-                    string cota = row["Cota"].ToString();
-                    string estado = row["Estado"].ToString();
-
-                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota, estado);
-                }
-            }
-            else if (rjComboBox_SelectFilter.Texts == "Cota")
-            {
-                this.rjComboBox_SelectFilter.Enabled = false;
-                this.bttSearchListing.Enabled = false;
-                string cotaSelecionada = rjComboBox_SelectAll.Texts;
-
-                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
-                DataTable livrosCota = registo_Livro.GetBooksByCota_Listing(cotaSelecionada);
-
-                // Limpar as colunas existentes no DataGridView
-                dgvListagemListing.Columns.Clear();
-
-                // Definir o DataSource como null para permitir a limpeza das linhas
-                dgvListagemListing.DataSource = null;
-
-                // Limpar as linhas existentes no DataGridView
-                dgvListagemListing.Rows.Clear();
-
-                // Adicionar as colunas ao DataGridView
-                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
-                dgvListagemListing.Columns.Add("Titulo", "Título");
-                dgvListagemListing.Columns.Add("Cota", "Cota");
-
-                // Adicionar as informações dos livros ao DataGridView
-                foreach (DataRow row in livrosCota.Rows)
-                {
-                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
-                    string titulo = row["Título"].ToString();
-                    string cota = row["Cota"].ToString();
-
-                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota);
-                }
-            }
-            else if (rjComboBox_SelectFilter.Texts == "Autor")
-            {
-                this.bttSearchListing.Enabled = false;
-                this.rjComboBox_SelectFilter.Enabled = false;
-                string autorSelecionado = rjComboBox_SelectAll.Texts;
-
-                // Realizar a consulta no banco de dados para obter os livros do autor selecionado
-                DataTable livrosDoAutor = registo_Livro.GetBooksByAuthor_Listing(autorSelecionado);
-
-                // Limpar as colunas existentes no DataGridView
-                dgvListagemListing.Columns.Clear();
-
-                // Definir o DataSource como null para permitir a limpeza das linhas
-                dgvListagemListing.DataSource = null;
-
-                // Limpar as linhas existentes no DataGridView
-                dgvListagemListing.Rows.Clear();
-
-                // Adicionar as colunas ao DataGridView
-                dgvListagemListing.Columns.Add("NumeroRegistro", "Nº de Registo");
-                dgvListagemListing.Columns.Add("Titulo", "Título");
-                dgvListagemListing.Columns.Add("Cota", "Cota");
-                dgvListagemListing.Columns.Add("Estado", "Estado");
-
-                // Adicionar as informações dos livros ao DataGridView
-                foreach (DataRow row in livrosDoAutor.Rows)
-                {
-                    int numeroRegistro = Convert.ToInt32(row["Nº de Registo"]);
-                    string titulo = row["Título"].ToString();
-                    string cota = row["Cota"].ToString();
-                    string estado = row["Estado"].ToString();
-
-                    dgvListagemListing.Rows.Add(numeroRegistro, titulo, cota, estado);
-                }
-
-            }
-            else
-            {
-                this.bttSearchListing.Visible = true;
-
-            }
-
-
-        }
-        private void bttBackMode_Click(object sender, EventArgs e)
-        {
-            // Limpar as colunas existentes no DataGridView
-            this. dgvListagemListing.Columns.Clear();
-
-            // Definir o DataSource como null para permitir a limpeza das linhas
-            this.dgvListagemListing.DataSource = null;
-
-            this.rjComboBox_SelectFilter.Enabled = true;
-            this.rjComboBox_SelectAll.Texts = "<Filtro Avançado>";
-            this.bttSearchListing.Visible = true;
-            this.bttSearchListing.Enabled = true;
-            
-         
-        }
+       
     }
 }

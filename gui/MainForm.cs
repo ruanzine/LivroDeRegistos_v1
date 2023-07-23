@@ -21,12 +21,10 @@ namespace LivroDeRegistos_v1.gui
 
         public Panel GetFrame() => this.pnlMainFrame;
 
-        
         private void bttNew_Click(object sender, EventArgs e)
         {
             this.pnlMainFrame.SetAllFrom(this.getAdd.GetPanel_Add());
         }
-
         private void bttPesquisar_Click(object sender, EventArgs e)
         {
             this.pnlMainFrame.SetAllFrom(this.getDGV.GetPanel_Search());
@@ -35,33 +33,25 @@ namespace LivroDeRegistos_v1.gui
         {
             this.pnlMainFrame.SetAllFrom(this.getPanelEdit.GetPanel_Edit());
         }
-
+        private void picLogo_Click(object sender, EventArgs e)
+        {
+            this.pnlMainFrame.SetAllFrom(this.pnlMainFrame);
+        }
+        private void bttHelp_Click(object sender, EventArgs e)
+        {
+            this.pnlMainFrame.SetAllFrom(this.GetPanel_Help.GetPanel_Manual());
+        }
+        private void bttStatistics_Click(object sender, EventArgs e)
+        {
+            this.pnlMainFrame.SetAllFrom(this.getStatistics.Get_StatistcsPan());
+        }
         private void bttListing_Click(object sender, EventArgs e)
         {
             SelectListing.GetFrame().Size = this.pnlMainFrame.Size;
             SelectListing.GetFrame().Location = this.pnlMainFrame.Location;
             this.pnlMainFrame.SetAllFrom(SelectListing.GetFrame());
         }
-        private void picLogo_Click(object sender, EventArgs e)
-        {
-            this.pnlMainFrame.SetAllFrom(this.pnlMainFrame);
-        }
-
-
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void bttHelp_Click(object sender, EventArgs e)
-        {
-            this.pnlMainFrame.SetAllFrom(this.GetPanel_Help.GetPanel_Manual());
-        }
-
-        private void bttStatistics_Click(object sender, EventArgs e)
-        {
-            this.pnlMainFrame.SetAllFrom(this.getStatistics.Get_StatistcsPan());
-        }
+       
     }
+
 }

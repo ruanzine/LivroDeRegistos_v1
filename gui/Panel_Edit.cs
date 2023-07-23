@@ -1,9 +1,9 @@
-﻿using System;
+﻿using LivroDeRegistos_v1.RJControls;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using LivroDeRegistos_v1.RJControls;
 
 namespace LivroDeRegistos_v1.gui
 {
@@ -19,9 +19,15 @@ namespace LivroDeRegistos_v1.gui
             return this.pnlEdit;
         }
 
+        /// <summary>
+        /// Handles the click event of the "Edit" button. Validates the "Número de Registo" (registration number) input in the <see cref="txtNRegisto_Edit"/> textbox.
+        /// If the input is valid, disables textboxes and fills them with information about the book corresponding to the provided registration number.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
         private void bttEdit_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar")) 
+            if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar"))
                 return;
 
             int numeroRegistro = int.Parse(this.txtNRegisto_Edit.Texts);
@@ -29,6 +35,13 @@ namespace LivroDeRegistos_v1.gui
             this.FillTextBoxes(numeroRegistro);
         }
 
+        /// <summary>
+        /// Handles the click event of the "Save" button. Validates the inputs in various textboxes (registration number, data de entrega, title, author, cota, etc.).
+        /// If all inputs are valid, retrieves the updated information from the textboxes, checks if the author and cota already exist in the database,
+        /// and creates them if not. Then, updates the book record in the database with the new information.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
         private void bttSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateTextBox(this.txtNRegisto_Edit, "o número de registo do exemplar") ||
@@ -81,7 +94,7 @@ namespace LivroDeRegistos_v1.gui
                 this.UnableText();
                 this.bttSave.Enabled = false;
                 this.txtNRegisto_Edit.Enabled = true;
-                
+
             }
             catch (Exception ex)
             {
@@ -90,6 +103,11 @@ namespace LivroDeRegistos_v1.gui
             }
         }
 
+        /// <summary>
+        /// Fills the textboxes with information about the book corresponding to the provided registration number.
+        /// If the book is found, the textboxes are filled with the book information. Otherwise, an error message is displayed.
+        /// </summary>
+        /// <param name="numeroRegistro">The registration number of the book to be retrieved from the database.</param>
         private void FillTextBoxes(int numeroRegistro)
         {
             Registo_Livro registoLivro = new Registo_Livro();
@@ -122,6 +140,55 @@ namespace LivroDeRegistos_v1.gui
                 this.txtNRegisto_Edit.Enabled = true;
             }
         }
+
+        /// <summary>
+        /// Handles the click event of the "Delete" button. Validates the "Número de Registo" (registration number) input in the <see cref="txtNRegisto_Edit"/> textbox.
+        /// If the input is valid and the book with the provided registration number exists, the book record is deleted from the database.
+        /// Otherwise, appropriate error messages are displayed to the user.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
+        private void bttDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ValidateTextBox(txtNRegisto_Edit, "o número de registo do exemplar"))
+                    return;
+
+                // Parse the registration number input
+                int numeroRegistro = int.Parse(txtNRegisto_Edit.Texts);
+
+                // Create an instance of the Registo_Livro class
+                Registo_Livro registoLivro = new Registo_Livro();
+
+                // Check if the book with the provided registration number exists before attempting to delete
+                if (registoLivro.IsRegistrationNumberExists(numeroRegistro))
+                {
+                    // Call the method to delete the book record
+                    registoLivro.DeleteBook(numeroRegistro);
+
+                    // Display a success message to the user
+                    MessageBox.Show("Registo excluído com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Clear the textboxes, disable them, and enable the "Edit" button
+                    ClearText();
+                    UnableText();
+                    bttSave.Enabled = false;
+                    txtNRegisto_Edit.Enabled = true;
+                }
+                else
+                {
+                    // Display an error message indicating that the book with this registration number does not exist
+                    MessageBox.Show("O livro com este número de registo não existe.", "Falha ao remover", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception and display an error message to the user
+                MessageBox.Show("Ocorreu um erro ao excluir o registro: " + ex.Message, "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void ClearText()
         {
@@ -199,44 +266,6 @@ namespace LivroDeRegistos_v1.gui
                 e.Handled = true;
         }
 
-        private void bttDel_Click(object sender, EventArgs e)
-        {
-            if (!ValidateTextBox(txtNRegisto_Edit, "o número de registo do exemplar"))
-                return;
 
-            int numeroRegistro = int.Parse(txtNRegisto_Edit.Texts);
-
-            try
-            {
-                // Criar uma instância da classe Registo_Livro
-                Registo_Livro registoLivro = new Registo_Livro();
-
-                // Verificar se o registro existe antes de tentar excluir
-                if (registoLivro.IsRegistrationNumberExists(numeroRegistro))
-                {
-                    // Chamar o método de exclusão do registro
-                    registoLivro.DeleteBook(numeroRegistro);
-
-                    // Exibir uma mensagem de sucesso para o usuário
-                    MessageBox.Show("Registo excluído com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Limpar as textboxes e desabilitá-las
-                    ClearText();
-                    UnableText();
-                    bttSave.Enabled = false;
-                    txtNRegisto_Edit.Enabled = true;
-                }
-                else
-                {
-                    // Exibir mensagem de erro informando que o registro não foi encontrado
-                    MessageBox.Show("O livro com este número de registo não existe.", "Falha ao remover", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Tratar a exceção e exibir uma mensagem de erro para o usuário
-                MessageBox.Show("Ocorreu um erro ao excluir o registro: " + ex.Message, "Falha", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 }
